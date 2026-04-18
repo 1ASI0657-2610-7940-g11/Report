@@ -575,40 +575,46 @@ Como proveedor de combustible, mencionó que el proceso actual depende de coordi
 ---
 <h4><u>Entrevista 5</u></h4>
 
-<p><strong>Nombres:</strong>
-<strong>Apellidos:</strong>
-<strong>Edad:</strong>
-<strong>Distrito:</strong>
+<p><strong>Nombres:</strong> Daniel</p>
+<p><strong>Apellidos:</strong> Ortega</p>
+<p><strong>Edad:</strong> 38 años</p>
+<p><strong>Distrito:</strong> San Isidro</p>
 
 <p><strong>Captura de la entrevista:</strong><br>
-<img src="img/entrevista5.png" alt="entrevista_segmento1" /></p>
+<img src="img/entrevista_5_empresa.png" alt="entrevista_segmento5" /></p>
 
-<p><strong>Inicio / Fin:</strong>
-<strong>Duración:</strong>
+<p><strong>Inicio:</strong> 00:04<br>
+<strong>Fin:</strong> 06:20<br>
+<strong>Duración:</strong> 06:16<br>
 <strong>URL de Entrevista:</strong> 
-<a href="" target="_blank">Ver video</a></p>
+<a href="#anexos">Ver anexo</a></p>
 
 <h5><strong>Resumen:</strong></h5>
-<p></p>
+<p>
+Como empresa solicitante, indicó que los pedidos se realizan mediante canales informales como correo o mensajería, lo que dificulta el seguimiento y control. Considera importante contar con una solución que permita monitorear los pedidos en tiempo real y mejorar la coordinación con los proveedores.
+</p>
 
 ---
 <h4><u>Entrevista 6</u></h4>
 
-<p><strong>Nombres:</strong>
-<strong>Apellidos:</strong>
-<strong>Edad:</strong>
-<strong>Distrito:</strong>
+<p><strong>Nombres:</strong> Lucía</p>
+<p><strong>Apellidos:</strong> Castillo</p>
+<p><strong>Edad:</strong> 32 años</p>
+<p><strong>Distrito:</strong> Miraflores</p>
 
 <p><strong>Captura de la entrevista:</strong><br>
-<img src="img/entrevista6.png" alt="entrevista_segmento1" /></p>
+<img src="img/entrevista_6_empresa.png" alt="entrevista_segmento6" /></p>
 
-<p><strong>Inicio / Fin:</strong>
-<strong>Duración:</strong>
+<p><strong>Inicio:</strong> 00:03<br>
+<strong>Fin:</strong> 05:58<br>
+<strong>Duración:</strong> 05:55<br>
 <strong>URL de Entrevista:</strong> 
-<a href="" target="_blank">Ver video</a></p>
+<a href="#anexos">Ver anexo</a></p>
 
 <h5><strong>Resumen:</strong></h5>
-<p></p>
+<p>
+Como empresa solicitante, señaló que el proceso actual de pedidos se realiza mediante canales no centralizados, lo que genera dificultades en el control y seguimiento. Considera necesario implementar una plataforma que permita mejorar la trazabilidad y la coordinación con los proveedores.
+</p>
 
 ### 2.3 Needfinding
 
