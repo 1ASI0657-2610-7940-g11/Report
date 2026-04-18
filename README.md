@@ -531,40 +531,46 @@ Para comprender mejor a nuestros segmentos objetivo, se han definido dos entrevi
 ---
 <h4><u>Entrevista 3</u></h4>
 
-<p><strong>Nombres:</strong>
-<strong>Apellidos:</strong>
-<strong>Edad:</strong>
-<strong>Distrito:</strong>
+<p><strong>Nombres:</strong> Carmen</p>
+<p><strong>Apellidos:</strong> Ruiz</p>
+<p><strong>Edad:</strong> 34 años</p>
+<p><strong>Distrito:</strong> San Juan de Miraflores</p>
 
 <p><strong>Captura de la entrevista:</strong><br>
-<img src="img/entrevista3.png" alt="entrevista_segmento1" /></p>
+<img src="img/entrevista_3_proveedor.png" alt="entrevista_segmento3" /></p>
 
-<p><strong>Inicio / Fin:</strong>
-<strong>Duración:</strong>
+<p><strong>Inicio:</strong> 00:05<br>
+<strong>Fin:</strong> 05:12<br>
+<strong>Duración:</strong> 05:07<br>
 <strong>URL de Entrevista:</strong> 
-<a href="" target="_blank">Ver video</a></p>
+<a href="#anexos">Ver anexo</a></p>
 
 <h5><strong>Resumen:</strong></h5>
-<p></p>
+<p>
+Como proveedora de combustible, indicó que los pedidos se gestionan con herramientas básicas y coordinación manual, lo que puede generar retrasos y errores. Considera importante mejorar el seguimiento y control mediante una plataforma digital.
+</p>
 
 ---
 <h4><u>Entrevista 4</u></h4>
 
-<p><strong>Nombres:</strong>
-<strong>Apellidos:</strong>
-<strong>Edad:</strong>
-<strong>Distrito:</strong>
+<p><strong>Nombres:</strong> Manuel</p>
+<p><strong>Apellidos:</strong> Rojas</p>
+<p><strong>Edad:</strong> 41 años</p>
+<p><strong>Distrito:</strong> Villa María del Triunfo</p>
 
 <p><strong>Captura de la entrevista:</strong><br>
-<img src="img/entrevista4.png" alt="entrevista_segmento1" /></p>
+<img src="img/entrevista_4_proveedor.png" alt="entrevista_segmento4" /></p>
 
-<p><strong>Inicio / Fin:</strong>
-<strong>Duración:</strong>
+<p><strong>Inicio:</strong> 00:03<br>
+<strong>Fin:</strong> 05:45<br>
+<strong>Duración:</strong> 05:42<br>
 <strong>URL de Entrevista:</strong> 
-<a href="" target="_blank">Ver video</a></p>
+<a href="#anexos">Ver anexo</a></p>
 
 <h5><strong>Resumen:</strong></h5>
-<p></p>
+<p>
+Como proveedor de combustible, mencionó que el proceso actual depende de coordinación manual y herramientas básicas, lo que puede generar errores y retrasos. Considera necesario contar con un sistema que centralice la gestión y mejore el seguimiento de pedidos.
+</p>
 
 ---
 <h4><u>Entrevista 5</u></h4>
