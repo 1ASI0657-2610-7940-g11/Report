@@ -258,7 +258,7 @@ Cuando las solicitudes de información por parte de clientes disminuyan en un 40
 
 ##### 1.2.3.4 Lean UX Canvas
 
-[Contenido]
+ <img src="img/canvas.png"></img><br>
 
 ### 1.3 Segmentos objetivo
 
@@ -634,7 +634,9 @@ b. User Persona 2: Proveedores de combustible
 
 #### 2.3.4 As-is Scenario Mapping
 
-[Contenido]
+ <img src="img/asisA.png"></img><br>
+ 
+ <img src="img/asiisB.png"></img><br>
 
 ---
 
@@ -642,7 +644,9 @@ b. User Persona 2: Proveedores de combustible
 
 ### 3.1 To-Be Scenario Mapping
 
-[Contenido]
+ <img src="img/tobeA.png"></img><br>
+ 
+ <img src="img/tobeB.png"></img><br>
 
 ### 3.2 User Stories
 
