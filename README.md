@@ -145,7 +145,11 @@
 
 #### 1.1.1 Descripción de la Startup
 
-[Contenido]
+**FuelTrack** es una startup orientada a mejorar la gestión de pedidos de combustible entre empresas demandantes y proveedores. Creada por estudiantes de la Universidad Peruana de Ciencias Aplicadas (UPC), su propuesta se enfoca en digitalizar un sector que aún depende en gran medida de procesos manuales. A través de una plataforma tecnológica, busca ofrecer mayor eficiencia operativa, transparencia en las transacciones y un control más preciso de las operaciones.
+
+**Misión:** Nuestra misión es diseñar e implementar soluciones tecnológicas innovadoras que optimicen la gestión de pedidos de combustible, sustituyendo los procesos informales y minimizando los errores mediante una plataforma web fácil de usar y accesible.
+
+**Visión:** Nuestra visión es consolidarnos como referentes en la transformación digital del sector energético, brindando a las empresas herramientas que permitan una gestión más eficiente, segura y sostenible, impulsando así su competitividad y desarrollo tecnológico.
 
 #### 1.1.2 Perfiles de integrantes del equipo
 
