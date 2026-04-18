@@ -25,11 +25,11 @@
 </p>
 
 <p align="center">
-    <strong>Nombre del startup: </strong> [Startup]
+    <strong>Nombre del startup: </strong> FuelTrack
 </p>
 
 <p align="center">
-    <strong>Nombre del producto:</strong> [Producto]
+    <strong>Nombre del producto:</strong> FuelTrack Pro
 </p>
 
 <p align="center">
