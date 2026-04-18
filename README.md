@@ -153,7 +153,11 @@
 
 #### 1.1.2 Perfiles de integrantes del equipo
 
-[Contenido]
+| Foto                                          | Nombre completo               | Código     | Carrera                | Habilidades técnicas y rol                                   |
+|-----------------------------------------------|-------------------------------|------------|------------------------|--------------------------------------------------------------|
+| <img src="https://github.com/user-attachments/assets/3270d2c9-86aa-45c6-bb99-2ddb1c854491" alt="img profile"/>            | Gabriel Omar Lapa de la Cruz | U202216831 | Ingeniería de Software | Desarrollo Backend, UI/UX, Arquitectura DDD |
+| ![Gianfranco Durand] | Gianfranco Jared Durand Vega    | U202312614 | Ingeniería de Software | Desarrollo Frontend (Vue/React), UI/UX, Integración de servicios externos |
+| ![Irving Allcca]   | Irving Allcca Guerrero     | U202213241	 | Ingeniería de Software | DATOS |
 
 ### 1.2 Solution Profile
 
