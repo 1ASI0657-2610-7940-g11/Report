@@ -506,7 +506,7 @@ Para comprender mejor a nuestros segmentos objetivo, se han definido dos entrevi
 <a href="" target="_blank">Ver video</a></p>
 
 <h5><strong>Resumen:</strong></h5>
-<p>Aún por completar.</p>
+<p>Como proveedora de combustible, Angela indicó que los pedidos se gestionan mediante coordinación con el área de logística y el uso de herramientas digitales básicas, aunque varios procesos aún son manuales. El control de los despachos se realiza comparando recibos con el cliente, y no cuentan con sistemas para seguimiento en tiempo real ni validación de stock. Entre los principales problemas se encuentran errores en los pedidos o retrasos en la entrega. Finalmente, mostró interés en una plataforma que centralice y optimice estos procesos para mejorar la eficiencia y atención al cliente.</p>
 
 ---
 <h4><u>Entrevista 2</u></h4>
