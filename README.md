@@ -491,21 +491,22 @@ Para comprender mejor a nuestros segmentos objetivo, se han definido dos entrevi
 
 <h4><u>Entrevista 1</u></h4>
 
-<p><strong>Nombres:</strong>
-<strong>Apellidos:</strong>
-<strong>Edad:</strong>
-<strong>Distrito:</strong>
+<p><strong>Nombres:</strong> Angela Fabiola</p>
+<p><strong>Apellidos:</strong> Ushiñahua Becerra</p>
+<p><strong>Edad:</strong> 25 años</p>
+<p><strong>Distrito:</strong> Villa El Salvador</p>
 
 <p><strong>Captura de la entrevista:</strong><br>
-<img src="img/entrevista1.png" alt="entrevista_segmento1" /></p>
+<img src="img/ENTREVISTA_PROVEEDOR_1_ANGELA.png" alt="entrevista_segmento1" /></p>
 
-<p><strong>Inicio / Fin:</strong>
-<strong>Duración:</strong>
+<p><strong>Inicio:</strong> 00:02<br>
+<strong>Fin:</strong> 04:06<br>
+<strong>Duración:</strong> 04:10<br>
 <strong>URL de Entrevista:</strong> 
 <a href="" target="_blank">Ver video</a></p>
 
 <h5><strong>Resumen:</strong></h5>
-<p></p>
+<p>Aún por completar.</p>
 
 ---
 <h4><u>Entrevista 2</u></h4>
