@@ -35,10 +35,9 @@
 <p align="center">
     <strong>Relación de integrantes:</strong><br>
     Allcca Guerrero Irving – U202213241<br>
-    [Nombre Integrante 2] – [U20XXXXXXXX]<br>
-    [Nombre Integrante 3] – [U20XXXXXXXX]<br>
-    [Nombre Integrante 4] – [U20XXXXXXXX]<br>
-    [Nombre Integrante 5] – [U20XXXXXXXX]
+    Gabriel Omar Lapa de la Cruz - U202216831<br>
+    Gianfranco Jared Durand Vega - U202312614<br>
+
 </p>
 
 <p align="center">
@@ -157,7 +156,7 @@
 |-----------------------------------------------|-------------------------------|------------|------------------------|--------------------------------------------------------------|
 | <img src="https://github.com/user-attachments/assets/3270d2c9-86aa-45c6-bb99-2ddb1c854491" alt="img profile"/>            | Gabriel Omar Lapa de la Cruz | U202216831 | Ingeniería de Software | Desarrollo Backend, UI/UX, Arquitectura DDD |
 | ![Gianfranco Durand] | Gianfranco Jared Durand Vega    | U202312614 | Ingeniería de Software | Desarrollo Frontend (Vue/React), UI/UX, Integración de servicios externos |
-| ![Irving Allcca]   | Irving Allcca Guerrero     | U202213241	 | Ingeniería de Software | DATOS |
+| <img src="img/Irving.jpg" alt="img profile"/>     | Irving Allcca Guerrero     | U202213241	 | Ingeniería de Software | DATOS, Desarrollo Frontend, UI/UX |
 
 ### 1.2 Solution Profile
 
