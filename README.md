@@ -511,21 +511,22 @@ Para comprender mejor a nuestros segmentos objetivo, se han definido dos entrevi
 ---
 <h4><u>Entrevista 2</u></h4>
 
-<p><strong>Nombres:</strong>
-<strong>Apellidos:</strong>
-<strong>Edad:</strong>
-<strong>Distrito:</strong>
+<p><strong>Nombres:</strong> Jhony</p>
+<p><strong>Apellidos:</strong> De la Cruz Salazar</p>
+<p><strong>Edad:</strong> 46 años</p>
+<p><strong>Distrito:</strong> Villa El Salvador</p>
 
 <p><strong>Captura de la entrevista:</strong><br>
-<img src="img/entrevista2.png" alt="entrevista_segmento1" /></p>
+<img src="img/ENTREVISTA_EMPRESA_1_JHONY.png" alt="entrevista_segmento2" /></p>
 
-<p><strong>Inicio / Fin:</strong>
-<strong>Duración:</strong>
+<p><strong>Inicio:</strong> 00:02<br>
+<strong>Fin:</strong> 06:14<br>
+<strong>Duración:</strong> 06:16<br>
 <strong>URL de Entrevista:</strong> 
-<a href="" target="_blank">Ver video</a></p>
+<a href="#anexos">Ver anexo</a></p>
 
 <h5><strong>Resumen:</strong></h5>
-<p></p>
+<p>Aún por completar.</p>
 
 ---
 <h4><u>Entrevista 3</u></h4>
