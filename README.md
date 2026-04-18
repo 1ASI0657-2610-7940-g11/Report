@@ -526,7 +526,8 @@ Para comprender mejor a nuestros segmentos objetivo, se han definido dos entrevi
 <a href="#anexos">Ver anexo</a></p>
 
 <h5><strong>Resumen:</strong></h5>
-<p>Aún por completar.</p>
+<p>Como empresa solicitante de combustible, Jhony indicó que actualmente los pedidos se realizan mediante correo, llamadas o aplicaciones como WhatsApp, lo que genera dificultades en la coordinación y seguimiento de las entregas. El control de lo recibido se realiza de forma manual mediante medición en tanques, lo que puede resultar impreciso. Además, mencionó problemas como retrasos en las entregas que afectan directamente las operaciones del negocio. La trazabilidad es considerada muy importante, ya que permite monitorear el estado de los pedidos y tomar decisiones oportunas. Actualmente utilizan herramientas como Excel y sistemas básicos para el control de consumo, pero expresaron la necesidad de contar con una plataforma que permita hacer seguimiento en tiempo real desde la solicitud hasta la entrega del pedido.
+</p></p>
 
 ---
 <h4><u>Entrevista 3</u></h4>
