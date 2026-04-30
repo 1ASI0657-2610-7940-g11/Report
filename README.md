@@ -757,19 +757,76 @@ Este apartado presenta el conjunto de **Epics** y **User Stories** (incluyendo *
 
 #### 4.1.1 Principles Statements
 
-[Contenido]
+Para el diseño arquitectónico de FuelTrack, se consideran principios que permitan construir una plataforma segura, escalable y mantenible para la gestión de pedidos de combustible entre empresas solicitantes y proveedores. Estos principios buscan asegurar trazabilidad, control operativo y una experiencia confiable para los usuarios.
 
-#### 4.1.2 Approaches Statements Architectural Styles & Patterns
+- **Desacoplamiento de componentes:** El sistema debe dividirse en módulos independientes, como gestión de pedidos, autenticación, notificaciones, reportes y seguimiento de entregas. Esto permitirá que cada parte pueda evolucionar o mantenerse sin afectar directamente a las demás.
 
-[Contenido]
+- **Seguridad por diseño:** La plataforma debe incorporar mecanismos de seguridad desde su arquitectura, considerando autenticación, autorización por roles, protección de datos sensibles y validación de operaciones críticas, como la aprobación de pedidos o conciliación de pagos.
+
+- **Trazabilidad operativa:** FuelTrack debe registrar los cambios importantes durante el ciclo de vida del pedido, desde su creación hasta la entrega final. Esto permitirá conocer el estado del pedido, responsables, fechas, modificaciones y evidencias de atención.
+
+- **Escalabilidad:** La arquitectura debe permitir que la plataforma soporte un mayor número de empresas, proveedores, pedidos y operaciones sin afectar el rendimiento del sistema, especialmente en horarios de alta demanda.
+
+- **Disponibilidad y resiliencia:** El sistema debe mantenerse operativo ante fallos parciales, como problemas en servicios de notificación o reportes, evitando que una falla afecte todo el flujo principal de pedidos.
+
+- **Consistencia de interfaz:** La plataforma debe ofrecer una experiencia clara, ordenada e intuitiva para ambos segmentos: empresas solicitantes y proveedores. Esto facilitará la adopción del sistema y reducirá errores en el uso diario.
+
+- **Reutilización de componentes:** Se deben reutilizar servicios, validaciones y componentes comunes, como autenticación, gestión de usuarios, generación de reportes y notificaciones, para reducir duplicidad y mejorar la mantenibilidad del proyecto.
+
+#### 4.1.2 Approaches Statements, Architectural Styles & Patterns
+
+**Approaches Statements:**  
+Para el diseño arquitectónico de FuelTrack se consideran enfoques que permitan representar correctamente el dominio del negocio y asegurar el cumplimiento de los atributos de calidad identificados en etapas previas.
+
+- **Domain-Oriented Design (DDD):** Este enfoque se utilizará para estructurar el núcleo del sistema en base a la lógica del negocio, permitiendo modelar de forma precisa los procesos relacionados con la gestión de pedidos de combustible. De esta manera, se podrán definir claramente entidades como pedidos, proveedores, empresas solicitantes, entregas y validaciones, logrando un sistema organizado, flexible y fácil de mantener.
+
+- **Attribute-Oriented Design (ADD):** Se aplicará este enfoque para guiar las decisiones arquitectónicas tomando en cuenta atributos de calidad como la disponibilidad del sistema, la seguridad en las operaciones, la escalabilidad frente al crecimiento de usuarios y la trazabilidad de los pedidos. Esto permitirá que la solución no solo cumpla con funcionalidades, sino también con estándares de rendimiento y confiabilidad.
+
+---
+
+**Architectural Styles and Patterns:**  
+
+Los estilos arquitectónicos y patrones seleccionados para el desarrollo de FuelTrack buscan responder a las necesidades de escalabilidad, mantenimiento y organización del sistema.
+
+- **Estilos Arquitectónicos:**
+
+  - **Arquitectura Cliente-Servidor:** La solución se estructurará separando la capa de cliente (interfaz web o móvil utilizada por empresas y proveedores) de la capa de servidor (donde se gestionan la lógica de negocio y los datos). Esta separación facilita la comunicación, el mantenimiento y la evolución del sistema.
+
+  - **Arquitectura basada en Microservicios:** Se propone dividir el sistema en múltiples servicios independientes, cada uno encargado de una funcionalidad específica, como gestión de pedidos, autenticación, notificaciones, reportes y seguimiento logístico. Esto permitirá escalar componentes de manera independiente y mejorar la tolerancia a fallos.
+
+- **Patrones:**
+
+  - **Patrón MVC (Modelo-Vista-Controlador):** Este patrón será utilizado principalmente en el frontend para separar la lógica de presentación, la interacción del usuario y el manejo de datos, lo que mejora la organización del código y facilita su mantenimiento.
+
+  - **Patrón API Gateway:** Se implementará un punto de entrada centralizado que gestione todas las solicitudes provenientes del cliente, permitiendo redirigirlas hacia los microservicios correspondientes, además de encargarse de aspectos como autenticación, validación y control de acceso.
 
 #### 4.1.3 Context Diagram
 
-[Contenido]
+El diagrama de contexto muestra la interacción general entre **FuelTrack**, sus usuarios principales y los sistemas externos que apoyan el funcionamiento de la plataforma. En este nivel, se observa que el **Cliente** utiliza FuelTrack para registrar pedidos de combustible, realizar pagos, consultar el estado de sus solicitudes y descargar facturas. Por otro lado, el **Proveedor** administra sus pedidos, asigna recursos operativos y actualiza los estados de atención. Además, FuelTrack se comunica con servicios externos como una pasarela de pagos, un sistema de transporte y un servicio de exportación para completar el flujo de operación.
+
+[Poner imagen]
 
 #### 4.1.4 Approach driven ViewPoints Diagrams
 
-[Contenido]
+##### Diagrama de contenedores
+
+**Diagrama de Contenedores:**
+
+El diagrama de contenedores muestra la estructura principal de FuelTrack a nivel de aplicaciones y servicios. En esta vista se identifican los contenedores que forman parte del sistema, como la Landing Page, la Web Application, el API Gateway, los servicios principales del backend y la base de datos. Esta separación permite organizar mejor las responsabilidades del sistema, facilitando la escalabilidad, el mantenimiento y la integración con servicios externos como pagos, transporte y exportación de reportes.
+
+[Poner imagen]
+
+**Diagramas de Componentes:**
+
+[poner titulo del Bounded Context y su imagen de cada diagrama]
+
+**Diagramas de Actividades:**
+
+[poner titulo de la actividad y su imagen de cada diagrama]
+
+**Diagramas de Clases:**
+
+[poner imagen]
 
 #### 4.1.5 Relational/Non Relational Database Diagram
 
