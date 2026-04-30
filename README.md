@@ -804,7 +804,7 @@ Los estilos arquitectónicos y patrones seleccionados para el desarrollo de Fuel
 
 El diagrama de contexto muestra la interacción general entre **FuelTrack**, sus usuarios principales y los sistemas externos que apoyan el funcionamiento de la plataforma. En este nivel, se observa que el **Cliente** utiliza FuelTrack para registrar pedidos de combustible, realizar pagos, consultar el estado de sus solicitudes y descargar facturas. Por otro lado, el **Proveedor** administra sus pedidos, asigna recursos operativos y actualiza los estados de atención. Además, FuelTrack se comunica con servicios externos como una pasarela de pagos, un sistema de transporte y un servicio de exportación para completar el flujo de operación.
 
-[Poner imagen]
+![Context Diagram](img/context-diagram.png)
 
 #### 4.1.4 Approach driven ViewPoints Diagrams
 
@@ -814,7 +814,7 @@ El diagrama de contexto muestra la interacción general entre **FuelTrack**, sus
 
 El diagrama de contenedores muestra la estructura principal de FuelTrack a nivel de aplicaciones y servicios. En esta vista se identifican los contenedores que forman parte del sistema, como la Landing Page, la Web Application, el API Gateway, los servicios principales del backend y la base de datos. Esta separación permite organizar mejor las responsabilidades del sistema, facilitando la escalabilidad, el mantenimiento y la integración con servicios externos como pagos, transporte y exportación de reportes.
 
-[Poner imagen]
+![Container Diagram](img/container-diagram.png)
 
 **Diagramas de Componentes:**
 
