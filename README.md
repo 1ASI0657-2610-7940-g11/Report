@@ -844,23 +844,65 @@ El diagrama de contenedores muestra la estructura principal de FuelTrack a nivel
 
 #### 4.1.8 Design Purpose
 
-[Contenido]
+El propósito del diseño arquitectónico de **FuelTrack** es establecer una solución tecnológica robusta que permita digitalizar y centralizar la gestión de pedidos de combustible entre empresas solicitantes y proveedores. Para ello, se propone una arquitectura basada en microservicios que facilite la separación de responsabilidades, la escalabilidad del sistema y la evolución independiente de sus componentes.
+
+Esta arquitectura permitirá gestionar de manera eficiente procesos críticos como la creación de pedidos, seguimiento logístico, gestión de pagos y generación de reportes. Asimismo, se busca mejorar la trazabilidad de las operaciones, reducir errores derivados de procesos manuales y optimizar la comunicación entre los actores involucrados.
+
+Además, el diseño considera la necesidad de soportar variaciones en la demanda, especialmente en contextos donde el volumen de pedidos puede incrementarse significativamente. Por ello, se prioriza la disponibilidad, resiliencia y capacidad de respuesta del sistema.
+
+Finalmente, esta aproximación permite implementar mejoras continuas y desplegar nuevas funcionalidades sin afectar el funcionamiento general de la plataforma, asegurando una experiencia confiable y eficiente para los usuarios.
 
 #### 4.1.9 Primary Functionality (Primary User Stories)
 
-[Contenido]
+En este punto se identifican los requisitos funcionales que impactan directamente en la estructura de la aplicación FuelTrack, ya que definen los principales flujos de interacción entre empresas solicitantes, proveedores y el sistema.
+
+| User Story ID | Título | Descripción |
+|--------------|--------|------------|
+| US01 | Registrar pedido | Como solicitante, quiero registrar pedidos para agilizar la solicitud y evitar llamadas. |
+| US02 | Consultar historial de pedidos | Como solicitante, quiero consultar mi historial con estados y detalles. |
+| US03 | Editar pedido no confirmado | Como solicitante, quiero editar parámetros antes de la confirmación del proveedor. |
+| US05 | Actualizar pedido | Como proveedor, quiero actualizar el estado e información operativa del pedido. |
+| US06 | Notificar cambios al cliente | Como proveedor, quiero que el cliente reciba notificaciones automáticas ante cambios del pedido. |
+| US07 | Cancelar o rechazar pedido | Como proveedor, quiero rechazar o cancelar pedidos con motivo para mantener claridad. |
+| US08 | Iniciar sesión | Como usuario, quiero iniciar sesión con credenciales válidas. |
+| US09 | Registrar cuenta | Como visitante, quiero crear una cuenta con rol (Solicitante o Proveedor). |
+| US10 | Recuperar contraseña | Como usuario, quiero recuperar el acceso a mi cuenta mediante correo. |
 
 #### 4.1.10 Quality Attribute Scenarios
 
-[Contenido]
+Los escenarios de atributos de calidad definen cómo debe comportarse el sistema FuelTrack frente a situaciones críticas que impactan su desempeño y uso. Estos escenarios se relacionan directamente con las historias de usuario, reflejando necesidades reales del sistema en términos de rendimiento, seguridad, disponibilidad y experiencia de uso.
+
+| ID | Atributo de calidad | Escenario | US asociada |
+|----|--------------------|-----------|-------------|
+| AC-01 | Usabilidad | El usuario debe poder registrarse, iniciar sesión y crear un pedido de combustible de forma intuitiva, completando el proceso sin errores y en pocos minutos, evitando métodos informales. | US01 - US08 - US09 |
+| AC-02 | Rendimiento | El usuario consulta pedidos o historial y el sistema debe responder en menos de 2 segundos, mostrando la información sin retrasos perceptibles incluso en condiciones normales de uso. | US01 - US02 |
+| AC-03 | Disponibilidad | La plataforma debe estar disponible en todo momento para que los usuarios puedan gestionar pedidos y autenticarse sin interrupciones durante la operación diaria. | US08 - US05 |
+| AC-04 | Seguridad | El sistema debe proteger la información mediante autenticación segura, control de acceso por roles y validación de credenciales, evitando accesos no autorizados. | US08 - US11 |
+| AC-05 | Trazabilidad | El sistema debe registrar cada cambio en el estado de un pedido (fecha, hora y estado), permitiendo seguimiento completo y notificación al usuario ante actualizaciones. | US05 - US06 |
 
 #### 4.1.11 Constraints
 
-[Contenido]
+Las restricciones arquitectónicas representan las limitaciones técnicas y de entorno que influyen directamente en el diseño del sistema FuelTrack. Estas condiciones deben ser consideradas desde el inicio, ya que afectan decisiones clave como la arquitectura, tecnologías utilizadas, integración con sistemas externos y tiempos de desarrollo.
+
+| ID | Constraints |
+|----|-------------|
+| CON-01 | El sistema debe implementarse utilizando una arquitectura basada en microservicios, permitiendo escalabilidad, mantenimiento independiente y evolución del sistema. |
+| CON-02 | El backend debe exponer APIs REST seguras (por ejemplo: Node.js, .NET o Spring Boot) para la comunicación con el frontend y servicios externos. |
+| CON-03 | La base de datos debe ser relacional (MySQL o PostgreSQL), garantizando integridad y consistencia en la gestión de pedidos, usuarios y pagos. |
+| CON-04 | El sistema debe integrarse con servicios externos como pasarela de pagos, sistemas de transporte y generación de reportes mediante protocolos seguros (HTTPS). |
+| CON-05 | El sistema debe ser desplegado en un entorno web (cloud o local) asegurando disponibilidad, acceso remoto y compatibilidad con navegadores modernos. |
 
 #### 4.1.12 Architectural Concerns
 
-[Contenido]
+Las preocupaciones arquitectónicas representan los aspectos críticos que influyen en el diseño del sistema FuelTrack, ya sea desde el punto de vista de los requisitos, riesgos o decisiones técnicas. Estas preocupaciones reflejan lo que los stakeholders esperan del sistema y los posibles riesgos que deben gestionarse para asegurar una arquitectura robusta, escalable y mantenible.
+
+| ID | Architectural Concerns |
+|----|------------------------|
+| ARC-01 | Seleccionar tecnologías (frameworks y lenguajes) que el equipo domine, con el fin de acelerar el desarrollo y reducir riesgos de implementación. |
+| ARC-02 | Diseñar una arquitectura modular basada en microservicios que permita escalar el sistema conforme aumente la demanda de pedidos de combustible. |
+| ARC-03 | Asegurar una correcta integración con sistemas externos (pasarela de pagos, transporte y reportes) evitando fallas en la comunicación entre servicios. |
+| ARC-04 | Mantener la coherencia entre frontend y backend mediante el uso de APIs REST bien definidas y documentadas. |
+| ARC-05 | Garantizar la seguridad de la información (usuarios, pedidos y pagos) mediante autenticación, control de acceso y uso de protocolos seguros. |
 
 ### 4.3 ADD Iterations
 
