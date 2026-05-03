@@ -853,7 +853,29 @@ El diseño de esta base de datos se construyó pensando en que sea muy práctico
 
 #### 4.1.6 Design Patterns
 
-[Contenido]
+Para esta etapa inicial del desarrollo de **Fuel Track**, hemos seleccionado un conjunto de patrones de diseño fundamentales. El objetivo es mantener una arquitectura limpia, escalable y fácil de entender para el equipo de desarrollo, evitando la sobreingeniería, pero asegurando que se cumplan los atributos de calidad de nuestro sistema (Disponibilidad, Seguridad y Modificabilidad).
+
+A continuación, se detallan los patrones que se implementarán:
+
+##### 1. Repository Pattern (Patrón de Arquitectura / Estructural)
+* **Propósito:** Aislar la lógica de negocio de los detalles de acceso a la base de datos (PostgreSQL).
+* **Aplicación en Fuel Track:** Como estamos usando un enfoque orientado al dominio (DDD), utilizaremos repositorios como `OrderRepository` o `UserRepository`. Esto permite que nuestros servicios interactúen con colecciones de objetos en memoria sin preocuparse por las consultas SQL subyacentes. Si en el futuro cambiamos el ORM o la base de datos, la lógica del pedido de combustible no se verá afectada.
+
+##### 2. Factory Method (Patrón Creacional)
+* **Propósito:** Proporcionar una interfaz para crear objetos en una superclase, permitiendo a las subclases alterar el tipo de objetos que se crearán.
+* **Aplicación en Fuel Track:** Se aplicará en el módulo de notificaciones. Cuando el estado de un pedido cambie, el sistema deberá enviar una alerta. Utilizaremos un `NotificationFactory` para instanciar el tipo correcto de notificación (ej. `EmailNotification` o `PushNotification`) dependiendo de la configuración y preferencia del usuario, manteniendo el código de creación centralizado y limpio.
+
+##### 3. Observer (Patrón de Comportamiento)
+* **Propósito:** Definir un mecanismo de suscripción para notificar a múltiples objetos sobre cualquier evento que le suceda al objeto que están observando.
+* **Aplicación en Fuel Track:** Es el patrón ideal para el seguimiento de pedidos. Cuando el objeto `PedidoCombustible` cambie su estado (por ejemplo, de "Confirmado" a "En Ruta"), notificará automáticamente a todos los "observadores" suscritos. Estos observadores serán, por ejemplo, el servicio de notificaciones (para avisar al cliente en tiempo real) y el servicio de auditoría (para guardar el cambio en el `HistorialEstadoPedido`).
+
+##### 4. Singleton (Patrón Creacional)
+* **Propósito:** Garantizar que una clase tenga una única instancia y proporcionar un punto de acceso global a ella.
+* **Aplicación en Fuel Track:** Se utilizará para gestionar las configuraciones globales de la aplicación y la conexión hacia servicios externos únicos, como la instancia del gestor de conexiones a la pasarela de pagos. De esta forma, evitamos consumir recursos innecesarios abriendo múltiples conexiones repetidas y prevenimos cuellos de botella.
+
+##### 5. Strategy (Patrón de Comportamiento)
+* **Propósito:** Definir una familia de algoritmos, encapsular cada uno de ellos y hacerlos intercambiables. 
+* **Aplicación en Fuel Track:** Será muy útil en la lógica de cobros y facturación. Diferentes empresas solicitantes pueden tener acuerdos distintos (ej. precios estándar vs. precios con contrato de exclusividad a largo plazo). Con el patrón *Strategy*, podemos encapsular la lógica del cálculo del monto total y aplicarla dinámicamente según el perfil del cliente, sin llenar nuestro código de sentencias condicionales extensas.
 
 #### 4.1.7 Tactics
 
