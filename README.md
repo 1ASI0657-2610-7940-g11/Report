@@ -842,7 +842,25 @@ El diagrama de contenedores muestra la estructura principal de FuelTrack a nivel
 
 #### 4.1.7 Tactics
 
-[Contenido]
+Para FuelTrack se seleccionan tres tácticas arquitectónicas principales, alineadas con los atributos de calidad más importantes del sistema: disponibilidad, seguridad y modificabilidad. Estas tácticas buscan asegurar que la plataforma pueda operar de forma continua, proteger la información sensible de pedidos y pagos, y permitir cambios futuros sin afectar toda la solución.
+
+**Disponibilidad**
+
+- **Detección de fallos:** Implementar monitoreo sobre el Backend API, la base de datos y los servicios externos para identificar caídas o errores en el menor tiempo posible.
+- **Recuperación:** Aplicar mecanismos de reintento cuando fallen servicios externos como la pasarela de pagos, el sistema de transporte o el servicio de exportación de reportes.
+- **Prevención de fallos:** Validar solicitudes antes de procesarlas y controlar errores para evitar que una falla puntual afecte el flujo completo de pedidos.
+
+**Seguridad**
+
+- **Detectar ataques:** Registrar intentos fallidos de inicio de sesión, accesos no autorizados y operaciones sospechosas dentro del sistema.
+- **Resistir ataques:** Utilizar autenticación mediante tokens, control de acceso por roles y comunicación segura mediante HTTPS.
+- **Reaccionar ante incidentes:** Bloquear sesiones inválidas, registrar eventos de seguridad y restringir operaciones cuando se detecten acciones no permitidas.
+
+**Modificabilidad**
+
+- **Reducir acoplamiento:** Separar responsabilidades en módulos o servicios como pedidos, autenticación, pagos, transporte y reportes.
+- **Aumentar cohesión:** Agrupar funcionalidades relacionadas dentro de cada módulo para que cada componente tenga una responsabilidad clara.
+- **Encapsulamiento:** Ocultar la lógica interna de cada servicio mediante APIs bien definidas, permitiendo cambios internos sin afectar a otros componentes.
 
 ### 4.2 Architectural Drivers
 
