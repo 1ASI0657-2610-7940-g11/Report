@@ -830,7 +830,8 @@ El diagrama de contenedores muestra la estructura principal de FuelTrack a nivel
 
 **Diagramas de Clases:**
 
-[poner imagen]
+<img width="2297" height="1006" alt="image" src="https://github.com/user-attachments/assets/d73cb64e-b664-47e1-8de3-21b6decb0050" />
+
 
 #### 4.1.5 Relational/Non Relational Database Diagram
 
