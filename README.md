@@ -1250,7 +1250,9 @@ Para esta sección se seleccionó el **Módulo de Gestión de Pedidos y Trazabil
 
 ##### 4.2.1.7 Analysis of Current Design and Review Iteration Goal (Kanban Board)
 
-[Contenido]
+Para gestionar las decisiones arquitectónicas y los elementos refinados en esta primera iteración, el equipo ha configurado un tablero Kanban utilizando la herramienta digital Trello.
+
+![Kanban Board](img/Trello.png)
 
 ---
 
