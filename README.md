@@ -818,7 +818,15 @@ El diagrama de contenedores muestra la estructura principal de FuelTrack a nivel
 
 **Diagramas de Actividades:**
 
-[poner titulo de la actividad y su imagen de cada diagrama]
+![Activity Diagram 1](img/activity-1.png)
+<br>
+![Activity Diagram 2](img/activity-2.png)
+<br>
+![Activity Diagram 3](img/activity-3.png)
+<br>
+![Activity Diagram 4](img/activity-4.png)
+<br>
+![Activity Diagram 5](img/activity-5.png)
 
 **Diagramas de Clases:**
 
