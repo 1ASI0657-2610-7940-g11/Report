@@ -835,7 +835,21 @@ El diagrama de contenedores muestra la estructura principal de FuelTrack a nivel
 
 #### 4.1.5 Relational/Non Relational Database Diagram
 
-[Contenido]
+El diseño de esta base de datos se construyó pensando en que sea muy práctico, directo y fácil de leer para el sistema. Aquí te explico de manera sencilla las razones detrás de cómo conectamos la información:
+
+![Relational Database Diagram](img/db.svg)
+
+* **Un solo registro central para todos los accesos (Usuarios):** 
+  En lugar de tener listas separadas de credenciales para clientes y proveedores, se unificó todo en una sola tabla de `Usuario`. Esto centraliza la seguridad, haciendo que el sistema valide el acceso en un solo lugar y luego dirija a la persona directamente hacia los datos de su empresa, evitando duplicar procesos de inicio de sesión.
+
+* **Estados y categorías con lectura directa:** 
+  Para clasificaciones sencillas, como el estado del pedido o el tipo de combustible, se guarda el texto directamente dentro de la tabla del pedido en lugar de usar códigos que remitan a otras tablas. Esto permite que el sistema consulte y muestre la información de forma inmediata, acelerando la lectura de los datos.
+
+* **Agrupar camiones y choferes (Recursos Operativos):** 
+  Se juntó a los operadores y a los vehículos en una sola tabla llamada `Recurso_Operativo`. En la logística del sistema, ambos son recursos que deben ser asignados a un viaje. Agruparlos bajo este concepto crea un flujo de trabajo mucho más limpio para la asignación, en lugar de manejar personas y máquinas en procesos completamente separados.
+
+* **La parte financiera en un solo lugar (Facturación y Pagos):** 
+  La información de la factura y su pago respectivo se agrupó en una sola tabla vinculada de forma exclusiva a cada pedido. Dado que cada entrega genera su propio cobro y transacción, mantener esta información financiera en un solo bloque mantiene los registros ordenados y hace que la consulta de saldos sea directa.
 
 #### 4.1.6 Design Patterns
 
