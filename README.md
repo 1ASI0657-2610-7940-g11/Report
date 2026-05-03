@@ -170,15 +170,16 @@ El sector de distribución de combustibles presenta importantes ineficiencias de
 
 ### Análisis 5W+2H
 
-| Pregunta | Descripción |
-| :--- | :--- |
-| **What? (¿Qué?)** | Falta de un sistema centralizado y digital para gestionar pedidos. |
-| **When? (¿Cuándo?)** | Durante todo el proceso de pedido, agravado en momentos de alto volumen. |
-| **Where? (¿Dónde?)** | En empresas solicitantes y proveedores (áreas urbanas y rurales). |
-| **Who? (¿Quién?)** | Encargados de logística, proveedores y empresas medianas/grandes. |
-| **Why? (¿Por qué?)** | Fragmentación de canales (WhatsApp, correo) sin integración. |
-| **How? (¿Cómo?)** | Uso de plataformas desconectadas que impiden un flujo eficiente. |
-| **How Much? (¿Cuánto?)** | Pérdida de horas valiosas e incremento significativo de costos operativos. |
+| Pregunta               | Descripción                                                                                                                                       |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **What? ¿Qué?**        | Falta de una plataforma digital centralizada para gestionar pedidos de combustible, pagos, despacho, seguimiento y facturación.                   |
+| **When? ¿Cuándo?**     | Durante todo el proceso del pedido, especialmente en momentos de alta demanda, donde los procesos manuales generan retrasos y errores.            |
+| **Where? ¿Dónde?**     | En empresas solicitantes de combustible y proveedores/distribuidores que gestionan pedidos, transporte y entregas.                                |
+| **Who? ¿Quién?**       | Encargados de logística, empresas solicitantes, proveedores, operadores de transporte y personal administrativo.                                  |
+| **Why? ¿Por qué?**     | Por la dependencia de llamadas, correos, hojas de cálculo, WhatsApp y sistemas aislados que no permiten trazabilidad ni control en tiempo real.   |
+| **How? ¿Cómo?**        | Mediante procesos fragmentados, duplicación de información, registros manuales y falta de integración entre pedido, despacho, pago y facturación. |
+| **How Much? ¿Cuánto?** | Genera pérdida de tiempo, retrasos, errores humanos, mayores costos operativos y menor visibilidad del estado real del pedido.                    |
+
 
 #### 1.2.3 Lean UX Process
 
@@ -1481,6 +1482,15 @@ Ministerio de Cultura del Perú & Instituto Nacional de Estadística e Informát
 Statista. (2024). *Hablemos de los clubes de lectura y por qué esta tendencia va en aumento*. Recuperado de [https://globaltag.mx/uncategorized/leer-esta-de-moda-hablemos-de-los-clubes-de-lectura-y-por-que-esta-tendencia-va-en-aumento/](https://globaltag.mx/uncategorized/leer-esta-de-moda-hablemos-de-los-clubes-de-lectura-y-por-que-esta-tendencia-va-en-aumento/?utm_source=chatgpt.com)
 
 Torres-Vega, E. (2025). Comprensión lectora en estudiantes de secundaria en Perú. Horizontes. Revista De Investigación En Ciencias De La Educación, 9(36), 177–187. [https://doi.org/10.33996/revistahorizontes.v9i36.909](https://doi.org/10.33996/revistahorizontes.v9i36.909)
+
+FleetPanda. (2024, diciembre 16). The definitive guide to fuel distribution software. FleetPanda.
+(https://www.fleetpanda.com/blog/the-definitive-guide-to-fuel-distribution-software)
+
+Oracle. (2023, noviembre 6). Supply chain digital transformation: Improving performance. Oracle.
+(https://www.oracle.com/industrial-manufacturing/supply-chain-digital-transformation/)
+
+Ucheobi, C. A., Ejem, E. A., Aikor, S. T., Nze, O. N., Poi, E. L., Nwoko, N. M., Ekejiuba, C. F., & Aghanwa, O. A. (2025). ICT integration for improving logistics agility of petroleum distribution in Nigeria. Journal of Optimization and Supply Chain Management, 2(2), 95–110.
+(https://doi.org/10.22034/ISS.2025.9406.1050)
 
 ---
 
