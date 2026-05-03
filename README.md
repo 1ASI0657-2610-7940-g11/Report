@@ -816,10 +816,6 @@ El diagrama de contenedores muestra la estructura principal de FuelTrack a nivel
 
 ![Container Diagram](img/container-diagram.png)
 
-**Diagramas de Componentes:**
-
-[poner titulo del Bounded Context y su imagen de cada diagrama]
-
 **Diagramas de Actividades:**
 
 [poner titulo de la actividad y su imagen de cada diagrama]
