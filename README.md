@@ -155,7 +155,7 @@
 | Foto                                          | Nombre completo               | Código     | Carrera                | Habilidades técnicas y rol                                   |
 |-----------------------------------------------|-------------------------------|------------|------------------------|--------------------------------------------------------------|
 | <img src="https://github.com/user-attachments/assets/3270d2c9-86aa-45c6-bb99-2ddb1c854491" alt="img profile"/>            | Gabriel Omar Lapa de la Cruz | U202216831 | Ingeniería de Software | Desarrollo Backend, UI/UX, Arquitectura DDD |
-| ![Gianfranco Durand] | Gianfranco Jared Durand Vega    | U202312614 | Ingeniería de Software | Desarrollo Frontend (Vue/React), UI/UX, Integración de servicios externos |
+| <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/43c33c6b-80d5-4599-92aa-06d6a8ce4bec" />] | Gianfranco Jared Durand Vega    | U202312614 | Ingeniería de Software | Desarrollo Frontend (Vue/React), UI/UX, Integración de servicios externos |
 | <img src="img/Irving.jpg" alt="img profile"/>     | Irving Allcca Guerrero     | U202213241	 | Ingeniería de Software | DATOS, Desarrollo Frontend, UI/UX |
 
 ### 1.2 Solution Profile
