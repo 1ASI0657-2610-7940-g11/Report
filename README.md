@@ -880,25 +880,47 @@ A continuación, se detallan los patrones que se implementarán:
 
 #### 4.1.7 Tactics
 
-Para FuelTrack se seleccionan tres tácticas arquitectónicas principales, alineadas con los atributos de calidad más importantes del sistema: disponibilidad, seguridad y modificabilidad. Estas tácticas buscan asegurar que la plataforma pueda operar de forma continua, proteger la información sensible de pedidos y pagos, y permitir cambios futuros sin afectar toda la solución.
-
-**Disponibilidad**
-
-- **Detección de fallos:** Implementar monitoreo sobre el Backend API, la base de datos y los servicios externos para identificar caídas o errores en el menor tiempo posible.
-- **Recuperación:** Aplicar mecanismos de reintento cuando fallen servicios externos como la pasarela de pagos, el sistema de transporte o el servicio de exportación de reportes.
-- **Prevención de fallos:** Validar solicitudes antes de procesarlas y controlar errores para evitar que una falla puntual afecte el flujo completo de pedidos.
+Para FuelTrack se seleccionan tácticas arquitectónicas alineadas con los atributos de calidad más relevantes del sistema: **seguridad, disponibilidad, modificabilidad, rendimiento y usabilidad**. Estas tácticas permitirán soportar las decisiones arquitectónicas utilizadas en las iteraciones ADD, garantizando una plataforma segura, eficiente, disponible y preparada para futuras evoluciones.
 
 **Seguridad**
 
-- **Detectar ataques:** Registrar intentos fallidos de inicio de sesión, accesos no autorizados y operaciones sospechosas dentro del sistema.
-- **Resistir ataques:** Utilizar autenticación mediante tokens, control de acceso por roles y comunicación segura mediante HTTPS.
-- **Reaccionar ante incidentes:** Bloquear sesiones inválidas, registrar eventos de seguridad y restringir operaciones cuando se detecten acciones no permitidas.
+Las tácticas de seguridad tienen como finalidad proteger la información de usuarios, pedidos y pagos, garantizando acceso controlado y operaciones seguras.
+
+- **Detectar ataques:** Registrar intentos fallidos de autenticación, accesos no autorizados y eventos sospechosos dentro del sistema.
+- **Resistir ataques:** Aplicar autenticación basada en JWT, autorización por roles (RBAC) y comunicación segura mediante HTTPS.
+- **Reaccionar ante incidentes:** Bloquear sesiones inválidas, restringir accesos sospechosos y mantener registros de auditoría.
+
+**Disponibilidad**
+
+Las tácticas de disponibilidad buscan garantizar que FuelTrack continúe operando aun cuando ocurran fallos parciales o problemas externos.
+
+- **Detección de fallos:** Implementar monitoreo sobre el Backend API, base de datos y servicios externos.
+- **Recuperación:** Aplicar reintentos automáticos cuando fallen integraciones externas como pagos, logística o reportes.
+- **Prevención de fallos:** Validar solicitudes y manejar excepciones para evitar interrupciones del flujo principal.
 
 **Modificabilidad**
 
-- **Reducir acoplamiento:** Separar responsabilidades en módulos o servicios como pedidos, autenticación, pagos, transporte y reportes.
-- **Aumentar cohesión:** Agrupar funcionalidades relacionadas dentro de cada módulo para que cada componente tenga una responsabilidad clara.
-- **Encapsulamiento:** Ocultar la lógica interna de cada servicio mediante APIs bien definidas, permitiendo cambios internos sin afectar a otros componentes.
+Las tácticas de modificabilidad permiten que el sistema pueda evolucionar sin afectar los componentes existentes.
+
+- **Reducir acoplamiento:** Dividir el sistema en módulos independientes como autenticación, pedidos, logística, pagos y reportes.
+- **Aumentar cohesión:** Agrupar funcionalidades relacionadas dentro de componentes especializados.
+- **Encapsulamiento:** Utilizar APIs REST claramente definidas para aislar cambios internos.
+
+**Rendimiento**
+
+Las tácticas de rendimiento buscan garantizar tiempos de respuesta eficientes durante operaciones críticas.
+
+- **Optimización de consultas:** Mejorar consultas de base de datos para pedidos, historial y reportes.
+- **Procesamiento eficiente:** Reducir llamadas innecesarias entre servicios.
+- **Control de concurrencia:** Gestionar múltiples solicitudes simultáneas sin degradar el sistema.
+
+**Usabilidad**
+
+Las tácticas de usabilidad buscan mejorar la experiencia de interacción entre proveedores y solicitantes.
+
+- **Consistencia de interfaz:** Mantener navegación uniforme y formularios estandarizados.
+- **Retroalimentación inmediata:** Mostrar estados de pedidos y mensajes claros al usuario.
+- **Minimización de complejidad:** Reducir pasos innecesarios en procesos críticos como pedidos y seguimiento.
 
 ### 4.2 Architectural Drivers
 
