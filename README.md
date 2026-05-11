@@ -988,294 +988,764 @@ Las preocupaciones arquitectónicas representan los aspectos críticos que influ
 
 ### 4.3 ADD Iterations
 
-#### 4.3.1 Iteration 1: <FuelTrack Core Quality Boost>
+#### 4.3.1 Iteration 1: <FuelTrack Secure Order Flow>
 
 ##### 4.3.1.1 Architectural Design Backlog 1
 
-En el punto **Architectural Design Backlog** para FuelTrack, nos centraremos en definir las características arquitectónicas principales que permitirán que la plataforma gestione pedidos de combustible de forma segura, disponible y modificable. Esta iteración prioriza los elementos base del sistema, como autenticación, gestión de pedidos, actualización de estados, notificaciones y comunicación con servicios externos. Para ello, se consideran tres tácticas arquitectónicas principales: **disponibilidad**, para mantener el sistema operativo durante la gestión de pedidos; **seguridad**, para proteger usuarios, pedidos y pagos; y **modificabilidad**, para facilitar cambios futuros sin afectar toda la plataforma.
+En el punto **Architectural Design Backlog** para FuelTrack, nos centraremos en definir las características arquitectónicas principales que permitirán que la plataforma gestione pedidos de combustible de forma **segura, disponible y modificable**. Esta iteración prioriza los elementos base del sistema, como autenticación, gestión de pedidos, control de acceso, actualización de estados y comunicación con servicios externos. Para ello, se consideran tres tácticas arquitectónicas principales: **seguridad**, para proteger la información de usuarios y pedidos; **disponibilidad**, para asegurar la continuidad operativa del sistema; y **modificabilidad**, para facilitar la evolución de funcionalidades sin afectar toda la plataforma.
 
-**Disponibilidad**
+### Seguridad
 
 - **Historias de Usuario (User Stories):**
-  - Como proveedor, quiero actualizar el estado de un pedido para mantener informado al solicitante.
-  - Como solicitante, quiero consultar el estado de mis pedidos para hacer seguimiento al proceso.
-  - Como usuario, quiero recibir notificaciones ante cambios importantes del pedido.
+  - Como usuario, quiero registrarme e iniciar sesión de forma segura para acceder a la plataforma.
+  - Como administrador, quiero restringir el acceso por roles para proteger las funciones críticas del sistema.
+  - Como solicitante, quiero validar operaciones importantes para evitar accesos no autorizados.
+
+- **Tareas:**
+  - Implementar autenticación mediante JWT.
+  - Configurar control de acceso por roles (solicitante, proveedor y administrador).
+  - Proteger endpoints del Backend API.
+  - Aplicar comunicación segura mediante HTTPS.
+
+- **Criterios de Aceptación:**
+  - Solo usuarios autenticados podrán acceder a funcionalidades privadas.
+  - Ningún usuario podrá acceder a funciones fuera de su rol.
+  - La información sensible estará protegida durante la comunicación.
+
+### Disponibilidad
+
+- **Historias de Usuario (User Stories):**
+  - Como solicitante, quiero consultar el estado de mis pedidos en cualquier momento.
+  - Como proveedor, quiero actualizar el estado del pedido sin interrupciones.
+  - Como usuario, quiero recibir notificaciones sobre cambios importantes del pedido.
 
 - **Tareas:**
   - Implementar manejo de errores en el Backend API.
-  - Aplicar reintentos cuando fallen servicios externos como pagos, transporte o reportes.
-  - Registrar fallos en logs para facilitar la detección y recuperación.
-  - Validar que una falla en notificaciones no interrumpa el flujo principal del pedido.
+  - Aplicar reintentos ante fallos temporales de servicios externos.
+  - Registrar logs para facilitar recuperación ante incidentes.
+  - Evitar que fallos secundarios interrumpan el flujo principal de pedidos.
 
 - **Criterios de Aceptación:**
-  - El sistema debe seguir permitiendo consultar y actualizar pedidos aunque un servicio externo falle temporalmente.
-  - Los errores deben registrarse correctamente para su revisión.
-  - Las operaciones críticas no deben perder información ante fallos parciales.
+  - El sistema debe continuar funcionando ante fallos parciales.
+  - La consulta y actualización de pedidos no debe interrumpirse.
+  - Los errores deben registrarse correctamente.
 
-**Seguridad**
-
-- **Historias de Usuario (User Stories):**
-  - Como usuario, quiero iniciar sesión con credenciales válidas para acceder de forma segura.
-  - Como administrador, quiero restringir el acceso por rol para proteger las funciones del sistema.
-  - Como solicitante, quiero confirmar operaciones sensibles mediante MFA para evitar accesos indebidos.
-
-- **Tareas:**
-  - Implementar autenticación mediante tokens JWT.
-  - Definir roles para solicitante, proveedor y administrador.
-  - Proteger endpoints del Backend API según permisos.
-  - Aplicar HTTPS para la comunicación entre cliente, backend y servicios externos.
-
-- **Criterios de Aceptación:**
-  - Solo usuarios autenticados pueden acceder a funciones privadas.
-  - Los usuarios no pueden acceder a funcionalidades fuera de su rol.
-  - Las operaciones sensibles requieren validación adicional.
-
-**Modificabilidad**
+### Modificabilidad
 
 - **Historias de Usuario (User Stories):**
-  - Como usuario, quiero buscar pedidos por código para encontrar información rápidamente.
-  - Como usuario, quiero filtrar pedidos por estado para organizar mejor la información.
   - Como proveedor, quiero gestionar pedidos sin afectar otros módulos del sistema.
+  - Como usuario, quiero consultar pedidos mediante filtros.
+  - Como administrador, quiero agregar nuevas funcionalidades sin alterar operaciones existentes.
 
 - **Tareas:**
-  - Separar responsabilidades en módulos: autenticación, pedidos, pagos, transporte y reportes.
-  - Definir APIs claras entre frontend y backend.
+  - Separar responsabilidades en módulos desacoplados.
+  - Definir APIs REST claras entre frontend y backend.
+  - Encapsular lógica de negocio en servicios específicos.
   - Reducir dependencias directas entre componentes.
-  - Encapsular la lógica de negocio dentro de servicios específicos.
 
 - **Criterios de Aceptación:**
-  - Nuevas funcionalidades pueden agregarse sin modificar todo el sistema.
-  - Los cambios en un módulo no deben romper otros módulos.
-  - Las interfaces entre servicios deben mantenerse claras y documentadas.
+  - Nuevas funcionalidades pueden agregarse sin afectar otros módulos.
+  - Cambios internos no rompen funcionalidades existentes.
+  - La arquitectura mantiene separación clara de responsabilidades.
 
 ##### 4.3.1.2 Establish Iteration Goal by Selecting Drivers
 
-En esta iteración, se seleccionan los **drivers arquitectónicos clave** que permitirán establecer objetivos concretos para el desarrollo del sistema FuelTrack. Estos drivers están alineados con los atributos de calidad más relevantes identificados previamente: **seguridad, disponibilidad y modificabilidad**, los cuales son fundamentales para garantizar una plataforma confiable, escalable y adaptable a cambios futuros.
-
----
+En esta iteración se seleccionan los **drivers arquitectónicos principales** que permitirán establecer metas concretas para el desarrollo inicial de FuelTrack. Estos drivers están alineados con los atributos de calidad más relevantes definidos previamente: **seguridad, disponibilidad y modificabilidad**, los cuales son fundamentales para garantizar un sistema confiable, seguro y preparado para futuras ampliaciones.
 
 ### Meta de Seguridad
 
-**Objetivo:** Proteger la información sensible de los usuarios, pedidos y pagos, asegurando que solo usuarios autorizados puedan acceder al sistema.
+**Objetivo:** Garantizar el acceso seguro a la plataforma y proteger la información relacionada con usuarios, pedidos y operaciones sensibles.
 
 - **Acciones Clave:**
-  - Implementar autenticación mediante tokens (JWT) para el acceso seguro.
-  - Definir control de acceso basado en roles (solicitante, proveedor, administrador).
-  - Aplicar comunicación segura mediante HTTPS entre cliente, backend y servicios externos.
-  - Validar operaciones sensibles como creación de pedidos y pagos.
+  - Implementar autenticación mediante JWT.
+  - Aplicar control de acceso basado en roles.
+  - Proteger endpoints mediante autorización.
+  - Aplicar HTTPS en toda la comunicación.
 
----
+### Meta de Disponibilidad
 
-### Meta de Alta Disponibilidad
-
-**Objetivo:** Garantizar que el sistema esté disponible para la gestión de pedidos en todo momento, evitando interrupciones que afecten la operación del negocio.
+**Objetivo:** Garantizar que el sistema pueda mantenerse operativo durante la gestión de pedidos de combustible.
 
 - **Acciones Clave:**
-  - Implementar manejo de errores en el Backend API.
-  - Aplicar reintentos automáticos en la comunicación con servicios externos (pagos, transporte, reportes).
-  - Registrar fallos en logs para facilitar la recuperación del sistema.
-  - Asegurar que fallos parciales no interrumpan el flujo principal de pedidos.
-
----
+  - Implementar manejo de excepciones en el Backend API.
+  - Aplicar reintentos automáticos ante fallos externos.
+  - Registrar errores para facilitar recuperación.
+  - Evitar interrupciones del flujo principal de pedidos.
 
 ### Meta de Modificabilidad
 
-**Objetivo:** Permitir que el sistema pueda evolucionar fácilmente, agregando nuevas funcionalidades sin afectar los componentes existentes.
+**Objetivo:** Permitir que FuelTrack pueda evolucionar fácilmente sin afectar componentes existentes.
 
 - **Acciones Clave:**
-  - Separar el sistema en módulos independientes (autenticación, pedidos, pagos, transporte, reportes).
-  - Definir APIs claras y desacopladas entre frontend y backend.
-  - Encapsular la lógica de negocio dentro de servicios específicos.
-  - Reducir dependencias directas entre componentes para facilitar cambios futuros.
+  - Separar el sistema en módulos independientes.
+  - Definir APIs desacopladas.
+  - Encapsular lógica de negocio.
+  - Reducir dependencias entre componentes.
 
 ##### 4.3.1.3 Choose One or More Elements of the System to Refine
 
-Para continuar con el proceso ADD en FuelTrack, se seleccionan los elementos del sistema que requieren mayor refinamiento arquitectónico. Esta elección se realiza considerando los drivers definidos previamente: **seguridad**, **disponibilidad** y **modificabilidad**. Los elementos seleccionados son críticos porque soportan el flujo principal del sistema: acceso de usuarios, gestión de pedidos, actualización de estados e integración con servicios externos.
+Para continuar con el proceso ADD en FuelTrack, se seleccionan los elementos del sistema que requieren refinamiento arquitectónico. Esta selección se realiza considerando los drivers de **seguridad, disponibilidad y modificabilidad**, priorizando los módulos que soportan el flujo principal del sistema.
 
-- **Módulo de Autenticación y Control de Acceso:**
-  - **Elemento a refinar:** Servicio encargado del registro, inicio de sesión, emisión de tokens y validación de roles.
-  - **Razón para el refinamiento:** Es necesario proteger el acceso a la plataforma y asegurar que solicitantes, proveedores y administradores solo puedan realizar acciones permitidas según su rol.
-  - **Esperado:** Un módulo seguro que gestione credenciales, tokens y permisos de forma confiable.
+### Módulo de Autenticación y Control de Acceso
 
-- **Módulo de Gestión de Pedidos:**
-  - **Elemento a refinar:** Servicio responsable de registrar, consultar, editar, aprobar, rechazar y actualizar pedidos de combustible.
-  - **Razón para el refinamiento:** Este módulo representa el núcleo del negocio de FuelTrack, por lo que debe ser estable, trazable y fácil de modificar.
-  - **Esperado:** Un flujo de pedidos claro, con estados definidos y registro de cambios durante todo el proceso.
+- **Elemento a Refinar:** Servicio encargado del registro, autenticación, emisión de tokens y validación de roles.
 
-- **Integración con Servicios Externos:**
-  - **Elemento a refinar:** Comunicación con pasarela de pagos, sistema de transporte y servicio de exportación de reportes.
-  - **Razón para el refinamiento:** Estos servicios apoyan operaciones importantes del sistema, pero pueden fallar o responder lentamente, por lo que se requiere manejo de errores y reintentos.
-  - **Esperado:** Integraciones desacopladas, seguras y tolerantes a fallos parciales.
+- **Razón para el Refinamiento:**  
+  Es necesario asegurar que cada usuario acceda únicamente a las funciones correspondientes según su rol.
+
+- **Esperado:**  
+  Un sistema seguro de autenticación y autorización para usuarios solicitantes, proveedores y administradores.
+
+### Módulo de Gestión de Pedidos
+
+- **Elemento a Refinar:** Servicio encargado de registrar, consultar, actualizar y mantener la trazabilidad de pedidos.
+
+- **Razón para el Refinamiento:**  
+  Este módulo representa el núcleo funcional de FuelTrack y debe mantenerse estable, disponible y fácilmente modificable.
+
+- **Esperado:**  
+  Un flujo de pedidos controlado, trazable y desacoplado.
+
+### Integración con Servicios Externos
+
+- **Elemento a Refinar:** Comunicación con pasarela de pagos, sistema logístico y servicios de reportes.
+
+- **Razón para el Refinamiento:**  
+  Las integraciones externas pueden fallar o responder lentamente, afectando operaciones críticas.
+
+- **Esperado:**  
+  Integraciones seguras, desacopladas y tolerantes a fallos.
 
 ##### 4.3.1.4 Choose One or More Design Concepts That Satisfy the Selected Drivers
 
-Luego de identificar los elementos de FuelTrack que requieren refinamiento, se seleccionan conceptos de diseño que permitan responder a los drivers arquitectónicos definidos previamente: **seguridad**, **disponibilidad** y **modificabilidad**. Estos conceptos guían la estructura del sistema y ayudan a que la plataforma pueda operar de forma segura, continua y adaptable a futuros cambios.
+Después de identificar los elementos que requieren refinamiento, se seleccionan conceptos de diseño alineados con los drivers de **seguridad, disponibilidad y modificabilidad**, permitiendo responder adecuadamente a los objetivos arquitectónicos de esta iteración.
 
-**Seguridad**
+### Seguridad
 
 - **Concepto de Diseño: Control de Acceso Basado en Roles (RBAC)**
-  - **Descripción:** Implementar permisos diferenciados para solicitantes, proveedores y administradores, de modo que cada usuario solo pueda acceder a las funcionalidades correspondientes a su rol.
-  - **Justificación:** Este concepto reduce el riesgo de accesos no autorizados y protege información sensible relacionada con pedidos, usuarios y pagos.
 
-- **Concepto de Diseño: Autenticación mediante Tokens**
-  - **Descripción:** Utilizar tokens JWT para validar sesiones y controlar el acceso a los servicios protegidos del Backend API.
-  - **Justificación:** Permite mantener una comunicación segura entre la aplicación y el backend, evitando que usuarios no autenticados ejecuten operaciones privadas.
+  - **Descripción:**  
+    Implementar permisos diferenciados según el rol del usuario (solicitante, proveedor o administrador).
 
-**Disponibilidad**
+  - **Justificación:**  
+    Reduce riesgos de acceso indebido y protege operaciones críticas.
+
+- **Concepto de Diseño: Autenticación mediante Tokens JWT**
+
+  - **Descripción:**  
+    Utilizar tokens JWT para validar sesiones y proteger recursos privados.
+
+  - **Justificación:**  
+    Permite una autenticación segura y desacoplada.
+
+### Disponibilidad
 
 - **Concepto de Diseño: Manejo de Fallos y Reintentos**
-  - **Descripción:** Implementar mecanismos de reintento cuando fallen servicios externos como la pasarela de pagos, el sistema de transporte o el servicio de exportación.
-  - **Justificación:** Permite que una falla temporal no interrumpa completamente el flujo de pedidos, mejorando la continuidad del servicio.
 
-- **Concepto de Diseño: Monitoreo y Registro de Errores**
-  - **Descripción:** Registrar errores del sistema, fallos de integración y eventos relevantes mediante logs.
-  - **Justificación:** Facilita la detección temprana de problemas y permite tomar acciones de recuperación con mayor rapidez.
+  - **Descripción:**  
+    Implementar mecanismos de recuperación cuando fallen servicios externos.
 
-**Modificabilidad**
+  - **Justificación:**  
+    Permite mantener la continuidad operativa del sistema.
 
-- **Concepto de Diseño: Separación por Servicios**
-  - **Descripción:** Dividir el sistema en módulos o servicios especializados, como autenticación, pedidos, pagos, transporte y reportes.
-  - **Justificación:** Permite modificar o extender una funcionalidad sin afectar directamente a los demás componentes del sistema.
+- **Concepto de Diseño: Registro de Logs**
 
-- **Concepto de Diseño: Interfaces REST Bien Definidas**
-  - **Descripción:** Establecer APIs claras entre la aplicación cliente, el backend y los servicios externos.
-  - **Justificación:** Reduce el acoplamiento entre componentes y facilita la evolución del sistema durante futuras iteraciones.
+  - **Descripción:**  
+    Registrar errores e incidentes operativos.
+
+  - **Justificación:**  
+    Facilita la detección temprana de fallos.
+
+### Modificabilidad
+
+- **Concepto de Diseño: Arquitectura Modular**
+
+  - **Descripción:**  
+    Separar funcionalidades en módulos especializados.
+
+  - **Justificación:**  
+    Facilita cambios futuros sin afectar otros componentes.
+
+- **Concepto de Diseño: APIs REST Desacopladas**
+
+  - **Descripción:**  
+    Definir interfaces claras entre frontend, backend y servicios externos.
+
+  - **Justificación:**  
+    Reduce dependencias y facilita evolución del sistema.
 
 ##### 4.3.1.5 Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
 
-En esta etapa se definen los módulos arquitectónicos principales de FuelTrack, detallando sus responsabilidades y la forma en que interactúan entre sí. Estos módulos han sido estructurados considerando los drivers de **seguridad, disponibilidad y modificabilidad**, permitiendo una arquitectura desacoplada, escalable y preparada para futuras extensiones.
-
----
+En esta etapa se instancian los principales módulos arquitectónicos de FuelTrack, asignando responsabilidades claras y definiendo interfaces para mantener una arquitectura segura, disponible y modificable.
 
 ### Módulo de Autenticación y Control de Acceso
 
 - **Elementos Arquitectónicos:**
   - Servicio de autenticación
   - Base de datos de usuarios
-  - Gestor de tokens (JWT)
+  - Gestor de tokens JWT
 
 - **Responsabilidades:**
-  - Gestionar el registro e inicio de sesión de usuarios
-  - Validar credenciales y emitir tokens de acceso
-  - Controlar el acceso a funcionalidades según roles (solicitante, proveedor, administrador)
-  - Proteger endpoints del sistema
+  - Gestionar registro e inicio de sesión.
+  - Validar credenciales.
+  - Emitir tokens de acceso.
+  - Restringir acceso según rol.
 
 - **Interfaces:**
-  - API REST (/auth)
-  - Comunicación segura mediante HTTPS
-
----
+  - API REST (`/auth`)
+  - HTTPS
 
 ### Módulo de Gestión de Pedidos y Trazabilidad
 
 - **Elementos Arquitectónicos:**
-  - Servicio central de pedidos
-  - Base de datos de pedidos y estados
+  - Servicio de pedidos
+  - Base de datos de pedidos
 
 - **Responsabilidades:**
-  - Gestionar el ciclo completo del pedido de combustible
-  - Registrar pedidos, actualizar estados y mantener historial
-  - Controlar la trazabilidad de cada pedido desde su creación hasta su entrega
-  - Coordinar con otros módulos (proveedores, transporte, notificaciones)
+  - Registrar pedidos de combustible.
+  - Actualizar estados del pedido.
+  - Mantener trazabilidad.
+  - Coordinar módulos relacionados.
 
 - **Interfaces:**
-  - API REST (/orders)
-  - Comunicación JSON vía HTTPS
+  - API REST (`/orders`)
+  - JSON vía HTTPS
 
----
-
-### Módulo de Gestión Logística y Proveedores
+### Módulo de Gestión Logística
 
 - **Elementos Arquitectónicos:**
   - Servicio de proveedores
-  - Base de datos de operadores y vehículos
+  - Servicio logístico
 
 - **Responsabilidades:**
-  - Administrar la información de proveedores, operadores y vehículos
-  - Asignar recursos logísticos a los pedidos
-  - Gestionar la disponibilidad de transporte
-  - Actualizar el estado logístico del pedido
+  - Administrar operadores y vehículos.
+  - Asignar transporte.
+  - Actualizar estado logístico.
 
 - **Interfaces:**
-  - API REST (/providers)
-  - Integración con módulo de pedidos
-
----
-
-### Módulo de Procesamiento de Pagos
-
-- **Elementos Arquitectónicos:**
-  - Servicio de integración con pasarela de pagos
-
-- **Responsabilidades:**
-  - Procesar pagos asociados a pedidos de combustible
-  - Validar transacciones y estados de pago
-  - Registrar información financiera del pedido
-  - Manejar errores y reintentos ante fallos externos
-
-- **Interfaces:**
-  - API externa (pasarela de pagos)
+  - API REST (`/providers`)
   - HTTPS
 
----
-
-### Módulo de Integración con Transporte
+### Módulo de Integración Externa
 
 - **Elementos Arquitectónicos:**
-  - Servicio de integración logística
-
-- **Responsabilidades:**
-  - Consultar y actualizar el estado del transporte
-  - Sincronizar información de vehículos y operadores en ruta
-  - Permitir el seguimiento del pedido en tiempo real
-
-- **Interfaces:**
-  - API externa (sistema de transporte)
-  - HTTPS
-
----
-
-### Módulo de Generación de Reportes
-
-- **Elementos Arquitectónicos:**
+  - Pasarela de pagos
+  - Sistema de transporte
   - Servicio de reportes
 
 - **Responsabilidades:**
-  - Generar reportes operativos y financieros
-  - Exportar información en formatos como PDF y Excel
-  - Proveer datos históricos para análisis
+  - Gestionar pagos.
+  - Sincronizar información logística.
+  - Generar reportes.
 
 - **Interfaces:**
-  - API REST (/reports)
-  - Integración con servicio de exportación
-
----
-
-### Módulo de Notificaciones y Eventos
-
-- **Elementos Arquitectónicos:**
-  - Servicio de notificaciones
-
-- **Responsabilidades:**
-  - Notificar a los usuarios sobre cambios en el estado del pedido
-  - Informar eventos relevantes del sistema
-  - Soportar comunicación asincrónica entre módulos
-
-- **Interfaces:**
-  - API interna
-  - Comunicación mediante eventos o HTTP
+  - APIs externas
+  - HTTPS
 
 ##### 4.3.1.6 Sketch Views (C4 & UML) and Record Design Decisions
 
-Para esta sección se seleccionó el **Módulo de Gestión de Pedidos y Trazabilidad**, debido a que representa el núcleo funcional de FuelTrack. Este módulo permite registrar pedidos, consultar su estado, validar reglas de negocio, actualizar transiciones y coordinar integraciones con pagos, transporte y notificaciones.
+Para esta iteración se seleccionó el **Módulo de Gestión de Pedidos y Trazabilidad**, debido a que representa el núcleo funcional de FuelTrack y concentra las operaciones principales relacionadas con la gestión de pedidos de combustible.
 
-![Component Diagram](img/component-c4.png)
+**PONER IMAGEN**
 
-##### 4.2.1.7 Analysis of Current Design and Review Iteration Goal (Kanban Board)
+##### 4.3.1.7 Analysis of Current Design and Review Iteration Goal (Kanban Board)
 
-Para gestionar las decisiones arquitectónicas y los elementos refinados en esta primera iteración, el equipo ha configurado un tablero Kanban utilizando la herramienta digital Trello.
+Para gestionar las decisiones arquitectónicas y el avance de los componentes refinados durante esta primera iteración, el equipo utiliza un tablero Kanban que permite organizar tareas, monitorear avances y validar el cumplimiento de los objetivos definidos.
 
-![Kanban Board](img/Trello.png)
+**PONER IMAGEN**
+
+#### 4.3.2 Iteration 2: <FuelTrack Logistics Optimization>
+
+##### 4.3.2.1 Architectural Design Backlog 2
+
+En esta segunda iteración, FuelTrack se enfocará en optimizar el proceso logístico relacionado con el despacho, transporte y seguimiento de pedidos de combustible. La iteración prioriza la gestión de vehículos, asignación de operadores, trazabilidad logística y actualización del estado del pedido en tiempo real. Para ello, se consideran tres tácticas arquitectónicas principales: **disponibilidad**, para garantizar continuidad operativa del seguimiento; **rendimiento**, para responder rápidamente a solicitudes logísticas; y **modificabilidad**, para permitir mejoras futuras sin afectar el sistema principal.
+
+### Disponibilidad
+
+- **Historias de Usuario (User Stories):**
+  - Como proveedor, quiero actualizar el estado del transporte para mantener informado al cliente.
+  - Como solicitante, quiero visualizar el estado de entrega del combustible.
+  - Como operador, quiero acceder al pedido asignado sin interrupciones.
+
+- **Tareas:**
+  - Implementar mecanismos de recuperación ante fallos del sistema logístico.
+  - Registrar errores relacionados con transporte y seguimiento.
+  - Garantizar continuidad del estado de pedidos aunque existan fallos parciales.
+  - Aplicar reintentos automáticos para integraciones externas.
+
+- **Criterios de Aceptación:**
+  - El sistema debe mantener la trazabilidad del pedido durante fallos parciales.
+  - El estado logístico debe mantenerse actualizado.
+  - Los errores deben quedar registrados para auditoría.
+
+### Rendimiento
+
+- **Historias de Usuario (User Stories):**
+  - Como solicitante, quiero consultar rápidamente el estado de mi pedido.
+  - Como proveedor, quiero visualizar disponibilidad de vehículos sin demoras.
+  - Como operador, quiero acceder a información logística en tiempo real.
+
+- **Tareas:**
+  - Optimizar consultas relacionadas con transporte y pedidos.
+  - Reducir tiempos de respuesta del Backend API.
+  - Minimizar llamadas innecesarias entre módulos.
+  - Mejorar procesamiento concurrente de solicitudes.
+
+- **Criterios de Aceptación:**
+  - El sistema debe responder rápidamente a consultas logísticas.
+  - El seguimiento de pedidos debe reflejar cambios casi en tiempo real.
+  - Las operaciones concurrentes no deben degradar el sistema.
+
+### Modificabilidad
+
+- **Historias de Usuario (User Stories):**
+  - Como administrador, quiero agregar nuevos operadores sin afectar otros procesos.
+  - Como proveedor, quiero modificar información logística fácilmente.
+  - Como desarrollador, quiero agregar nuevos servicios logísticos sin afectar el núcleo del sistema.
+
+- **Tareas:**
+  - Mantener separación entre módulo logístico y módulo de pedidos.
+  - Diseñar APIs desacopladas para transporte.
+  - Encapsular reglas logísticas en servicios específicos.
+  - Reducir dependencias directas entre módulos.
+
+- **Criterios de Aceptación:**
+  - Nuevos servicios logísticos pueden integrarse fácilmente.
+  - Cambios en transporte no afectan autenticación ni pedidos.
+  - La arquitectura mantiene independencia modular.
+
+##### 4.3.2.2 Establish Iteration Goal by Selecting Drivers
+
+En esta iteración se seleccionan los drivers arquitectónicos relacionados con el desempeño operativo del sistema logístico de FuelTrack. Estos drivers corresponden a **disponibilidad, rendimiento y modificabilidad**, permitiendo optimizar el seguimiento de pedidos y la asignación de recursos logísticos.
+
+### Meta de Disponibilidad
+
+**Objetivo:** Garantizar la continuidad del seguimiento logístico incluso frente a fallos parciales o problemas de conectividad.
+
+- **Acciones Clave:**
+  - Implementar recuperación ante errores.
+  - Aplicar reintentos automáticos.
+  - Mantener consistencia del estado del pedido.
+  - Registrar eventos críticos.
+
+### Meta de Rendimiento
+
+**Objetivo:** Garantizar tiempos de respuesta rápidos durante consultas logísticas y actualizaciones de pedidos.
+
+- **Acciones Clave:**
+  - Optimizar consultas de base de datos.
+  - Reducir latencia del Backend API.
+  - Mejorar eficiencia de comunicación entre módulos.
+  - Gestionar múltiples solicitudes simultáneas.
+
+### Meta de Modificabilidad
+
+**Objetivo:** Permitir que FuelTrack pueda integrar nuevas funcionalidades logísticas sin afectar componentes existentes.
+
+- **Acciones Clave:**
+  - Separar responsabilidades logísticas.
+  - Implementar APIs desacopladas.
+  - Encapsular lógica de transporte.
+  - Minimizar dependencias entre módulos.
+
+##### 4.3.2.3 Choose One or More Elements of the System to Refine
+
+Para esta iteración se seleccionan los elementos relacionados con el proceso logístico y de seguimiento de pedidos, priorizando los componentes que impactan directamente la operación de transporte y trazabilidad.
+
+### Módulo de Gestión Logística
+
+- **Elemento a Refinar:** Servicio encargado de administrar operadores, vehículos y asignaciones de transporte.
+
+- **Razón para el Refinamiento:**  
+  Es necesario garantizar una correcta planificación y asignación logística.
+
+- **Esperado:**  
+  Un sistema eficiente para coordinar vehículos y operadores.
+
+### Módulo de Seguimiento de Pedidos
+
+- **Elemento a Refinar:** Servicio encargado de mostrar el estado del pedido en tiempo real.
+
+- **Razón para el Refinamiento:**  
+  El seguimiento es una necesidad crítica para empresas solicitantes y proveedores.
+
+- **Esperado:**  
+  Trazabilidad continua durante el proceso de entrega.
+
+### Integración con Sistema de Transporte
+
+- **Elemento a Refinar:** Comunicación entre FuelTrack y servicios externos de logística.
+
+- **Razón para el Refinamiento:**  
+  La sincronización logística requiere estabilidad y rapidez.
+
+- **Esperado:**  
+  Integraciones desacopladas y tolerantes a fallos.
+
+##### 4.3.2.4 Choose One or More Design Concepts That Satisfy the Selected Drivers
+
+Luego de identificar los elementos que requieren refinamiento, se seleccionan conceptos de diseño alineados con los drivers de **disponibilidad, rendimiento y modificabilidad**.
+
+### Disponibilidad
+
+- **Concepto de Diseño: Recuperación ante Fallos**
+
+  - **Descripción:**  
+    Implementar mecanismos de recuperación para integraciones logísticas.
+
+  - **Justificación:**  
+    Permite mantener continuidad operativa.
+
+- **Concepto de Diseño: Reintentos Automáticos**
+
+  - **Descripción:**  
+    Reintentar solicitudes cuando existan errores temporales.
+
+  - **Justificación:**  
+    Reduce interrupciones del sistema.
+
+### Rendimiento
+
+- **Concepto de Diseño: Optimización de Consultas**
+
+  - **Descripción:**  
+    Reducir tiempos de respuesta relacionados con pedidos y transporte.
+
+  - **Justificación:**  
+    Mejora experiencia de seguimiento.
+
+- **Concepto de Diseño: Procesamiento Concurrente**
+
+  - **Descripción:**  
+    Gestionar múltiples operaciones logísticas simultáneamente.
+
+  - **Justificación:**  
+    Mejora desempeño bajo alta demanda.
+
+### Modificabilidad
+
+- **Concepto de Diseño: Servicios Desacoplados**
+
+  - **Descripción:**  
+    Separar componentes logísticos del módulo de pedidos.
+
+  - **Justificación:**  
+    Facilita cambios futuros.
+
+- **Concepto de Diseño: APIs Independientes**
+
+  - **Descripción:**  
+    Mantener interfaces claras entre servicios.
+
+  - **Justificación:**  
+    Reduce dependencias técnicas.
+
+##### 4.3.2.5 Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
+
+En esta etapa se instancian los elementos arquitectónicos necesarios para soportar el proceso logístico de FuelTrack.
+
+### Módulo de Gestión Logística
+
+- **Elementos Arquitectónicos:**
+  - Servicio de logística
+  - Base de datos de operadores
+  - Base de datos de vehículos
+
+- **Responsabilidades:**
+  - Administrar operadores.
+  - Gestionar vehículos.
+  - Asignar recursos de transporte.
+
+- **Interfaces:**
+  - API REST (`/logistics`)
+  - HTTPS
+
+### Módulo de Seguimiento de Pedidos
+
+- **Elementos Arquitectónicos:**
+  - Servicio de tracking
+  - Base de datos de estados
+
+- **Responsabilidades:**
+  - Actualizar estado del pedido.
+  - Mostrar ubicación del pedido.
+  - Mantener trazabilidad.
+
+- **Interfaces:**
+  - API REST (`/tracking`)
+  - JSON vía HTTPS
+
+### Integración con Transporte
+
+- **Elementos Arquitectónicos:**
+  - Sistema externo de transporte
+
+- **Responsabilidades:**
+  - Sincronizar información logística.
+  - Actualizar tiempos estimados.
+
+- **Interfaces:**
+  - API externa
+  - HTTPS
+
+##### 4.3.2.6 Sketch Views (C4 & UML) and Record Design Decisions
+
+Para esta iteración se seleccionó el **Módulo de Gestión Logística y Seguimiento**, debido a que concentra las operaciones relacionadas con transporte, asignación de recursos y trazabilidad de pedidos.
+
+**PONER IMAGEN**
+
+##### 4.3.2.7 Analysis of Current Design and Review Iteration Goal (Kanban Board)
+
+Para monitorear el avance de los elementos refinados durante esta iteración, el equipo utiliza un tablero Kanban que permite gestionar tareas logísticas y validar el cumplimiento de objetivos arquitectónicos.
+
+**PONER IMAGEN**
+
+#### 4.3.3 Iteration 3: <FuelTrack Analytics Experience>
+
+##### 4.3.3.1 Architectural Design Backlog 3
+
+En esta tercera iteración, FuelTrack se enfocará en mejorar la visualización de información operativa y la experiencia general del usuario mediante reportes, dashboards y métricas clave del sistema. Esta iteración prioriza elementos como generación de reportes, visualización de indicadores, análisis de pedidos y navegación intuitiva dentro de la plataforma. Para ello, se consideran tres tácticas arquitectónicas principales: **usabilidad**, para mejorar la interacción del usuario; **rendimiento**, para garantizar respuestas rápidas en consultas analíticas; y **modificabilidad**, para facilitar futuras mejoras sin afectar la estabilidad del sistema.
+
+### Usabilidad
+
+- **Historias de Usuario (User Stories):**
+  - Como solicitante, quiero visualizar el historial de pedidos de forma clara.
+  - Como proveedor, quiero consultar reportes operativos rápidamente.
+  - Como usuario, quiero navegar fácilmente entre las funcionalidades del sistema.
+
+- **Tareas:**
+  - Diseñar dashboards intuitivos.
+  - Mejorar navegación entre módulos.
+  - Mostrar métricas visuales comprensibles.
+  - Reducir complejidad en la visualización de datos.
+
+- **Criterios de Aceptación:**
+  - Los usuarios pueden interpretar fácilmente métricas y reportes.
+  - La navegación debe ser intuitiva.
+  - La interfaz debe mantener consistencia visual.
+
+### Rendimiento
+
+- **Historias de Usuario (User Stories):**
+  - Como proveedor, quiero generar reportes rápidamente.
+  - Como administrador, quiero consultar KPIs sin tiempos de espera elevados.
+  - Como usuario, quiero cargar dashboards sin demoras.
+
+- **Tareas:**
+  - Optimizar consultas de datos históricos.
+  - Reducir tiempos de carga de dashboards.
+  - Mejorar eficiencia del Backend API para reportes.
+  - Gestionar grandes volúmenes de información.
+
+- **Criterios de Aceptación:**
+  - Los dashboards deben cargar rápidamente.
+  - Los reportes deben generarse sin tiempos excesivos.
+  - El sistema debe soportar múltiples consultas concurrentes.
+
+### Modificabilidad
+
+- **Historias de Usuario (User Stories):**
+  - Como administrador, quiero agregar nuevos indicadores sin afectar módulos existentes.
+  - Como desarrollador, quiero modificar dashboards sin alterar otras funcionalidades.
+  - Como proveedor, quiero incorporar nuevos reportes cuando sea necesario.
+
+- **Tareas:**
+  - Mantener separación entre módulo analítico y módulos operativos.
+  - Diseñar servicios reutilizables para métricas.
+  - Encapsular lógica de reportes.
+  - Definir APIs desacopladas.
+
+- **Criterios de Aceptación:**
+  - Se pueden agregar nuevas métricas fácilmente.
+  - Cambios analíticos no afectan pedidos ni logística.
+  - El sistema mantiene independencia modular.
+
+##### 4.3.3.2 Establish Iteration Goal by Selecting Drivers
+
+En esta iteración se seleccionan los drivers arquitectónicos relacionados con visualización de información, experiencia de usuario y eficiencia del análisis operativo. Estos drivers corresponden a **usabilidad, rendimiento y modificabilidad**, permitiendo fortalecer la toma de decisiones mediante dashboards y reportes optimizados.
+
+### Meta de Usabilidad
+
+**Objetivo:** Mejorar la interacción entre el usuario y la plataforma, facilitando la navegación y comprensión de la información.
+
+- **Acciones Clave:**
+  - Diseñar dashboards intuitivos.
+  - Simplificar navegación del sistema.
+  - Mostrar métricas visuales claras.
+  - Mejorar organización de información.
+
+### Meta de Rendimiento
+
+**Objetivo:** Garantizar tiempos de respuesta rápidos durante consultas analíticas y generación de reportes.
+
+- **Acciones Clave:**
+  - Optimizar consultas históricas.
+  - Reducir tiempo de carga de dashboards.
+  - Minimizar latencia del Backend API.
+  - Mejorar procesamiento concurrente.
+
+### Meta de Modificabilidad
+
+**Objetivo:** Permitir que FuelTrack evolucione fácilmente mediante nuevos reportes, dashboards y métricas.
+
+- **Acciones Clave:**
+  - Separar responsabilidades del módulo analítico.
+  - Diseñar APIs desacopladas.
+  - Encapsular lógica de generación de reportes.
+  - Reducir dependencias internas.
+
+##### 4.3.3.3 Choose One or More Elements of the System to Refine
+
+Para esta iteración se seleccionan elementos relacionados con visualización de información, análisis operativo y experiencia del usuario, priorizando aquellos componentes orientados a la toma de decisiones.
+
+### Módulo de Reportes
+
+- **Elemento a Refinar:** Servicio encargado de generar reportes operativos y financieros.
+
+- **Razón para el Refinamiento:**  
+  Los usuarios requieren acceso rápido a información consolidada sobre pedidos y operaciones.
+
+- **Esperado:**  
+  Reportes claros, exportables y accesibles.
+
+### Módulo de Dashboard y KPIs
+
+- **Elemento a Refinar:** Servicio encargado de visualizar indicadores operativos del sistema.
+
+- **Razón para el Refinamiento:**  
+  Los KPIs permiten evaluar desempeño y optimizar decisiones.
+
+- **Esperado:**  
+  Dashboards rápidos, visuales e intuitivos.
+
+### Experiencia de Usuario
+
+- **Elemento a Refinar:** Flujo de navegación y visualización de información.
+
+- **Razón para el Refinamiento:**  
+  Una interfaz clara mejora productividad y reduce errores de uso.
+
+- **Esperado:**  
+  Navegación intuitiva y experiencia uniforme.
+
+##### 4.3.3.4 Choose One or More Design Concepts That Satisfy the Selected Drivers
+
+Luego de identificar los elementos que requieren refinamiento, se seleccionan conceptos de diseño alineados con los drivers de **usabilidad, rendimiento y modificabilidad**.
+
+### Usabilidad
+
+- **Concepto de Diseño: Dashboard Intuitivo**
+
+  - **Descripción:**  
+    Diseñar paneles visuales simples y comprensibles.
+
+  - **Justificación:**  
+    Facilita interpretación de métricas.
+
+- **Concepto de Diseño: Navegación Simplificada**
+
+  - **Descripción:**  
+    Reducir complejidad de interacción entre módulos.
+
+  - **Justificación:**  
+    Mejora experiencia del usuario.
+
+### Rendimiento
+
+- **Concepto de Diseño: Optimización de Consultas**
+
+  - **Descripción:**  
+    Optimizar consultas relacionadas con reportes y KPIs.
+
+  - **Justificación:**  
+    Reduce tiempos de espera.
+
+- **Concepto de Diseño: Procesamiento Eficiente**
+
+  - **Descripción:**  
+    Gestionar datos analíticos sin afectar rendimiento general.
+
+  - **Justificación:**  
+    Mantiene fluidez del sistema.
+
+### Modificabilidad
+
+- **Concepto de Diseño: Servicios Reutilizables**
+
+  - **Descripción:**  
+    Diseñar módulos reutilizables para métricas y dashboards.
+
+  - **Justificación:**  
+    Facilita evolución del sistema.
+
+- **Concepto de Diseño: Arquitectura Modular**
+
+  - **Descripción:**  
+    Mantener independencia entre analytics y operaciones principales.
+
+  - **Justificación:**  
+    Reduce impacto de cambios futuros.
+
+##### 4.3.3.5 Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
+
+En esta etapa se instancian los componentes arquitectónicos necesarios para soportar funcionalidades analíticas y mejorar la experiencia del usuario dentro de FuelTrack.
+
+### Módulo de Reportes
+
+- **Elementos Arquitectónicos:**
+  - Servicio de reportes
+  - Base de datos histórica
+
+- **Responsabilidades:**
+  - Generar reportes operativos.
+  - Exportar información.
+  - Consolidar datos históricos.
+
+- **Interfaces:**
+  - API REST (`/reports`)
+  - HTTPS
+
+### Módulo de Dashboard y KPIs
+
+- **Elementos Arquitectónicos:**
+  - Servicio analítico
+  - Dashboard visual
+
+- **Responsabilidades:**
+  - Mostrar métricas clave.
+  - Visualizar desempeño operativo.
+  - Generar indicadores.
+
+- **Interfaces:**
+  - API REST (`/analytics`)
+  - JSON vía HTTPS
+
+### Módulo de Experiencia de Usuario
+
+- **Elementos Arquitectónicos:**
+  - Landing Page
+  - Frontend UI
+
+- **Responsabilidades:**
+  - Mejorar navegación.
+  - Mantener consistencia visual.
+  - Optimizar experiencia del usuario.
+
+- **Interfaces:**
+  - HTTPS
+  - Interfaz Web/Móvil
+
+##### 4.3.3.6 Sketch Views (C4 & UML) and Record Design Decisions
+
+Para esta iteración se seleccionó el **Módulo de Analytics y Dashboard**, debido a que concentra las funcionalidades relacionadas con reportes, indicadores y visualización de datos estratégicos del sistema.
+
+**PONER IMAGEN**
+
+##### 4.3.3.7 Analysis of Current Design and Review Iteration Goal (Kanban Board)
+
+Para monitorear el avance de los componentes refinados durante esta iteración, el equipo utiliza un tablero Kanban que facilita la organización de tareas relacionadas con reportes, dashboards y experiencia del usuario.
+
+**PONER IMAGEN**
 
 ---
 
