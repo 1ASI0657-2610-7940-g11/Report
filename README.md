@@ -1246,7 +1246,7 @@ En esta etapa se instancian los principales módulos arquitectónicos de FuelTra
 
 Para esta iteración se seleccionó el **Módulo de Gestión de Pedidos y Trazabilidad**, debido a que representa el núcleo funcional de FuelTrack y concentra las operaciones principales relacionadas con la gestión de pedidos de combustible.
 
-**PONER IMAGEN**
+![Component Diagram 1](img/c4-iteracion-1.png)
 
 ##### 4.3.1.7 Analysis of Current Design and Review Iteration Goal (Kanban Board)
 
@@ -1492,7 +1492,7 @@ En esta etapa se instancian los elementos arquitectónicos necesarios para sopor
 
 Para esta iteración se seleccionó el **Módulo de Gestión Logística y Seguimiento**, debido a que concentra las operaciones relacionadas con transporte, asignación de recursos y trazabilidad de pedidos.
 
-**PONER IMAGEN**
+![Component Diagram 2](img/c4-iteracion-2.png)
 
 ##### 4.3.2.7 Analysis of Current Design and Review Iteration Goal (Kanban Board)
 
@@ -1739,7 +1739,7 @@ En esta etapa se instancian los componentes arquitectónicos necesarios para sop
 
 Para esta iteración se seleccionó el **Módulo de Analytics y Dashboard**, debido a que concentra las funcionalidades relacionadas con reportes, indicadores y visualización de datos estratégicos del sistema.
 
-**PONER IMAGEN**
+![Component Diagram 3](img/c4-iteracion-3.png)
 
 ##### 4.3.3.7 Analysis of Current Design and Review Iteration Goal (Kanban Board)
 
