@@ -1786,15 +1786,48 @@ Para monitorear el avance de los componentes refinados durante esta iteración, 
 
 #### 5.2.1 Software Development Environment Configuration
 
-[Contenido]
+| **Producto** | **Propósito en el proyecto** | **Categoría** | **Ruta de descarga/acceso** | **Descripción** |
+|---|---|---|---|---|
+| **Android Studio**<br><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Android_Studio_Logo_%282023%29.svg/120px-Android_Studio_Logo_%282023%29.svg.png" alt="Android Studio logo" width="56"> | IDE principal para desarrollo de la app Android (Kotlin/Java), emuladores y profiling. | Desarrollo de software | https://developer.android.com/studio | Entorno completo para construir, depurar y empaquetar APK/AAB; integra Gradle, SDK Manager y AVD. |
+| **Visual Studio Code**<br><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/1280px-Visual_Studio_Code_1.35_icon.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20210804221519" alt="VS Code logo" width="56"> | Editor de código principal para el desarrollo frontend, backend y documentación técnica. | Desarrollo de software | https://code.visualstudio.com/ | Editor ligero y extensible utilizado para programación, depuración, integración con Git y administración de extensiones para múltiples tecnologías. |
+| **Postman**<br><img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Postman_%28software%29.png" alt="Postman logo" width="120"> | Pruebas funcionales de APIs (REST), documentación y colecciones de requests. | Testing de API / Desarrollo | https://www.postman.com/ | Permite validar endpoints, usar variables de entorno, tests automáticos y compartir colecciones. |
+| **Lucidchart**<br><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Lucidchart-logo.svg/1280px-Lucidchart-logo.svg.png" alt="Lucidchart logo" width="140"> | Diagramas de procesos, casos de uso, flujos y arquitectura. | Arquitectura & Documentación | https://www.lucidchart.com/ | Herramienta visual para documentar flujos UI, BPMN, ERD y vistas de arquitectura de alto nivel. |
+| **Structurizr**<br><img src="https://static.structurizr.com/img/structurizr-banner.png" alt="Structurizr logo" width="160"> | Modelado de arquitectura mediante el modelo C4 (Context, Container, Component, Code). | Arquitectura & Documentación | https://structurizr.com/ | Permite construir diagramas C4 consistentes utilizando DSL, facilitando la documentación arquitectónica del sistema. |
+| **PlantUML**<br><img src="https://plantuml.com/logo3.png" alt="PlantUML logo" width="90"> | Elaboración de diagramas UML como actividades, clases, secuencia y componentes. | Arquitectura & Modelado | https://plantuml.com/ | Herramienta basada en código utilizada para generar diagramas UML de forma rápida, reutilizable y mantenible dentro de la documentación del proyecto. |
+| **Miro**<br><img src="https://logo.svgcdn.com/l/miro-8x.png" alt="Miro logo" width="144"> | Elaboración colaborativa de diagramas **As-Is** y **To-Be**, ideación y organización visual del proyecto. | UX/UI & Colaboración | https://miro.com/ | Pizarra colaborativa utilizada para modelar escenarios actuales y propuestos, brainstorming, organización visual y diseño temprano del producto. |
+| **Trello**<br><img src="https://cdn.worldvectorlogo.com/logos/trello.svg" alt="Trello logo" width="80"> | Gestión del **Product Backlog**, tareas y seguimiento del avance del equipo. | Gestión de Proyecto | https://trello.com/ | Herramienta de organización basada en tableros Kanban utilizada para administrar historias de usuario, tareas pendientes y seguimiento de entregables. |
+| **GitHub Pages**<br><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub logo" width="40"> | Hosting estático para la **Landing Page** del proyecto. | Deployment / Hosting | https://pages.github.com/ | Publica sitios estáticos directamente desde el repositorio; integra con CI y dominios personalizados. |
 
 #### 5.2.2 Source Code Management
 
-[Contenido]
+FuelTrack es una solución B2B orientada a digitalizar y centralizar el ciclo completo de gestión de pedidos de combustible entre empresas solicitantes y proveedores, incluyendo procesos como solicitud, validación, asignación, seguimiento, pagos y generación de reportes. Debido a la naturaleza operativa del sistema —donde la trazabilidad, disponibilidad y seguridad de la información son aspectos críticos— la gestión del código fuente fue estructurada para asegurar una separación clara de responsabilidades, facilitar el trabajo colaborativo del equipo y mantener un flujo controlado de evolución del producto.
 
-#### 5.2.3 Source Code Style Guide & Conventions
+Con el propósito de mantener consistencia técnica, el equipo utiliza **Visual Studio Code** como entorno principal de desarrollo, además de herramientas complementarias como **Postman** para validación de endpoints RESTful y pruebas funcionales de APIs. Asimismo, la documentación arquitectónica del proyecto, incluyendo diagramas C4 generados con **Structurizr DSL**, diagramas UML elaborados con **PlantUML** y artefactos de arquitectura, es almacenada y versionada junto al código fuente para asegurar trazabilidad entre cambios funcionales y decisiones arquitectónicas.
 
-[Contenido]
+Todo el código fuente del proyecto se encuentra centralizado en la organización de GitHub del equipo:
+
+**Organización GitHub:**  
+https://github.com/1ASI0657-2610-7940-g11
+
+Dentro de esta organización se gestionan los distintos repositorios relacionados con el desarrollo de FuelTrack, incluyendo componentes como la **Landing Page**, documentación técnica y módulos asociados al sistema principal.
+
+<img src="https://i.imgur.com/W9WWwOQ.png" alt="GitHub logo" width="740">
+
+REEMPLAZAR IMAGEN
+
+#### 5.2.3 Source Code Style Guide & Conventions  
+
+Para FuelTrack, la estandarización del código no es solo estética: es el mecanismo que garantiza trazabilidad, mantenibilidad y velocidad de entrega en un producto B2B donde “pedido-→validación-→despacho-→seguimiento-→cierre” debe auditarse sin ambigüedades. Por eso adoptamos vistas C4 para comunicar arquitectura (Context, Container, Component y Deployment) y principios de Clean Architecture para separar presentación / aplicación / dominio / infraestructura, evitando dependencias innecesarias del dominio con frameworks.
+
+Lenguaje y nomenclatura (transversal). Todos los identificadores del código (clases, métodos, variables, paquetes, rutas de API, nombres de archivos) se escriben en inglés; el español se reserva a contenido visible para el usuario o documentación funcional. Se prohíben abreviaturas crípticas y términos con acentos. Convenciones: PascalCase para clases y tipos; camelCase para métodos, variables y propiedades; UPPER_SNAKE_CASE para constantes; nombres de archivos en kebab-case cuando aplique (p. ej., front estático). Comentarios solo cuando aporten intención o contratos; preferimos autoexpresividad del código y KDoc/Javadoc en APIs públicas.
+
+Landing (estático). HTML5 semántico (header, nav, main, section, footer), atributos alt y ARIA donde corresponda, CSS utilitario o BEM de forma consistente, breakpoints responsivos definidos a nivel de tema y Prettier para formateo. JS moderno (ES Modules), sin lógica de negocio en el cliente; todo texto en inglés en código fuente.
+
+Mobile: Kotlin & Flutter. Escribimos en inglés y organizamos por features (orders, auth, tracking); nombres claros: clases en PascalCase, funciones/variables en camelCase y archivos Flutter.
+Textos, colores y tipografías salen de un tema central y archivos de localización. Pantallas como Composables/Widgets pequeños y reutilizables, con estados consistentes (loading/empty/error/success) y navegación simple pasando solo lo necesario.
+Commits con Conventional Commits y PRs obligatorios; priorizamos código legible y sin complejidad innecesaria.
+
+Para la gestión colaborativa del código se emplea la metodología **GitFlow**, utilizando ramas principales como `main` y `develop`, permitiendo un desarrollo organizado, paralelo y controlado. Asimismo, el equipo aplica buenas prácticas mediante **Pull Requests**, revisiones de cambios y versionamiento continuo de la documentación técnica, garantizando mayor mantenibilidad, control de versiones y evolución progresiva del sistema.
 
 #### 5.2.4 Software Deployment Configuration
 
