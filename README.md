@@ -2018,7 +2018,7 @@ Feature: Inicio de sesión
 
 ##### 5.2.1.7 Team Collaboration Insights during Sprint
 
-[Contenido]
+<img width="1506" height="1006" alt="image" src="https://github.com/user-attachments/assets/42a3124b-8e7c-4bcd-819c-1fe4bbb6fd85" />
 
 ##### 5.2.1.8 Kanban Board
 
