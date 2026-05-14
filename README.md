@@ -1833,6 +1833,14 @@ El uso del patrón DTO nos ha brindado diversas ventajas y utilidades esenciales
 **Facilidad de validación y documentación:** Swagger muestra claramente qué datos necesita cada endpoint para funcionar correctamente.
 
 #### 5.1.3 Pattern Based Custom Software Library
+<img width="1620" height="733" alt="image" src="https://github.com/user-attachments/assets/d1b5ab7c-2347-452a-92d2-4e873fb4f041" />
+<img width="1474" height="443" alt="image" src="https://github.com/user-attachments/assets/fdee1498-72dc-49c2-a7a3-859826c3227a" />
+
+Esta sección evidencia la implementación de los controladores del backend, los cuales exponen funcionalidades reutilizables mediante endpoints REST. Estos controladores actúan como una capa de comunicación entre el frontend web y la lógica interna del sistema FuelTrack, permitiendo consultar, registrar y actualizar información mediante el uso de API.
+La ejecución del código se puede observar en controladores como OrdersController, PaymentsController, ProfileController y AuthController, ubicados dentro de la carpeta Features del backend. A través de estos archivos se definen rutas como /api/Orders, /api/Payments/methods, /api/Profile/me y /api/auth/login, las cuales permiten que el frontend web consuma los datos del sistema.
+Lo que hace este segmento es permitir organizar la comunicación por módulos funcionales, manteniendo separado el código de autenticación, pedidos, pagos, perfil y dashboard. Además, al estar documentado mediante Swagger, se puede validar visualmente la ejecución de cada endpoint y comprobar que el backend responde correctamente a las solicitudes realizadas por el cliente web.
+
+
 
 [Contenido]
 
