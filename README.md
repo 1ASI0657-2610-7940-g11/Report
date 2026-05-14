@@ -1840,13 +1840,36 @@ Esta sección evidencia la implementación de los controladores del backend, los
 La ejecución del código se puede observar en controladores como OrdersController, PaymentsController, ProfileController y AuthController, ubicados dentro de la carpeta Features del backend. A través de estos archivos se definen rutas como /api/Orders, /api/Payments/methods, /api/Profile/me y /api/auth/login, las cuales permiten que el frontend web consuma los datos del sistema.
 Lo que hace este segmento es permitir organizar la comunicación por módulos funcionales, manteniendo separado el código de autenticación, pedidos, pagos, perfil y dashboard. Además, al estar documentado mediante Swagger, se puede validar visualmente la ejecución de cada endpoint y comprobar que el backend responde correctamente a las solicitudes realizadas por el cliente web.
 
-
-
-[Contenido]
-
 #### 5.1.4 Framework Pattern Driven Refactoring Report
 
-[Contenido]
+**Implementación del patrón Repository**
+
+En nuestro proyecto FuelTrack, desarrollado con ASP.NET Core Web API, se implementó el patrón Repository para separar la lógica de acceso a datos de la lógica de los controladores. Este patrón permite que los controladores del backend no trabajen directamente con las estructuras internas de almacenamiento, sino que se comuniquen mediante interfaces definidas para cada módulo funcional.
+Este patrón se evidencia dentro de la carpeta back/Backend/Features, donde cada funcionalidad del sistema cuenta con una capa de dominio y una implementación de repositorio. Por ejemplo, en el módulo de pedidos se utiliza la interfaz IOrdersRepository, mientras que su implementación concreta se encuentra en InMemoryOrdersRepository. De la misma forma, existen repositorios para autenticación, dashboard, pagos y perfil.
+
+Gracias a esta organización, el backend puede cambiar la fuente de datos en el futuro sin afectar directamente los controladores. Actualmente se utilizan repositorios en memoria, pero la estructura permite reemplazarlos posteriormente por repositorios conectados a una base de datos real, manteniendo la misma interfaz de comunicación con los controladores.
+
+**Implementación del patrón Dependency Injection**
+
+En nuestro backend se utiliza el patrón Dependency Injection, propio del framework ASP.NET Core, para registrar e inyectar las dependencias necesarias en los controladores. Este patrón permite desacoplar las clases concretas de sus consumidores, haciendo que los controladores dependan de interfaces y no directamente de implementaciones específicas.
+La implementación se encuentra en el archivo Program.cs, donde se registran los repositorios mediante el contenedor de dependencias de ASP.NET Core. En este archivo se vinculan interfaces como IOrdersRepository, IAuthRepository, IHomeRepository, IPaymentsRepository e IProfileRepository con sus respectivas implementaciones en memoria.
+Con esta configuración, ASP.NET Core se encarga de entregar automáticamente las instancias necesarias a los controladores. Por ejemplo, OrdersController recibe un IOrdersRepository en su constructor, sin crear directamente la instancia de InMemoryOrdersRepository. Esto mejora la mantenibilidad del sistema y facilita futuros cambios o pruebas.
+
+**Implementación del patrón DTO**
+
+El proyecto también aplica el patrón DTO, o Data Transfer Object, para definir los objetos que se envían y reciben entre el frontend y el backend. Este patrón permite transportar datos de manera estructurada y evitar que la comunicación HTTP dependa directamente de clases internas no controladas.
+Este patrón se evidencia en clases como LoginRequest, RegisterRequest, AuthResult, UserDto, NewOrderRequest, OrderSummary, OrderDetail, NewPaymentMethodRequest, PaymentMethod, PaymentHistory, ProfileInfo y DashboardSummary. Cada una de estas clases representa la información necesaria para una operación específica dentro del sistema.
+Por ejemplo, cuando el frontend web envía una solicitud para crear un nuevo pedido, utiliza el objeto NewOrderRequest, el cual contiene únicamente los datos necesarios para esa operación: tipo de combustible, cantidad, dirección, franja horaria y notas. De la misma manera, cuando el usuario inicia sesión, el backend recibe un LoginRequest y responde con un AuthResult, que contiene el token generado y los datos del usuario autenticado.
+
+**Implementación del patrón Controller / REST Endpoint**
+
+El backend de FuelTrack utiliza el patrón Controller, propio de ASP.NET Core Web API, para exponer funcionalidades mediante endpoints REST. Cada controlador representa un módulo funcional del sistema y se encarga de recibir solicitudes HTTP, llamar al repositorio correspondiente y devolver una respuesta al cliente.
+Los controladores principales del proyecto son AuthController, HomeController, OrdersController, PaymentsController y ProfileController. Cada uno de ellos se encuentra dentro de su respectivo módulo en la carpeta Features, manteniendo una organización separada por funcionalidades.
+Por ejemplo, PaymentsController expone endpoints para listar métodos de pago, agregar un nuevo método y consultar el historial de pagos. Del mismo modo, ProfileController permite obtener el perfil del cliente, actualizar sus datos y subir un avatar. Esta organización permite que el frontend web desarrollado en Vue consuma la información del backend de manera clara y ordenada.
+Patrón Facade como capa simplificada de acceso desde el frontend
+En nuestro proyecto también se puede identificar una aplicación del patrón Facade desde el lado del frontend web. Aunque no se implementa como una clase backend tradicional, el archivo de servicio del frontend actúa como una fachada que centraliza las llamadas HTTP hacia la API.
+Este patrón se evidencia en el archivo front-web/src/services/api.js, donde se agrupan las operaciones disponibles del backend, como inicio de sesión, registro, dashboard, pedidos, pagos y perfil. Gracias a esta capa, los componentes Vue no necesitan conocer directamente las rutas exactas del backend ni repetir la lógica de comunicación con fetch.
+Este enfoque funciona como una capa de simplificación porque evita que las pantallas del frontend dependan directamente de los detalles internos de la API. Si en el futuro cambia una ruta, se agrega autenticación con headers o se modifica la URL base del backend, solo será necesario actualizar este archivo de servicio, sin alterar todas las vistas del sistema.
 
 ### 5.2 Software Configuration Management
 
