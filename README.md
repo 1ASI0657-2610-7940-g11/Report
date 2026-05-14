@@ -1758,11 +1758,15 @@ Para monitorear el avance de los componentes refinados durante esta iteración, 
 
 #### 5.1.1 Backend Application Core Testing Suite
 
-[Contenido]
+<img width="1169" height="690" alt="image" src="https://github.com/user-attachments/assets/2c3b9ad6-2f05-4e03-a6b3-121aefa3e76b" />
+<img width="1151" height="638" alt="image" src="https://github.com/user-attachments/assets/82cb3103-cdcc-444c-b0e1-a990d918da5b" />
+<img width="1147" height="718" alt="image" src="https://github.com/user-attachments/assets/f5d9a751-810e-4b1f-9a90-e0b9e49223e3" />
+
+En las pruebas del backend de FuelTrack se validaron algunos endpoints principales mediante Swagger, como la creación de pedidos y el inicio de sesión. En el endpoint POST /api/Orders, se verifica que el sistema reciba correctamente los datos necesarios para generar una orden, como el tipo de combustible, cantidad de galones, dirección, horario de atención y notas adicionales. Además, Swagger muestra la respuesta esperada con información del pedido creado, incluyendo su estado, producto, cantidad, fecha de creación, dirección, método de pago y monto. Por otro lado, en el endpoint POST /api/auth/login, se valida el acceso del usuario mediante correo y contraseña, devolviendo como respuesta un token junto con los datos básicos del usuario.
+
 
 #### 5.1.2 Pattern Based Backend Application(s)
 
-[Contenido]
 
 #### 5.1.3 Pattern Based Custom Software Library
 
