@@ -502,133 +502,123 @@ Para comprender mejor a nuestros segmentos objetivo, se han definido dos entrevi
 
 <h3>2.2.2. Registro de entrevistas</h3>
 
-<h4><u>Entrevista 1</u></h4>
+#### Entrevistas al Segmento 1: Proveedores de Combustible
 
-<p><strong>Nombres:</strong> Angela Fabiola</p>
-<p><strong>Apellidos:</strong> Ushiñahua Becerra</p>
-<p><strong>Edad:</strong> 25 años</p>
-<p><strong>Distrito:</strong> Villa El Salvador</p>
+A continuación, se presentan las entrevistas realizadas a proveedores de combustible, quienes actualmente participan en la distribución y despacho de pedidos para distintas empresas solicitantes. El objetivo de estas entrevistas fue comprender los principales problemas operativos, métodos de coordinación, dificultades de seguimiento y oportunidades de mejora dentro del proceso de abastecimiento de combustible.
 
-<p><strong>Captura de la entrevista:</strong><br>
-<img src="img/ENTREVISTA_PROVEEDOR_1_ANGELA.png" alt="entrevista_segmento1" /></p>
+##### Entrevista 1
 
-<p><strong>Inicio:</strong> 00:02<br>
-<strong>Fin:</strong> 04:06<br>
-<strong>Duración:</strong> 04:10<br>
-<p><strong>URL de Entrevista:</strong> 
-<a href="#anexos">Ver anexo</a></p>
+<table style="width:100%; table-layout:fixed; border-collapse:collapse;">
+  <tr>
+    <th style="width:24%; text-align:left;">Campo</th>
+    <th style="text-align:left;">Detalle</th>
+  </tr>
+  <tr><td><strong>Imagen</strong></td><td><img src="img/ENTREVISTA_PROVEEDOR_1_ANGELA.png" alt="Angela Fabiola Ushiñahua Becerra" width="240" /></td></tr>
+  <tr><td><strong>Entrevistado</strong></td><td>Angela Fabiola Ushiñahua Becerra</td></tr>
+  <tr><td><strong>Entrevistador</strong></td><td>Gabriel Lapa de la Cruz</td></tr>
+  <tr><td><strong>Sexo</strong></td><td>Femenino</td></tr>
+  <tr><td><strong>Edad</strong></td><td>25 años</td></tr>
+  <tr><td><strong>Distrito</strong></td><td>Villa El Salvador</td></tr>
+  <tr><td><strong>URL del video</strong></td><td><a href="#anexos">Ver anexo</a></td></tr>
+  <tr><td><strong>Timing</strong></td><td>Inicio: 00:02 | Fin: 04:06 | Duración: 04:10</td></tr>
+  <tr><td><strong>Resumen</strong></td><td>Como proveedora de combustible, Angela indicó que los pedidos se gestionan mediante coordinación con el área de logística y herramientas digitales básicas, aunque aún existen procesos manuales que afectan la eficiencia operativa. El control de despachos se realiza comparando recibos con los clientes, sin contar con seguimiento en tiempo real ni validación automatizada del stock. Entre sus principales dificultades mencionó errores en pedidos y retrasos en entregas. Mostró interés en una plataforma centralizada que permita mejorar la coordinación y trazabilidad del servicio.</td></tr>
+</table>
 
-<h5><strong>Resumen:</strong></h5>
-<p>Como proveedora de combustible, Angela indicó que los pedidos se gestionan mediante coordinación con el área de logística y el uso de herramientas digitales básicas, aunque varios procesos aún son manuales. El control de los despachos se realiza comparando recibos con el cliente, y no cuentan con sistemas para seguimiento en tiempo real ni validación de stock. Entre los principales problemas se encuentran errores en los pedidos o retrasos en la entrega. Finalmente, mostró interés en una plataforma que centralice y optimice estos procesos para mejorar la eficiencia y atención al cliente.</p>
+##### Entrevista 2
 
----
-<h4><u>Entrevista 2</u></h4>
+<table style="width:100%; table-layout:fixed; border-collapse:collapse;">
+  <tr>
+    <th style="width:24%; text-align:left;">Campo</th>
+    <th style="text-align:left;">Detalle</th>
+  </tr>
+  <tr><td><strong>Imagen</strong></td><td><img src="img/entrevista_3_proveedor.png" alt="Carmen Ruiz" width="240" /></td></tr>
+  <tr><td><strong>Entrevistado</strong></td><td>Carmen Ruiz</td></tr>
+  <tr><td><strong>Entrevistador</strong></td><td>Irving Allcca</td></tr>
+  <tr><td><strong>Sexo</strong></td><td>Femenino</td></tr>
+  <tr><td><strong>Edad</strong></td><td>34 años</td></tr>
+  <tr><td><strong>Distrito</strong></td><td>San Juan de Miraflores</td></tr>
+  <tr><td><strong>URL del video</strong></td><td><a href="#anexos">Ver anexo</a></td></tr>
+  <tr><td><strong>Timing</strong></td><td>Inicio: 00:05 | Fin: 05:12 | Duración: 05:07</td></tr>
+  <tr><td><strong>Resumen</strong></td><td>Como proveedora de combustible, Carmen comentó que gran parte del proceso operativo se realiza mediante coordinación manual y herramientas básicas, lo que genera demoras y dificultades para mantener un control eficiente de pedidos. Señaló que el seguimiento de despachos es limitado y considera importante implementar una plataforma digital que permita optimizar el monitoreo y mejorar la coordinación entre áreas.</td></tr>
+</table>
 
-<p><strong>Nombres:</strong> Jhony</p>
-<p><strong>Apellidos:</strong> De la Cruz Salazar</p>
-<p><strong>Edad:</strong> 46 años</p>
-<p><strong>Distrito:</strong> Villa El Salvador</p>
+##### Entrevista 3
 
-<p><strong>Captura de la entrevista:</strong><br>
-<img src="img/ENTREVISTA_EMPRESA_1_JHONY.png" alt="entrevista_segmento2" /></p>
-
-<p><strong>Inicio:</strong> 00:02<br>
-<strong>Fin:</strong> 06:14<br>
-<strong>Duración:</strong> 06:16<br>
-<strong>URL de Entrevista:</strong> 
-<a href="#anexos">Ver anexo</a></p>
-
-<h5><strong>Resumen:</strong></h5>
-<p>Como empresa solicitante de combustible, Jhony indicó que actualmente los pedidos se realizan mediante correo, llamadas o aplicaciones como WhatsApp, lo que genera dificultades en la coordinación y seguimiento de las entregas. El control de lo recibido se realiza de forma manual mediante medición en tanques, lo que puede resultar impreciso. Además, mencionó problemas como retrasos en las entregas que afectan directamente las operaciones del negocio. La trazabilidad es considerada muy importante, ya que permite monitorear el estado de los pedidos y tomar decisiones oportunas. Actualmente utilizan herramientas como Excel y sistemas básicos para el control de consumo, pero expresaron la necesidad de contar con una plataforma que permita hacer seguimiento en tiempo real desde la solicitud hasta la entrega del pedido.
-</p></p>
-
----
-<h4><u>Entrevista 3</u></h4>
-
-<p><strong>Nombres:</strong> Carmen</p>
-<p><strong>Apellidos:</strong> Ruiz</p>
-<p><strong>Edad:</strong> 34 años</p>
-<p><strong>Distrito:</strong> San Juan de Miraflores</p>
-
-<p><strong>Captura de la entrevista:</strong><br>
-<img src="img/entrevista_3_proveedor.png" alt="entrevista_segmento3" /></p>
-
-<p><strong>Inicio:</strong> 00:05<br>
-<strong>Fin:</strong> 05:12<br>
-<strong>Duración:</strong> 05:07<br>
-<strong>URL de Entrevista:</strong> 
-<a href="#anexos">Ver anexo</a></p>
-
-<h5><strong>Resumen:</strong></h5>
-<p>
-Como proveedora de combustible, indicó que los pedidos se gestionan con herramientas básicas y coordinación manual, lo que puede generar retrasos y errores. Considera importante mejorar el seguimiento y control mediante una plataforma digital.
-</p>
+<table style="width:100%; table-layout:fixed; border-collapse:collapse;">
+  <tr>
+    <th style="width:24%; text-align:left;">Campo</th>
+    <th style="text-align:left;">Detalle</th>
+  </tr>
+  <tr><td><strong>Imagen</strong></td><td><img src="img/entrevista_4_proveedor.png" alt="Manuel Rojas" width="240" /></td></tr>
+  <tr><td><strong>Entrevistado</strong></td><td>Manuel Rojas</td></tr>
+  <tr><td><strong>Entrevistador</strong></td><td>Gianfranco Durand Vega</td></tr>
+  <tr><td><strong>Sexo</strong></td><td>Masculino</td></tr>
+  <tr><td><strong>Edad</strong></td><td>41 años</td></tr>
+  <tr><td><strong>Distrito</strong></td><td>Villa María del Triunfo</td></tr>
+  <tr><td><strong>URL del video</strong></td><td><a href="#anexos">Ver anexo</a></td></tr>
+  <tr><td><strong>Timing</strong></td><td>Inicio: 00:03 | Fin: 05:45 | Duración: 05:42</td></tr>
+  <tr><td><strong>Resumen</strong></td><td>Como proveedor de combustible, Manuel mencionó que el proceso actual depende de llamadas, coordinación manual y herramientas básicas, lo cual ocasiona retrasos y posibles errores operativos. Considera importante contar con un sistema centralizado que permita monitorear pedidos, mejorar el control y optimizar el tiempo de respuesta frente a solicitudes de clientes.</td></tr>
+</table>
 
 ---
-<h4><u>Entrevista 4</u></h4>
 
-<p><strong>Nombres:</strong> Manuel</p>
-<p><strong>Apellidos:</strong> Rojas</p>
-<p><strong>Edad:</strong> 41 años</p>
-<p><strong>Distrito:</strong> Villa María del Triunfo</p>
+#### Entrevistas al Segmento 2: Empresas Solicitantes
 
-<p><strong>Captura de la entrevista:</strong><br>
-<img src="img/entrevista_4_proveedor.png" alt="entrevista_segmento4" /></p>
+A continuación, se presentan las entrevistas realizadas a empresas solicitantes de combustible, las cuales requieren abastecimiento constante para mantener operativas sus actividades. Estas entrevistas permitieron identificar problemas relacionados con la coordinación de pedidos, seguimiento de entregas, control de consumo y necesidad de trazabilidad dentro del proceso actual.
 
-<p><strong>Inicio:</strong> 00:03<br>
-<strong>Fin:</strong> 05:45<br>
-<strong>Duración:</strong> 05:42<br>
-<strong>URL de Entrevista:</strong> 
-<a href="#anexos">Ver anexo</a></p>
+##### Entrevista 4
 
-<h5><strong>Resumen:</strong></h5>
-<p>
-Como proveedor de combustible, mencionó que el proceso actual depende de coordinación manual y herramientas básicas, lo que puede generar errores y retrasos. Considera necesario contar con un sistema que centralice la gestión y mejore el seguimiento de pedidos.
-</p>
+<table style="width:100%; table-layout:fixed; border-collapse:collapse;">
+  <tr>
+    <th style="width:24%; text-align:left;">Campo</th>
+    <th style="text-align:left;">Detalle</th>
+  </tr>
+  <tr><td><strong>Imagen</strong></td><td><img src="img/ENTREVISTA_EMPRESA_1_JHONY.png" alt="Jhony De la Cruz Salazar" width="240" /></td></tr>
+  <tr><td><strong>Entrevistado</strong></td><td>Jhony De la Cruz Salazar</td></tr>
+  <tr><td><strong>Entrevistador</strong></td><td>Gabriel Lapa de la Cruz</td></tr>
+  <tr><td><strong>Sexo</strong></td><td>Masculino</td></tr>
+  <tr><td><strong>Edad</strong></td><td>46 años</td></tr>
+  <tr><td><strong>Distrito</strong></td><td>Villa El Salvador</td></tr>
+  <tr><td><strong>URL del video</strong></td><td><a href="#anexos">Ver anexo</a></td></tr>
+  <tr><td><strong>Timing</strong></td><td>Inicio: 00:02 | Fin: 06:14 | Duración: 06:16</td></tr>
+  <tr><td><strong>Resumen</strong></td><td>Como empresa solicitante de combustible, Jhony indicó que los pedidos se realizan mediante llamadas, correo electrónico y WhatsApp, lo que dificulta la coordinación y el seguimiento eficiente. El control del combustible recibido se realiza manualmente mediante medición en tanques, lo cual puede resultar impreciso. Destacó que los retrasos afectan directamente las operaciones del negocio y señaló la necesidad de una plataforma que permita visualizar el estado del pedido en tiempo real y mejorar la trazabilidad de todo el proceso.</td></tr>
+</table>
 
----
-<h4><u>Entrevista 5</u></h4>
+##### Entrevista 5
 
-<p><strong>Nombres:</strong> Daniel</p>
-<p><strong>Apellidos:</strong> Ortega</p>
-<p><strong>Edad:</strong> 38 años</p>
-<p><strong>Distrito:</strong> San Isidro</p>
+<table style="width:100%; table-layout:fixed; border-collapse:collapse;">
+  <tr>
+    <th style="width:24%; text-align:left;">Campo</th>
+    <th style="text-align:left;">Detalle</th>
+  </tr>
+  <tr><td><strong>Imagen</strong></td><td><img src="img/entrevista_5_empresa.png" alt="Daniel Ortega" width="240" /></td></tr>
+  <tr><td><strong>Entrevistado</strong></td><td>Daniel Ortega</td></tr>
+  <tr><td><strong>Entrevistador</strong></td><td>Irving Allcca</td></tr>
+  <tr><td><strong>Sexo</strong></td><td>Masculino</td></tr>
+  <tr><td><strong>Edad</strong></td><td>38 años</td></tr>
+  <tr><td><strong>Distrito</strong></td><td>San Isidro</td></tr>
+  <tr><td><strong>URL del video</strong></td><td><a href="#anexos">Ver anexo</a></td></tr>
+  <tr><td><strong>Timing</strong></td><td>Inicio: 00:04 | Fin: 06:20 | Duración: 06:16</td></tr>
+  <tr><td><strong>Resumen</strong></td><td>Como empresa solicitante, Daniel señaló que actualmente los pedidos se gestionan mediante medios informales como correos y mensajería, lo que genera limitaciones en el seguimiento y coordinación con proveedores. Considera importante implementar una solución digital que permita monitorear el estado de los pedidos en tiempo real y reducir errores de coordinación.</td></tr>
+</table>
 
-<p><strong>Captura de la entrevista:</strong><br>
-<img src="img/entrevista_5_empresa.png" alt="entrevista_segmento5" /></p>
+##### Entrevista 6
 
-<p><strong>Inicio:</strong> 00:04<br>
-<strong>Fin:</strong> 06:20<br>
-<strong>Duración:</strong> 06:16<br>
-<strong>URL de Entrevista:</strong> 
-<a href="#anexos">Ver anexo</a></p>
-
-<h5><strong>Resumen:</strong></h5>
-<p>
-Como empresa solicitante, indicó que los pedidos se realizan mediante canales informales como correo o mensajería, lo que dificulta el seguimiento y control. Considera importante contar con una solución que permita monitorear los pedidos en tiempo real y mejorar la coordinación con los proveedores.
-</p>
-
----
-<h4><u>Entrevista 6</u></h4>
-
-<p><strong>Nombres:</strong> Lucía</p>
-<p><strong>Apellidos:</strong> Castillo</p>
-<p><strong>Edad:</strong> 32 años</p>
-<p><strong>Distrito:</strong> Miraflores</p>
-
-<p><strong>Captura de la entrevista:</strong><br>
-<img src="img/entrevista_6_empresa.png" alt="entrevista_segmento6" /></p>
-
-<p><strong>Inicio:</strong> 00:03<br>
-<strong>Fin:</strong> 05:58<br>
-<strong>Duración:</strong> 05:55<br>
-<strong>URL de Entrevista:</strong> 
-<a href="#anexos">Ver anexo</a></p>
-
-<h5><strong>Resumen:</strong></h5>
-<p>
-Como empresa solicitante, señaló que el proceso actual de pedidos se realiza mediante canales no centralizados, lo que genera dificultades en el control y seguimiento. Considera necesario implementar una plataforma que permita mejorar la trazabilidad y la coordinación con los proveedores.
-</p>
+<table style="width:100%; table-layout:fixed; border-collapse:collapse;">
+  <tr>
+    <th style="width:24%; text-align:left;">Campo</th>
+    <th style="text-align:left;">Detalle</th>
+  </tr>
+  <tr><td><strong>Imagen</strong></td><td><img src="img/entrevista_6_empresa.png" alt="Lucía Castillo" width="240" /></td></tr>
+  <tr><td><strong>Entrevistado</strong></td><td>Lucía Castillo</td></tr>
+  <tr><td><strong>Entrevistador</strong></td><td>Gianfranco Durand Vega</td></tr>
+  <tr><td><strong>Sexo</strong></td><td>Femenino</td></tr>
+  <tr><td><strong>Edad</strong></td><td>32 años</td></tr>
+  <tr><td><strong>Distrito</strong></td><td>Miraflores</td></tr>
+  <tr><td><strong>URL del video</strong></td><td><a href="#anexos">Ver anexo</a></td></tr>
+  <tr><td><strong>Timing</strong></td><td>Inicio: 00:03 | Fin: 05:58 | Duración: 05:55</td></tr>
+  <tr><td><strong>Resumen</strong></td><td>Como empresa solicitante, Lucía indicó que actualmente el proceso de pedidos se realiza mediante canales no centralizados, generando dificultades para el control y seguimiento de entregas. Considera necesario implementar una plataforma que permita mejorar la trazabilidad, optimizar tiempos de coordinación y fortalecer la relación con los proveedores.</td></tr>
+</table>
 
 ### 2.3 Needfinding
 
