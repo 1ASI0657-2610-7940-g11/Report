@@ -1748,7 +1748,7 @@ Para esta iteración se seleccionó el **Módulo de Analytics y Dashboard**, deb
 
 Para monitorear el avance de los componentes refinados durante esta iteración, el equipo utiliza un tablero Kanban que facilita la organización de tareas relacionadas con reportes, dashboards y experiencia del usuario.
 
-**PONER IMAGEN**
+![kanban](https://imgur.com/0AqcbCZ.png)
 
 ---
 
