@@ -1767,6 +1767,70 @@ En las pruebas del backend de FuelTrack se validaron algunos endpoints principal
 
 #### 5.1.2 Pattern Based Backend Application(s)
 
+**Uso del Patrón Repository en el acceso a datos del Backend**
+En nuestro backend desarrollado con ASP.NET Core Web API, hemos implementado y aplicado el patrón Repository para organizar el acceso a los datos de las funcionalidades principales del sistema FuelTrack. Este patrón se utiliza en módulos como Auth, Home, Orders, Payments y Profile, permitiendo separar la lógica de los controladores de la lógica encargada de obtener, registrar o modificar la información.
+
+**Descripción del Patrón Repository**
+
+El patrón Repository actúa como una capa intermedia entre los controladores de la API y la fuente de datos. En nuestro caso, los controladores no acceden directamente a listas, objetos o almacenamiento interno, sino que utilizan interfaces como IAuthRepository, IOrdersRepository, IPaymentsRepository, IProfileRepository e IHomeRepository. Cada una de estas interfaces tiene una implementación en memoria, como InMemoryOrdersRepository o InMemoryPaymentsRepository.
+
+**Ventajas y Utilidades del Repository**
+
+El uso del patrón Repository nos ha brindado diversas ventajas y utilidades esenciales para nuestro proyecto:
+
+**Abstracción del acceso a datos:** Los controladores no necesitan conocer cómo se almacenan los datos, solo llaman a métodos definidos por interfaces.
+**Separación de responsabilidades:** La lógica de entrada y salida HTTP permanece en los controladores, mientras que la gestión de datos queda en los repositorios.
+**Facilidad de mantenimiento:** Si en el futuro se cambia el almacenamiento en memoria por una base de datos real, solo se reemplazan las implementaciones de los repositorios.
+**Código más ordenado:** Cada módulo del backend mantiene sus propias clases de dominio, repositorio y controlador, facilitando la lectura del proyecto.
+
+**Uso del Patrón Singleton en los Repositorios del Backend**
+
+En nuestro backend hemos implementado el patrón Singleton mediante el sistema de inyección de dependencias de ASP.NET Core. Los repositorios principales del sistema se registran como una única instancia durante la ejecución de la aplicación, permitiendo que los datos en memoria se mantengan mientras el backend permanece activo.
+
+**Descripción del Patrón Singleton**
+
+El patrón Singleton garantiza que una clase tenga una única instancia compartida en toda la aplicación. En nuestro caso, esto se logra usando AddSingleton en el archivo Program.cs, donde se registran repositorios como InMemoryOrdersRepository, InMemoryAuthRepository, InMemoryHomeRepository, InMemoryPaymentsRepository e InMemoryProfileRepository.
+
+**Ventajas y Utilidades del Singleton**
+
+El uso del patrón Singleton nos ha brindado diversas ventajas y utilidades esenciales para nuestro proyecto:
+
+**Persistencia temporal en memoria:** Los datos creados durante la ejecución del backend se mantienen disponibles mientras la API siga encendida.
+**Reutilización de instancias:** Evita crear un nuevo repositorio por cada solicitud HTTP, reutilizando la misma instancia.
+**Centralización del estado:** Los pedidos, métodos de pago, perfil y usuarios registrados se administran desde una instancia compartida.
+**Simplicidad para desarrollo:** Permite simular una base de datos sin configurar todavía SQL Server, MySQL, PostgreSQL u otra base de datos real.
+**Uso del Patrón MVC / Controller en la exposición de servicios REST**
+
+En nuestro backend se utiliza el patrón basado en controladores propio de ASP.NET Core Web API. Cada funcionalidad del sistema FuelTrack cuenta con un controlador encargado de recibir solicitudes HTTP y devolver respuestas al cliente web o móvil. Esto se evidencia en controladores como AuthController, OrdersController, PaymentsController, ProfileController y HomeController.
+
+**Descripción del Patrón MVC / Controller**
+
+El patrón Controller permite organizar la API en clases responsables de manejar rutas específicas. Por ejemplo, AuthController administra el registro e inicio de sesión, OrdersController gestiona pedidos, PaymentsController administra pagos, ProfileController maneja el perfil del cliente y HomeController entrega el resumen principal del dashboard.
+
+**Ventajas y Utilidades del Controller**
+
+El uso de controladores nos ha brindado diversas ventajas y utilidades esenciales para nuestro proyecto:
+
+**Organización por funcionalidades:** Cada controlador representa un módulo específico del sistema.
+**Claridad en los endpoints:** Las rutas REST están separadas por responsabilidad, como /api/auth/login, /api/orders o /api/profile/me.
+**Comunicación directa con el frontend:** El nuevo proyecto web en Vue puede consumir estos endpoints de forma clara y ordenada.
+**Facilidad de documentación:** Swagger detecta automáticamente los controladores y muestra los endpoints disponibles para pruebas.
+**Uso del Patrón DTO en la comunicación entre Frontend y Backend**
+
+En nuestro backend hemos utilizado objetos DTO y modelos de solicitud/respuesta para transportar información entre el frontend y la API. Este patrón se aplica en funcionalidades como autenticación, creación de pedidos, métodos de pago, perfil y dashboard del cliente.
+
+**Descripción del Patrón DTO**
+
+El patrón DTO, o Data Transfer Object, permite definir estructuras específicas para enviar y recibir datos sin exponer directamente la lógica interna del sistema. En nuestro proyecto se utilizan clases como LoginRequest, RegisterRequest, AuthResult, UserDto, NewOrderRequest, NewPaymentMethodRequest, DashboardSummary y ProfileInfo.
+
+**Ventajas y Utilidades del DTO**
+
+El uso del patrón DTO nos ha brindado diversas ventajas y utilidades esenciales para nuestro proyecto:
+
+**Comunicación estructurada:** El frontend envía y recibe datos con formatos definidos.
+**Mayor claridad en las solicitudes:** Cada endpoint recibe únicamente los campos necesarios para ejecutar su operación.
+**Separación del modelo interno:** La API puede controlar qué información expone al cliente.
+**Facilidad de validación y documentación:** Swagger muestra claramente qué datos necesita cada endpoint para funcionar correctamente.
 
 #### 5.1.3 Pattern Based Custom Software Library
 
