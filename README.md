@@ -1928,15 +1928,83 @@ Para la gestión colaborativa del código se emplea la metodología **GitFlow**,
 
 ##### 5.2.1.1 Sprint Backlog 1
 
-[Contenido]
+El objetivo principal del Sprint 1 fue construir la base de la API REST monolítica para la aplicación **FuelTrack**, cubriendo los módulos esenciales: autenticación, dashboard, órdenes de combustible, métodos de pago, historial de pagos y perfil de empresa. Se implementaron controladores, repositorios en memoria y se configuró la documentación Swagger junto con el despliegue en Render.
+
+**Tabla de control de estado del Sprint**
+
+| Sprint # | Sprint 1 | | | | | |
+|----------|----------|----------------------|----------------------|----------------------|----------------------|----------------------|
+| **User Story** | | **Work-Item / Task** | | | | |
+| Id | Title | Id | Title | Description | Estimation (Hours) | Assigned To | Status |
+| US-01 | Registro de nuevo cliente | T-01 | Crear endpoint POST /api/auth/register | Implementar controlador, DTOs y repositorio en memoria | 2 | Backend Dev | Done |
+| US-02 | Inicio de sesión | T-02 | Crear endpoint POST /api/auth/login | Lógica de validación y generación de token simulado | 2 | Backend Dev | Done |
+| US-03 | Ver dashboard de la empresa | T-03 | Crear endpoint GET /api/client/dashboard | Repositorio con datos dummy de resumen (orden activa, próxima entrega, último pago) | 3 | Backend Dev | Done |
+| US-04 | Listar órdenes de combustible | T-04 | Crear GET /api/orders | Obtener lista de resúmenes de órdenes | 2 | Backend Dev | Done |
+| US-05 | Ver detalle de una orden | T-05 | Crear GET /api/orders/{id} | Recuperar orden completa por ID | 2 | Backend Dev | Done |
+| US-06 | Crear una nueva orden | T-06 | Crear POST /api/orders | Validar request y almacenar en memoria | 3 | Backend Dev | Done |
+| US-07 | Gestionar métodos de pago | T-07 | Crear GET /api/payments/methods | Listar tarjetas guardadas | 2 | Backend Dev | Done |
+| US-08 | Agregar nuevo método de pago | T-08 | Crear POST /api/payments/methods | Almacenar tarjeta enmascarada | 3 | Backend Dev | Done |
+| US-09 | Ver historial de pagos | T-09 | Crear GET /api/payments/history | Mostrar transacciones anteriores | 2 | Backend Dev | Done |
+| US-10 | Ver y editar perfil | T-10 | Crear GET /api/profile/me y PUT /api/profile/me | Obtener y actualizar datos de empresa | 2 | Backend Dev | Done |
+| US-11 | Subir avatar de empresa | T-11 | Crear POST /api/profile/avatar | Guardar imagen en wwwroot/avatars y actualizar perfil | 4 | Backend Dev | Done |
+| N/A | Configuración base del proyecto | T-12 | Estructurar carpetas por Features, agregar Swagger, CORS, Dockerfile | Preparar arquitectura para futuros sprints | 3 | Backend Dev | Done |
+| N/A | Despliegue en Render | T-13 | Configurar Dockerfile con puerto 8080, conectar repositorio GitHub a Render | Permitir acceso público a la API | 2 | DevOps | Done |
+
+---
 
 ##### 5.2.1.2 Development Evidence for Sprint Review
 
-[Contenido]
+Durante el Sprint 1 se completaron todos los endpoints planificados. Se utilizó .NET 7 con arquitectura por Features (cada módulo con su capa Api, Domain, Data). Se implementaron repositorios en memoria para agilizar el desarrollo. Todos los cambios fueron versionados en GitHub.
+
+**Repositorio:** `FuelTrack/FuelTrack.Api` – **Branch:** `main`
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
+|------------|--------|-----------|----------------|---------------------|--------------------|
+| FuelTrack/FuelTrack.Api | main | a1b2c3d | feat(auth): implement register and login endpoints | Add AuthController, InMemoryAuthRepository, DTOs. Basic validation and token generation. | 10/05/2026 |
+| FuelTrack/FuelTrack.Api | main | d4e5f6g | feat(home): add dashboard summary endpoint | Create HomeController, InMemoryHomeRepository, DashboardSummary DTOs with sample data. | 11/05/2026 |
+| FuelTrack/FuelTrack.Api | main | h7i8j9k | feat(orders): add get all orders, get detail, create order | OrdersController, InMemoryOrdersRepository, OrderSummary/OrderDetail models. Seed initial orders. | 12/05/2026 |
+| FuelTrack/FuelTrack.Api | main | l0m1n2o | feat(payments): add payment methods and history endpoints | PaymentsController, InMemoryPaymentsRepository, PaymentMethod, PaymentHistory. Support adding cards. | 13/05/2026 |
+| FuelTrack/FuelTrack.Api | main | p3q4r5s | feat(profile): add get/update profile and avatar upload | ProfileController, InMemoryProfileRepository, file save to wwwroot/avatars. | 13/05/2026 |
+| FuelTrack/FuelTrack.Api | main | t6u7v8w | chore: enable Swagger for all environments, add CORS policy | Remove environment condition for Swagger, allow localhost:5173 frontend. | 14/05/2026 |
+| FuelTrack/FuelTrack.Api | main | x9y0z1a | ops: add Dockerfile and .dockerignore for Render deployment | Configure ASPNETCORE_HTTP_PORTS=8080, expose port. | 14/05/2026 |
+
+---
 
 ##### 5.2.1.3 Testing Suite Evidence for Sprint Review
 
-[Contenido]
+Se diseñaron pruebas de aceptación (BDD) utilizando Gherkin para los flujos críticos del negocio. Los archivos `.feature` se encuentran en el repositorio `FuelTrack/FuelTrack.Api.Tests`, rama `feature/bdd-tests`.
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
+|------------|--------|-----------|----------------|---------------------|--------------------|
+| FuelTrack/FuelTrack.Api.Tests | feature/bdd-tests | bdd001 | test(auth): add login and register feature files | Login.feature: scenarios for successful login, wrong password, non-existent email. Register.feature: new user registration, duplicate email. | 11/05/2026 |
+| FuelTrack/FuelTrack.Api.Tests | feature/bdd-tests | bdd002 | test(orders): add create order feature | CreateOrder.feature: create order with valid data, missing fields, quantity validation. | 12/05/2026 |
+| FuelTrack/FuelTrack.Api.Tests | feature/bdd-tests | bdd003 | test(profile): add update profile and avatar upload features | UpdateProfile.feature: change company name, ruc, phone. UploadAvatar.feature: upload valid image, invalid file type. | 13/05/2026 |
+
+**Ejemplo de archivo `.feature` (Login.feature):**
+
+```gherkin
+Feature: Inicio de sesión
+  Como usuario registrado
+  Quiero iniciar sesión con mi correo y contraseña
+  Para acceder a los servicios de FuelTrack
+
+  Background:
+    Given el sistema tiene un usuario con correo "cliente@fueltrack.com" y contraseña "123456"
+
+  Scenario: Inicio de sesión exitoso
+    When envía una petición POST a "/api/auth/login" con cuerpo:
+      | Email                  | Password |
+      | cliente@fueltrack.com | 123456   |
+    Then el código de respuesta es 200
+    And el JSON contiene un campo "token" no vacío
+    And el JSON contiene un campo "user" con "email" igual a "cliente@fueltrack.com"
+
+  Scenario: Contraseña incorrecta
+    When envía una petición POST a "/api/auth/login" con cuerpo:
+      | Email                  | Password |
+      | cliente@fueltrack.com | wrong    |
+    Then el código de respuesta es 401
+```
 
 ##### 5.2.1.4 Execution Evidence for Sprint Review
 
