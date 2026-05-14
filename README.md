@@ -1900,9 +1900,7 @@ https://github.com/1ASI0657-2610-7940-g11
 
 Dentro de esta organización se gestionan los distintos repositorios relacionados con el desarrollo de FuelTrack, incluyendo componentes como la **Landing Page**, documentación técnica y módulos asociados al sistema principal.
 
-<img src="https://i.imgur.com/W9WWwOQ.png" alt="GitHub logo" width="740">
-
-REEMPLAZAR IMAGEN
+<img src="https://github.com/user-attachments/assets/96336638-d9b9-4934-9dbe-27eb892feaee" alt="GitHub logo" width="740">
 
 #### 5.2.3 Source Code Style Guide & Conventions  
 
