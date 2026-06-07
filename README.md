@@ -2006,15 +2006,83 @@ Feature: Inicio de sesión
 
 ##### 5.2.1.4 Execution Evidence for Sprint Review
 
-[Contenido]
+Durante el Sprint 1 se completó el desarrollo y despliegue de las aplicaciones orientadas al usuario de FuelTrack. La Landing Page fue desarrollada utilizando Vue.js y desplegada en Netlify, mientras que la aplicación Frontend principal fue desplegada mediante GitHub Pages.
+
+La validación de ejecución se enfocó en verificar el correcto funcionamiento de la navegación, la experiencia de usuario, la adaptación responsive y la disponibilidad pública de ambas aplicaciones.
+
+Las actividades ejecutadas fueron las siguientes:
+
+- Desarrollo y despliegue de la Landing Page.
+- Desarrollo y despliegue del Frontend Web.
+- Validación de navegación entre páginas.
+- Verificación de componentes visuales y contenido.
+- Pruebas de diseño responsive en diferentes resoluciones.
+- Validación de accesibilidad y experiencia de usuario.
+- Verificación de disponibilidad en entornos productivos.
+
+**Evidencia de ejecución de la Landing Page**
+
+<img width="1600" height="900" alt="Landing Page Execution" src="./img/landing-execution.png" />
+
+**Evidencia de ejecución del Frontend Web**
+
+<img width="1600" height="900" alt="Frontend Execution" src="./img/frontend-execution.png" />
+
+Los resultados obtenidos demostraron que ambas aplicaciones se encuentran operativas y accesibles públicamente, proporcionando la base necesaria para la integración con el backend monolítico que será desarrollado durante el Sprint 2.
+
 
 ##### 5.2.1.5 Microservices Documentation Evidence for Sprint Review
 
-[Contenido]
+Durante el Sprint 1 no se desarrollaron microservicios ni componentes backend. El trabajo realizado estuvo enfocado en la construcción de la capa de presentación mediante la Landing Page y el Frontend Web.
+
+Sin embargo, se documentó la estructura de las aplicaciones cliente para facilitar la futura integración con el backend del sistema. La documentación incluyó:
+
+- Arquitectura de la Landing Page.
+- Arquitectura del Frontend Web.
+- Estructura de componentes.
+- Flujos de navegación.
+- Configuración de despliegue.
+- Organización del código fuente.
+- Configuración de internacionalización.
 
 ##### 5.2.1.6 Software Deployment Evidence for Sprint Review
 
-[Contenido]
+Como parte de las actividades del Sprint 1, se realizaron los despliegues de las aplicaciones cliente en plataformas cloud públicas para permitir su acceso y evaluación por parte de los usuarios y stakeholders.
+
+El proceso de despliegue incluyó:
+
+1. Publicación del código fuente en GitHub.
+2. Configuración de compilación automática.
+3. Despliegue de la Landing Page en Netlify.
+4. Despliegue del Frontend Web en GitHub Pages.
+5. Validación de acceso público.
+6. Verificación del correcto funcionamiento de los entornos productivos.
+
+**Landing Page**
+
+Plataforma: Netlify
+
+URL de despliegue:
+
+https://zingy-syrniki-fc06b3.netlify.app/
+
+Evidencia de despliegue:
+
+<img width="1600" height="900" alt="Netlify Deployment" src="./img/landing-deploy.png" />
+
+**Frontend Web**
+
+Plataforma: GitHub Pages
+
+URL de despliegue:
+
+https://TU-URL-GITHUB-PAGES
+
+Evidencia de despliegue:
+
+<img width="1600" height="900" alt="GitHub Pages Deployment" src="./img/frontend-deploy.png" />
+
+Los despliegues fueron completados exitosamente y permanecerán disponibles durante el desarrollo de los siguientes sprints. En el Sprint 2 se desarrollará y desplegará la API Backend Monolítica, la cual será integrada con estas aplicaciones cliente.
 
 ##### 5.2.1.7 Team Collaboration Insights during Sprint
 
