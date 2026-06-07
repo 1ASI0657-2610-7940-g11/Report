@@ -2108,15 +2108,82 @@ Los despliegues fueron completados exitosamente y permanecerán disponibles dura
 
 ##### 5.2.2.4 Execution Evidence for Sprint Review
 
-[Contenido]
+Durante el Sprint 2 se completó el desarrollo y ejecución del Backend Monolítico de FuelTrack. Este backend fue construido como una API REST, permitiendo centralizar los principales servicios del sistema en una sola aplicación.
+
+La ejecución se validó mediante Swagger UI, donde se probaron los endpoints implementados para los módulos de autenticación, dashboard, órdenes, pagos y perfil empresarial.
+
+Las actividades ejecutadas fueron las siguientes:
+
+- Implementación de la API REST monolítica.
+- Configuración de controladores y endpoints principales.
+- Validación de peticiones HTTP mediante Swagger.
+- Pruebas de registro e inicio de sesión.
+- Pruebas de consulta de dashboard.
+- Pruebas de creación y consulta de órdenes.
+- Pruebas de métodos de pago e historial.
+- Pruebas de perfil empresarial y carga de avatar.
+
+**Evidencia de ejecución del Backend Monolítico**
+
+<img width="1600" height="900" alt="Backend Execution Evidence" src="./img/backend-execution.png" />
+
+Los resultados confirmaron que la API responde correctamente y que los endpoints principales se encuentran funcionales para su futura integración con el Frontend Web desarrollado en el Sprint 1.
+
 
 ##### 5.2.2.5 Microservices Documentation Evidence for Sprint Review
 
-[Contenido]
+Durante el Sprint 2 se documentó el Backend Monolítico de FuelTrack. Aunque la solución no fue implementada como microservicios independientes, se organizó internamente por módulos funcionales para mantener una estructura clara y escalable.
+
+Los módulos documentados fueron:
+
+- Authentication
+- Dashboard
+- Orders
+- Payments
+- Profile
+
+La documentación técnica incluyó:
+
+- Endpoints REST disponibles.
+- Métodos HTTP utilizados.
+- Modelos de request y response.
+- Estructura modular del backend.
+- Configuración de Swagger/OpenAPI.
+- Reglas básicas de validación.
+- Separación por responsabilidades dentro del monolito.
+
 
 ##### 5.2.2.6 Software Deployment Evidence for Sprint Review
 
-[Contenido]
+Como parte del Sprint 2, el Backend Monolítico de FuelTrack fue desplegado exitosamente en Render, permitiendo que la API esté disponible públicamente para pruebas e integración con el Frontend Web.
+
+**Backend Monolítico**
+
+Plataforma: Render
+
+URL base de despliegue:
+
+https://back-7eu8.onrender.com
+
+
+El proceso de despliegue fue el siguiente:
+
+1. Se subió el proyecto backend al repositorio de GitHub.
+2. Se verificó que el proyecto compile correctamente de forma local.
+3. Se agregó el archivo `Dockerfile` para permitir el despliegue mediante contenedor.
+4. Se configuró el puerto de ejecución del backend en `8080`.
+5. Se ingresó a Render y se creó un nuevo Web Service.
+6. Se conectó el repositorio de GitHub con Render.
+7. Se seleccionó la rama principal del proyecto.
+8. Render construyó automáticamente la imagen del proyecto.
+9. Se inició el servicio backend en la nube.
+10. Se verificó el acceso público a Swagger desde la URL desplegada.
+
+**Evidencia de despliegue en Render**
+
+<img width="1600" height="900" alt="Render Backend Deployment" src="./img/backend-render-deploy.png" />
+
+El despliegue fue completado correctamente. La API quedó disponible públicamente mediante Render y lista para ser consumida por el Frontend Web desarrollado en el Sprint 1.
 
 ##### 5.2.2.7 Team Collaboration Insights during Sprint
 
