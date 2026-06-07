@@ -2094,9 +2094,39 @@ Los despliegues fueron completados exitosamente y permanecerán disponibles dura
 
 #### Sprint 2
 
+El objetivo principal del Sprint 2 fue completar y desplegar los principales componentes funcionales de FuelTrack, integrando la Landing Page, el Frontend Web y el Backend Monolítico. En este sprint se trabajó la capa pública de presentación, la aplicación web para usuarios registrados y la API REST centralizada, permitiendo validar la navegación, los flujos principales del sistema, la documentación mediante Swagger y el despliegue en plataformas cloud como Netlify, GitHub Pages y Render.
+
 ##### 5.2.2.1 Sprint Backlog 2
 
-[Contenido]
+| Sprint #       | Sprint 2                         |                      |                                                |                                                                                            |                    |              |        |
+| -------------- | -------------------------------- | -------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------ | ------------ | ------ |
+| **User Story** |                                  | **Work-Item / Task** |                                                |                                                                                            |                    |              |        |
+| Id             | Title                            | Id                   | Title                                          | Description                                                                                | Estimation (Hours) | Assigned To  | Status |
+| US-13          | Explorar landing                 | T-01                 | Desarrollar estructura base de la Landing Page | Crear secciones públicas de presentación, navegación, beneficios y llamados a la acción    | 3                  | Frontend Dev | Done   |
+| US-14          | Consultar Home pública           | T-02                 | Implementar Home de la Landing Page            | Mostrar propósito de FuelTrack, propuesta de valor y acceso a las principales secciones    | 3                  | Frontend Dev | Done   |
+| US-15          | Conocer About Us                 | T-03                 | Crear sección About Us                         | Presentar información del equipo, propósito del proyecto y visión de la solución           | 2                  | Frontend Dev | Done   |
+| US-16          | Entender cómo funciona           | T-04                 | Crear sección “Cómo funciona”                  | Explicar el flujo general entre empresa solicitante y proveedor de combustible             | 3                  | Frontend Dev | Done   |
+| US-17          | Enviar contacto                  | T-05                 | Implementar formulario de contacto             | Crear formulario con campos básicos, validaciones y mensaje de confirmación visual         | 3                  | Frontend Dev | Done   |
+| US-08          | Iniciar sesión                   | T-06                 | Crear vista de Login en el Frontend Web        | Implementar formulario de inicio de sesión y conexión visual con el flujo de autenticación | 3                  | Frontend Dev | Done   |
+| US-09          | Registrar cuenta                 | T-07                 | Crear vista de Registro en el Frontend Web     | Permitir el registro de usuarios según datos básicos y tipo de cuenta                      | 3                  | Frontend Dev | Done   |
+| US-22          | Visualizar KPIs de pedidos       | T-08                 | Implementar Dashboard principal                | Mostrar resumen operativo de pedidos, estados y datos generales del usuario                | 4                  | Frontend Dev | Done   |
+| US-02          | Consultar historial de pedidos   | T-09                 | Crear módulo de listado de órdenes             | Mostrar órdenes registradas con estado, fecha, cantidad y datos principales                | 4                  | Frontend Dev | Done   |
+| US-01          | Registrar pedido                 | T-10                 | Crear formulario de nueva orden                | Permitir registrar una solicitud de combustible desde el Frontend Web                      | 4                  | Frontend Dev | Done   |
+| US-27          | Consultar perfil                 | T-11                 | Crear vista de perfil empresarial              | Mostrar datos principales de la empresa y avatar del usuario                               | 3                  | Frontend Dev | Done   |
+| US-28          | Actualizar perfil                | T-12                 | Implementar edición de perfil                  | Permitir modificar datos básicos de la empresa desde la interfaz web                       | 3                  | Frontend Dev | Done   |
+| TS-05          | Autenticar endpoint login        | T-13                 | Implementar endpoint POST /api/auth/login      | Validar credenciales y devolver respuesta de autenticación para el Frontend Web            | 3                  | Backend Dev  | Done   |
+| US-09          | Registrar cuenta                 | T-14                 | Implementar endpoint POST /api/auth/register   | Registrar nuevos usuarios mediante controlador, DTOs y repositorio en memoria              | 3                  | Backend Dev  | Done   |
+| TS-01          | Exponer endpoint de pedidos      | T-15                 | Implementar endpoints REST de órdenes          | Crear endpoints para listar, consultar detalle y registrar nuevas órdenes                  | 5                  | Backend Dev  | Done   |
+| US-22          | Visualizar KPIs de pedidos       | T-16                 | Implementar endpoint de Dashboard              | Retornar datos resumen para alimentar las cards y métricas principales del Frontend Web    | 3                  | Backend Dev  | Done   |
+| US-27 / US-28  | Consultar y actualizar perfil    | T-17                 | Implementar endpoints de perfil                | Crear GET y PUT para consultar y actualizar información de empresa                         | 3                  | Backend Dev  | Done   |
+| US-07          | Gestionar métodos de pago        | T-18                 | Implementar endpoints de pagos                 | Listar métodos de pago guardados e historial de transacciones simuladas                    | 3                  | Backend Dev  | Done   |
+| N/A            | Integración Frontend–Backend     | T-19                 | Configurar servicio API en el Frontend Web     | Centralizar llamadas HTTP hacia la API monolítica desplegada                               | 4                  | Frontend Dev | Done   |
+| N/A            | Documentación de API             | T-20                 | Configurar Swagger/OpenAPI                     | Documentar endpoints, modelos request/response y pruebas desde Swagger UI                  | 3                  | Backend Dev  | Done   |
+| N/A            | Despliegue de Landing Page       | T-21                 | Publicar Landing Page en Netlify               | Configurar build, repositorio y validación de acceso público                               | 2                  | DevOps       | Done   |
+| N/A            | Despliegue de Frontend Web       | T-22                 | Publicar Frontend Web en GitHub Pages          | Configurar entorno de producción y validar navegación pública                              | 2                  | DevOps       | Done   |
+| N/A            | Despliegue de Backend Monolítico | T-23                 | Publicar API REST en Render                    | Configurar Dockerfile, puerto 8080, variables de entorno y despliegue cloud                | 3                  | DevOps       | Done   |
+| N/A            | Validación general del Sprint    | T-24                 | Realizar pruebas de ejecución y despliegue     | Probar navegación, endpoints, Swagger, disponibilidad pública y conexión entre componentes | 4                  | QA / Team    | Done   |
+
 
 ##### 5.2.2.2 Development Evidence for Sprint Review
 
