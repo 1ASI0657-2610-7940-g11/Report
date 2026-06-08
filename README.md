@@ -1916,11 +1916,6 @@ Commits con Conventional Commits y PRs obligatorios; priorizamos código legible
 
 Para la gestión colaborativa del código se emplea la metodología **GitFlow**, utilizando ramas principales como `main` y `develop`, permitiendo un desarrollo organizado, paralelo y controlado. Asimismo, el equipo aplica buenas prácticas mediante **Pull Requests**, revisiones de cambios y versionamiento continuo de la documentación técnica, garantizando mayor mantenibilidad, control de versiones y evolución progresiva del sistema.
 
-#### 5.2.4 Software Deployment Configuration
-
-[Contenido]
-
-### 5.3 Microservices Implementation
 
 #### Sprint 1
 
@@ -2090,7 +2085,9 @@ Los despliegues fueron completados exitosamente y permanecerán disponibles dura
 
 ##### 5.2.1.8 Kanban Board
 
-[Contenido]
+Para monitorear el avance de los componentes refinados durante este sprint, el equipo utiliza un tablero Kanban que facilita la organización de tareas relacionadas con reportes, dashboards y experiencia del usuario. 
+
+<img width="1600" height="900" alt="GitHub Pages Deployment" src="https://imgur.com/x1iHPe0.png" />
 
 #### Sprint 2
 
@@ -2221,7 +2218,9 @@ El despliegue fue completado correctamente. La API quedó disponible públicamen
 
 ##### 5.2.2.8 Kanban Board
 
-[Contenido] — Avance 3
+Para monitorear el avance de los componentes refinados durante este sprint, el equipo utiliza un tablero Kanban que facilita la organización de tareas relacionadas con reportes, dashboards y experiencia del usuario. 
+
+<img width="1600" height="900" alt="Render Backend Deployment" src="https://i.imgur.com/baP43I8.png[/img]" />
 
 #### Sprint 3
 
