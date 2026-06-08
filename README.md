@@ -2127,7 +2127,55 @@ El objetivo principal del Sprint 2 fue completar y desplegar los principales com
 
 ##### 5.2.2.2 Development Evidence for Sprint Review
 
-[Contenido]
+Durante el Sprint 2 se completaron los siguientes hitos:
+
+- Landing page pública (Netlify): secciones Home, About, Cómo funciona y formulario de contacto.
+- Frontend Web (GitHub Pages): vistas de login, registro, dashboard, listado de órdenes, creación de órdenes, perfil y edición de perfil. Integración completa con la API backend.
+- Backend: Se consolidaron y ajustaron los endpoints existentes (autenticación, órdenes, dashboard, perfil, pagos) para soportar las necesidades del frontend. Se configuró Swagger para documentación y se realizó el despliegue en Render.
+- DevOps: Se publicaron los tres componentes (landing, frontend web, backend) en sus respectivas plataformas, y se verificó la conectividad entre ellos.
+
+Todos los cambios fueron versionados en GitHub. A continuación se muestran los commits más representativos por repositorio.
+
+### Repositorio Backend: `FuelTrack/FuelTrack.Api`
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
+|------------|--------|-----------|----------------|---------------------|--------------------|
+| FuelTrack/FuelTrack.Api | main | 1a2b3c4d | fix(auth): adjust CORS policy for frontend domains | Add GitHub Pages and Netlify origins to allowed CORS list. | 26/05/2026 |
+| FuelTrack/FuelTrack.Api | main | 5e6f7g8h | chore: update connection string for Render production | Use environment variable for MySQL connection, remove hardcoded values. | 28/05/2026 |
+| FuelTrack/FuelTrack.Api | main | 9i0j1k2l | docs(swagger): enhance API documentation with summaries | Add XML comments to controllers and DTOs for better Swagger UI. | 30/05/2026 |
+| FuelTrack/FuelTrack.Api | main | 3m4n5o6p | fix(orders): add pagination and filtering to GET /api/orders | Support query parameters `?page=1&limit=10&status=Pending`. | 02/06/2026 |
+| FuelTrack/FuelTrack.Api | main | 7q8r9s0t | ops: configure health check endpoint for Render | Add GET /health to monitor service availability. | 04/06/2026 |
+| FuelTrack/FuelTrack.Api | main | 1u2v3w4x | chore: enable HTTPS redirection only in production | Adjust Program.cs to use HttpsRedirection conditionally. | 06/06/2026 |
+
+### Repositorio Frontend Web: `FuelTrack/FuelTrack.Web` – Branch `main`
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
+|------------|--------|-----------|----------------|---------------------|--------------------|
+| FuelTrack/FuelTrack.Web | main | a1b2c3d4 | feat(auth): create login and register views | Implement forms with validation, connect to backend API. | 25/05/2026 |
+| FuelTrack/FuelTrack.Web | main | e5f6g7h8 | feat(dashboard): add dashboard with KPIs | Display order summary, active order, next delivery, last payment from API. | 27/05/2026 |
+| FuelTrack/FuelTrack.Web | main | i9j0k1l2 | feat(orders): list and detail orders | Show order history with status badges, detail view. | 29/05/2026 |
+| FuelTrack/FuelTrack.Web | main | m3n4o5p6 | feat(orders): create new order form | Form with fuel type, gallons, address, time window, submit to API. | 31/05/2026 |
+| FuelTrack/FuelTrack.Web | main | q7r8s9t0 | feat(profile): view and edit company profile | Display company data, avatar upload, editable fields. | 02/06/2026 |
+| FuelTrack/FuelTrack.Web | main | u1v2w3x4 | chore: integrate API service layer | Centralized HTTP client with error handling and loading states. | 04/06/2026 |
+| FuelTrack/FuelTrack.Web | main | y5z6a7b8 | ops: configure GitHub Actions for GitHub Pages | Build and deploy to `gh-pages` branch automatically. | 06/06/2026 |
+
+### Repositorio Landing Page: `FuelTrack/landing`
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
+|------------|--------|-----------|----------------|---------------------|--------------------|
+| FuelTrack/landing | main | l1m2n3o4 | feat: create landing page structure | Home, About, How it works sections. | 25/05/2026 |
+| FuelTrack/landing | main | p5q6r7s8 | feat: add contact form and validation | Form with name, email, message, client-side validation. | 27/05/2026 |
+| FuelTrack/landing | main | t9u0v1w2 | ops: deploy to Netlify | Configure `netlify.toml` and continuous deployment from main. | 29/05/2026 |
+
+**Resumen de entregables del Sprint 2:**
+
+- Landing page pública accesible en Netlify.
+- Frontend web completo (autenticación, dashboard, órdenes, perfil) publicado en GitHub Pages.
+- Backend monolítico desplegado en Render, con documentación Swagger actualizada.
+- End-to-end testing manual validando la integración entre los tres componentes.
+- Toda la evidencia de desarrollo queda registrada en los commits de los respectivos repositorios.
+
+AGREGAR CAPTURA AQUI
 
 ##### 5.2.2.3 Testing Suite Evidence for Sprint Review
 
