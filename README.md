@@ -2357,7 +2357,23 @@ El despliegue fue completado correctamente. La API quedó disponible públicamen
 
 ##### 5.2.2.7 Team Collaboration Insights during Sprint
 
-[Contenido]
+**REPORT**
+<img width="752" height="744" alt="image" src="https://github.com/user-attachments/assets/73306a17-aac5-4397-add2-e815d3ebcc65" />
+
+**Front**
+<img width="757" height="595" alt="image" src="https://github.com/user-attachments/assets/4947bc7a-1731-4b19-8246-2ca2b1dd4a19" />
+
+**Back**
+<img width="759" height="577" alt="image" src="https://github.com/user-attachments/assets/74e59bf4-ba2f-4e3e-b40a-a8f33cefcafe" />
+
+**Landing**
+<img width="789" height="586" alt="image" src="https://github.com/user-attachments/assets/f3b4be96-b0f3-4b6e-bd07-872f993bb957" />
+
+
+
+
+
+
 
 ##### 5.2.2.8 Kanban Board
 
