@@ -2131,8 +2131,103 @@ El objetivo principal del Sprint 2 fue completar y desplegar los principales com
 
 ##### 5.2.2.3 Testing Suite Evidence for Sprint Review
 
-[Contenido]
+Para garantizar la calidad, estabilidad y mantenibilidad del backend de FuelTrack, se ha implementado una estrategia de pruebas que cubre los bounded contexts más relevantes del dominio: autenticación y gestión de identidad (Auth), gestión de órdenes (Orders), pagos (Payments), perfil de empresa (Profile) y dashboard (Home). Las pruebas se centran en las funcionalidades de mayor valor de negocio y en aquellas con mayor riesgo de regresión.
 
+### Pruebas Unitarias (xUnit + Moq)
+
+Se han desarrollado pruebas unitarias para controladores y servicios de todos los bounded contexts principales, priorizando:
+
+- **Auth**: registro, login, recuperación de contraseña y generación de token.
+- **Orders**: creación de órdenes, cambio de estado (pendiente → confirmado → en ruta → entregado/rechazado), asignación de vehículo y conductor.
+- **Payments**: listado de métodos de pago, adición de tarjeta y consulta de historial.
+- **Profile**: obtención y actualización de datos de empresa, así como la subida de avatar.
+- **Home**: generación del resumen del dashboard (orden activa, próxima entrega, último pago).
+
+**Herramientas utilizadas:**
+
+- **xUnit**: framework de pruebas que proporciona atributos como `[Fact]` y `[Theory]` para definir casos de prueba.
+- **Moq**: biblioteca de creación de objetos simulados (mocks) que permite reemplazar dependencias reales (acceso a base de datos, servicios externos) por versiones controladas durante las pruebas.
+
+**Beneficios obtenidos:**
+
+- Detección temprana de errores en reglas de negocio.
+- Refactorización ágil y segura gracias a la ejecución rápida de las pruebas.
+- Integración sencilla en pipelines de integración continua (CI).
+- Reducción de falsos positivos al aislar las dependencias externas.
+
+### Pruebas BDD con Gherkin (Reqnroll)
+
+Los flujos críticos de usuario se describen en lenguaje Gherkin y se automatizan mediante Reqnroll, asegurando que el comportamiento del sistema se alinea con las expectativas del negocio. Se han priorizado los siguientes escenarios:
+
+- Login exitoso y fallido (Auth).
+- Registro de nuevo usuario (Auth).
+- Creación de una orden (Orders).
+- Cambio de estado de orden por parte del proveedor (Orders).
+- Asignación de vehículo y conductor a una orden (Orders).
+- Notificación al cliente ante cambio de estado (integrando notificaciones).
+- Consulta de dashboard y perfil (Home, Profile).
+
+**Herramientas utilizadas:**
+
+- **Reqnroll**: framework de BDD para .NET que interpreta archivos `.feature` (escritos en Gherkin) y los vincula con código de automatización en C#.
+- **WebApplicationFactory**: utilidad de ASP.NET Core que permite levantar el servidor de la API en memoria y realizar peticiones HTTP reales durante las pruebas.
+- **SQLite en memoria**: base de datos ligera que se crea y destruye en cada ejecución de prueba, ideal para simular el almacenamiento sin efectos colaterales.
+
+**Beneficios obtenidos:**
+
+- Los escenarios Gherkin actúan como documentación viva del comportamiento del sistema, comprensible para negocio, desarrollo y QA.
+- Detección de desviaciones funcionales antes de llegar a producción.
+- Automatización de pruebas de regresión en cada ciclo de despliegue.
+- Reducción de ambigüedad al describir el comportamiento esperado en lenguaje natural.
+
+### Pruebas de Integración y Despliegue
+
+Además de las pruebas unitarias y BDD, se ejecuta un conjunto de pruebas de integración que validan la comunicación real entre componentes desplegados (frontend en GitHub Pages / Netlify, backend en Render y base de datos MySQL en la nube). Estas pruebas se realizan al final de cada sprint y cubren:
+
+- Flujo completo de registro y login.
+- Creación de una orden desde la interfaz web y verificación en el backend.
+- Actualización de estado de orden y recepción de notificaciones (simuladas).
+- Subida de avatar y consulta de perfil.
+
+**Herramientas utilizadas:**
+
+- Pruebas manuales guiadas con listas de verificación (checklists).
+- Scripts automatizados con Postman para validar contratos de API.
+- Swagger como herramienta de exploración y verificación rápida de endpoints.
+
+**Beneficios obtenidos:**
+
+- Aseguramiento de que todos los componentes trabajan correctamente en el entorno productivo.
+- Detección de problemas de configuración (CORS, variables de entorno, red).
+- Prueba de humo (smoke test) antes de cada release.
+
+### Cobertura Priorizada
+
+Dado el alcance del proyecto y los plazos establecidos, se priorizaron las pruebas en función del riesgo de negocio y la frecuencia de uso de cada bounded context:
+
+| Bounded Context   | Pruebas Unitarias | BDD (Gherkin) | Integración manual |
+|-------------------|-------------------|---------------|--------------------|
+| Auth              | Alta cobertura    | Escenarios clave | Flujo completo     |
+| Orders            | Alta cobertura    | Escenarios clave | Flujo completo     |
+| Payments          | Media cobertura   | Planificado   | Básico             |
+| Profile           | Alta cobertura    | Escenario simple | Verificación      |
+| Home              | Media cobertura   | Planificado   | Visual             |
+
+### Integración Continua (CI)
+
+Aunque actualmente las pruebas se ejecutan de forma local y manual, se tiene previsto integrar `dotnet test` en un pipeline de GitHub Actions. Esto permitirá:
+
+- Ejecutar automáticamente las pruebas unitarias y BDD ante cada push a la rama `main`.
+- Bloquear despliegues si alguna prueba falla.
+- Generar reportes de cobertura y calidad de código.
+
+### Impacto en el Proyecto
+
+- Reducción de defectos en producción: los errores críticos (por ejemplo, en flujos de login o creación de órdenes) se detectan antes del despliegue.
+- Mayor confianza para refactorizar: se puede modificar la lógica interna de un bounded context sabiendo que las pruebas unitarias y BDD alertarán de cualquier regresión.
+- Documentación ejecutable: los escenarios Gherkin sirven como especificación funcional que nunca queda desactualizada.
+- Ahorro de tiempo en pruebas manuales: la automatización de los flujos principales reduce el esfuerzo de QA para pruebas repetitivas.
+  
 ##### 5.2.2.4 Execution Evidence for Sprint Review
 
 Durante el Sprint 2 se completó el desarrollo y ejecución del Backend Monolítico de FuelTrack. Este backend fue construido como una API REST, permitiendo centralizar los principales servicios del sistema en una sola aplicación.
