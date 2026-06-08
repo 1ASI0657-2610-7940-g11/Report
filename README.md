@@ -2175,7 +2175,7 @@ Todos los cambios fueron versionados en GitHub. A continuación se muestran los 
 - End-to-end testing manual validando la integración entre los tres componentes.
 - Toda la evidencia de desarrollo queda registrada en los commits de los respectivos repositorios.
 
-AGREGAR CAPTURA AQUI
+<img width="1600" height="900" alt="Render Backend Deployment" src="./img/screenshot-sprint2.png" />
 
 ##### 5.2.2.3 Testing Suite Evidence for Sprint Review
 
