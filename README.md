@@ -2444,7 +2444,41 @@ Como resultado de este Sprint, FuelTrack quedó completamente integrado y desple
 
 ##### 5.2.3.3 Testing Suite Evidence for Sprint Review
 
----
+Durante el Sprint 3 se implementó una suite de pruebas automatizadas utilizando xUnit y Entity Framework Core InMemory. Estas pruebas validan la persistencia, seguridad y aislamiento de los datos antes del despliegue en Railway y Cloudflare Pages.
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
+|---|---|---:|---|---|---|
+| `1ASI0657-2610-7940-g11/back` | `main` | `70c41f6` | `Prepare backend for Railway and MySQL` | Implementación de pruebas para registro seguro, hash de contraseñas, generación de JWT, creación de perfiles vacíos, aislamiento de pedidos por usuario, almacenamiento seguro de métodos de pago y persistencia de avatares. | 25/06/2026 |
+| `1ASI0657-2610-7940-g11/Front` | `main` | `1d30658` | `Connect production frontend to Railway API` | Configuración y validación de la comunicación entre el frontend desplegado en Cloudflare Pages y la API de Railway mediante HTTPS y CORS. | 25/06/2026 |
+| `1ASI0657-2610-7940-g11/Front` | `main` | `c8a8a9d` | `Fix registration errors and stale frontend cache` | Corrección y prueba del flujo de registro, manejo de respuestas de error del backend y prevención del uso de versiones antiguas del frontend almacenadas en caché. | 25/06/2026 |
+| `1ASI0657-2610-7940-g11/back` | `main` | `8e571f2` | `Expose Swagger UI in production` | Habilitación y comprobación pública de Swagger UI y del documento OpenAPI en el ambiente de producción. | 25/06/2026 |
+
+
+**Ejemplo de prueba**
+
+[Fact]
+public async Task OrdersAreIsolatedByUser()
+{
+    await using var db = CreateDatabase();
+    var repository = new MySqlOrdersRepository(db);
+
+    var userOne = await RegisterUser(db, "one@example.com");
+    var userTwo = await RegisterUser(db, "two@example.com");
+
+    await repository.CreateOrderAsync(userOne, NewOrder());
+    await repository.CreateOrderAsync(userTwo, NewOrder());
+
+    var userOneOrders = await repository.GetOrdersAsync(userOne);
+    var userTwoOrders = await repository.GetOrdersAsync(userTwo);
+
+    Assert.Single(userOneOrders);
+    Assert.Single(userTwoOrders);
+    Assert.NotEqual(
+        userOneOrders.Single().Id,
+        userTwoOrders.Single().Id
+    );
+}
+
+
 
 ##### 5.2.3.4 Execution Evidence for Sprint Review
 
