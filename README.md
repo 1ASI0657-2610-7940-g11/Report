@@ -2509,11 +2509,41 @@ Los resultados obtenidos confirmaron el correcto funcionamiento de todos los mó
 
 ##### 5.2.3.5 Microservices Documentation Evidence for Sprint Review
 
----
+Durante el Sprint 3 se actualizó la documentación técnica de la arquitectura de FuelTrack. La solución continúa implementada como un backend monolítico, pero se encuentra organizada mediante módulos funcionales y capas claramente separadas. Además, el backend fue migrado a ASP.NET Core 10 y conectado a una base de datos MySQL mediante Entity Framework Core. También se incorporó autenticación mediante JWT y separación de la información por usuario.
+
+Los módulos documentados fueron:
+
+- Authentication.
+- Dashboard.
+- Orders.
+- Payments.
+- Profile.
+- Client.
+- Provider.
+- Company.
+- Infrastructure.
+- Database migrations.
+- La documentación técnica incluyó:
+- Endpoints REST disponibles.
+- Métodos HTTP utilizados.
+- Modelos de request y response.
+- Autenticación y autorización mediante JWT.
+- Hash seguro de contraseñas mediante PBKDF2-SHA256.
+- Persistencia mediante Entity Framework Core y MySQL.
+- Migraciones automáticas de la base de datos.
+- Separación de datos por usuario.
+- Configuración de CORS para Cloudflare Pages.
+- Configuración del puerto dinámico de Railway.
+- Health check del backend.
+- Configuración pública de Swagger/OpenAPI.
+- Manejo y validación de errores HTTP.
+- Almacenamiento seguro de métodos de pago ficticios.
+- Persistencia de imágenes de perfil en MySQL.
+- Variables de entorno y protección de secretos.
 
 ##### 5.2.3.6 Software Deployment Evidence for Sprint Review
 
-Durante este Sprint se actualizaron los despliegues del sistema hacia una nueva infraestructura cloud.
+
 
 #### Frontend Web
 
