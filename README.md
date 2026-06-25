@@ -2610,7 +2610,8 @@ Las principales actividades fueron:
 - Revisión conjunta del código.
 - Actualización de documentación técnica.
 
-PEGAR IMAGEN
+<img width="739" height="740" alt="image" src="https://github.com/user-attachments/assets/e634349b-42c9-4890-abba-6299e8ed2ab0" />
+
 
 ##### 5.2.3.8 Kanban Board
 
