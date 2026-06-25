@@ -2456,6 +2456,7 @@ Durante el Sprint 3 se implementó una suite de pruebas automatizadas utilizando
 **Ejemplo de prueba**
 
 [Fact]
+
 public async Task OrdersAreIsolatedByUser()
 {
     await using var db = CreateDatabase();
