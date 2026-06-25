@@ -2615,7 +2615,9 @@ Las principales actividades fueron:
 
 ##### 5.2.3.8 Kanban Board
 
-PEGAR IMAGEN
+Durante este Sprint el tablero Kanban permitió realizar el seguimiento de todas las tareas relacionadas con la implementación de nuevas funcionalidades, integración y despliegue.
+
+<img width="1600" height="900" alt="Kanban Board Sprint 4" src="./img/kanban-sprint3.png" />
 
 #### Sprint 4
 
