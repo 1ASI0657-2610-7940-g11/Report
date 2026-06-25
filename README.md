@@ -2383,37 +2383,181 @@ Para monitorear el avance de los componentes refinados durante este sprint, el e
 
 #### Sprint 3
 
+El objetivo principal del Sprint 3 fue completar las funcionalidades pendientes del sistema FuelTrack mediante la incorporación de nuevos endpoints REST, mejoras en la integración entre el Frontend Web y el Backend Monolítico, y la actualización del despliegue en nuevas plataformas cloud. Durante este sprint se implementaron funcionalidades avanzadas para la gestión de pedidos, reportes, dashboard y consultas empresariales, además de migrar los servicios hacia Cloudflare Pages y Railway para disponer de una infraestructura más moderna y estable.
+
+---
+
 ##### 5.2.3.1 Sprint Backlog 3
 
-[Contenido]
+| Sprint # | Sprint 3 | | | | | |
+|----------|----------|----------------------|----------------------|----------------------|----------------------|----------------------|
+| **User Story** | | **Work-Item / Task** | | | | |
+| Id | Title | Id | Title | Description | Estimation (Hours) | Assigned To | Status |
+| US-05 | Actualizar estado de pedido | T-01 | Implementar endpoint PATCH /api/orders/{id}/status | Permitir actualizar el estado operativo del pedido desde el backend | 4 | Backend Dev | Done |
+| US-02 | Consultar historial de pedidos | T-02 | Implementar filtros de historial | Agregar filtros por estado y rango de fechas | 4 | Backend Dev | Done |
+| US-29 | Buscar pedido por código | T-03 | Implementar búsqueda por código | Localizar pedidos mediante su identificador | 3 | Backend Dev | Done |
+| US-30 | Filtrar pedidos por estado | T-04 | Implementar filtros REST | Permitir filtrar pedidos por estado desde la API | 3 | Backend Dev | Done |
+| US-21 | Generar reporte de ventas | T-05 | Crear módulo Provider Reports | Generar reportes de ventas para proveedores | 5 | Backend Dev | Done |
+| US-34 | Consultar detalle de empresa | T-06 | Crear módulo Client | Consultar historial y detalle de empresas solicitantes | 4 | Backend Dev | Done |
+| US-22 | Visualizar KPIs | T-07 | Actualizar Dashboard | Consumir nuevos indicadores desde el backend | 3 | Frontend Dev | Done |
+| US-36 | Visualizar gráfico de ventas | T-08 | Integrar gráficos | Mostrar información estadística para proveedores | 4 | Frontend Dev | Done |
+| US-37 | Descargar reporte PDF | T-09 | Integrar descarga PDF | Permitir exportar reportes desde la interfaz | 4 | Frontend Dev | Done |
+| N/A | Integración Frontend-Backend | T-10 | Actualizar servicios API | Conectar frontend con los nuevos endpoints REST | 3 | Frontend Dev | Done |
+| N/A | Migración de despliegue | T-11 | Publicar Frontend en Cloudflare Pages | Configurar despliegue automático | 2 | DevOps | Done |
+| N/A | Migración de despliegue | T-12 | Publicar Backend en Railway | Configurar despliegue y variables de entorno | 3 | DevOps | Done |
+| N/A | Validación Final | T-13 | Ejecutar pruebas End-to-End | Verificar integración completa del sistema | 3 | QA / Team | Done |
+
+---
 
 ##### 5.2.3.2 Development Evidence for Sprint Review
 
-[Contenido]
+Durante el Sprint 3 se realizaron las últimas mejoras sobre el Frontend y Backend de FuelTrack, enfocándose en preparar la aplicación para producción, actualizar la infraestructura de despliegue y garantizar la correcta comunicación entre ambas aplicaciones.
+
+Las principales actividades desarrolladas fueron:
+
+- Preparación del Backend para producción utilizando Railway y MySQL.
+- Configuración de los endpoints productivos del Backend.
+- Publicación del Backend y habilitación de Swagger en producción.
+- Preparación del Frontend para Cloudflare Pages.
+- Actualización del Frontend para consumir la API desplegada en Railway.
+- Corrección de errores de registro y actualización de caché del Frontend.
+- Validación completa de integración entre Frontend y Backend.
+
+### Backend Repository
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
+|------------|--------|-----------|----------------|---------------------|--------------|
+| back | main | 70c41f6 | Prepare backend for Railway and MySQL | Configure the backend to run correctly using Railway services and MySQL database. | Jun 25, 2026 |
+| back | main | 199beac | Document deployed Railway and Cloudflare endpoints | Update project documentation with the production deployment URLs. | Jun 25, 2026 |
+| back | main | 8e571f2 | Expose Swagger UI in production | Enable Swagger documentation in the production environment. | Jun 25, 2026 |
+
+### Frontend Repository
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
+|------------|--------|-----------|----------------|---------------------|--------------|
+| Front | main | 9a11115 | Prepare frontend for Cloudflare deployment | Configure the application for deployment on Cloudflare Pages. | Jun 25, 2026 |
+| Front | main | 1d30658 | Connect production frontend to Railway API | Update API base URL to consume the deployed Railway backend. | Jun 25, 2026 |
+| Front | main | c8a8a9d | Fix registration errors and stale frontend cache | Resolve registration issues and clear cached production assets. | Jun 25, 2026 |
+
+Como resultado de este Sprint, FuelTrack quedó completamente integrado y desplegado en un entorno de producción, utilizando Cloudflare Pages para el Frontend y Railway para el Backend, garantizando la comunicación correcta entre ambas aplicaciones.
+
 
 ##### 5.2.3.3 Testing Suite Evidence for Sprint Review
 
-[Contenido]
+---
 
 ##### 5.2.3.4 Execution Evidence for Sprint Review
 
-[Contenido]
+Durante el Sprint 3 se validó la ejecución completa del sistema utilizando la versión desplegada del Frontend Web y el Backend Monolítico.
+
+Las actividades ejecutadas fueron:
+
+- Pruebas de autenticación.
+- Registro de pedidos.
+- Consulta de historial.
+- Actualización de estados.
+- Consulta de empresas.
+- Generación de reportes.
+- Descarga de reportes PDF.
+- Validación de integración completa.
+
+**Evidencia de ejecución del Frontend**
+<img width="1600" height="900" alt="Frontend Sprint 3" src="./img/frontend-sprint3.png" />
+
+
+**Evidencia de ejecución del Backend**
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/backend-sprint3.png" />
+
+Los resultados obtenidos confirmaron el correcto funcionamiento de todos los módulos implementados durante el Sprint.
+
+---
 
 ##### 5.2.3.5 Microservices Documentation Evidence for Sprint Review
 
-[Contenido]
+---
 
 ##### 5.2.3.6 Software Deployment Evidence for Sprint Review
 
-[Contenido]
+Durante este Sprint se actualizaron los despliegues del sistema hacia una nueva infraestructura cloud.
+
+#### Frontend Web
+
+**Plataforma en Cloudflare Pages**
+
+**Deployment URL**
+
+https://front-38m.pages.dev
+
+**Proceso de despliegue**
+
+1. Publicación del repositorio en GitHub.
+2. Configuración del proyecto en Cloudflare Pages.
+3. Configuración del comando de Build.
+4. Configuración del directorio de salida.
+5. Ejecución del Build automático.
+6. Validación del sitio publicado.
+
+**Evidencia**
+
+PEGAR IMAGEN
+
+---
+
+#### Backend Monolítico
+
+**Plataforma Railway**
+
+https://back-production-02fc.up.railway.app/swagger/index.html
+
+**Proceso de despliegue**
+
+1. Publicación del repositorio Backend.
+2. Configuración del proyecto en Railway.
+3. Configuración de variables de entorno.
+4. Configuración de MySQL.
+5. Construcción automática del proyecto.
+6. Inicio del servicio.
+7. Validación mediante Swagger.
+
+**Evidencia**
+
+PEGAR IMAGEN
+
+Los despliegues fueron completados exitosamente, dejando tanto el Frontend Web como el Backend Monolítico disponibles públicamente para su utilización.
+
+---
 
 ##### 5.2.3.7 Team Collaboration Insights during Sprint
 
-[Contenido]
+Durante el Sprint 3 el equipo trabajó de manera colaborativa en la implementación de nuevas funcionalidades, integración del sistema y migración de infraestructura.
+
+Las principales actividades fueron:
+
+- Desarrollo de nuevos módulos backend.
+- Integración con el frontend.
+- Resolución de incidencias.
+- Validación de despliegues.
+- Revisión conjunta del código.
+- Actualización de documentación técnica.
+
+PEGAR IMAGEN
 
 ##### 5.2.3.8 Kanban Board
 
-[Contenido] — Avance 4
+Durante este Sprint el tablero Kanban permitió realizar el seguimiento de todas las tareas relacionadas con la implementación de nuevas funcionalidades, integración y despliegue.
+
+Las tareas incluyeron:
+
+- Actualización de estados de pedidos.
+- Reportes de ventas.
+- Dashboard.
+- Consulta de empresas.
+- Integración Frontend-Backend.
+- Despliegue Cloudflare.
+- Despliegue Railway.
+- Validaciones finales.
+
+PEGAR IMAGEN
 
 #### Sprint 4
 
