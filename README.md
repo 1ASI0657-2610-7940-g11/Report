@@ -2564,7 +2564,8 @@ https://front-38m.pages.dev
 
 **Evidencia**
 
-PEGAR IMAGEN
+<img width="1205" height="555" alt="image" src="https://github.com/user-attachments/assets/38faf77d-ee74-46a4-8d4c-23cd006d0789" />
+
 
 ---
 
@@ -2586,7 +2587,11 @@ https://back-production-02fc.up.railway.app/swagger/index.html
 
 **Evidencia**
 
-PEGAR IMAGEN
+<img width="2422" height="1189" alt="image" src="https://github.com/user-attachments/assets/0eb1e5d9-8770-407a-ae37-f0763aa4451c" />
+
+<img width="2472" height="1115" alt="image" src="https://github.com/user-attachments/assets/ec8b4243-38e4-40af-90c9-cf5f6b8e1121" />
+
+
 
 Los despliegues fueron completados exitosamente, dejando tanto el Frontend Web como el Backend Monolítico disponibles públicamente para su utilización.
 
