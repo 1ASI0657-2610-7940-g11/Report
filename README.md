@@ -2544,19 +2544,6 @@ PEGAR IMAGEN
 
 ##### 5.2.3.8 Kanban Board
 
-Durante este Sprint el tablero Kanban permitió realizar el seguimiento de todas las tareas relacionadas con la implementación de nuevas funcionalidades, integración y despliegue.
-
-Las tareas incluyeron:
-
-- Actualización de estados de pedidos.
-- Reportes de ventas.
-- Dashboard.
-- Consulta de empresas.
-- Integración Frontend-Backend.
-- Despliegue Cloudflare.
-- Despliegue Railway.
-- Validaciones finales.
-
 PEGAR IMAGEN
 
 #### Sprint 4
