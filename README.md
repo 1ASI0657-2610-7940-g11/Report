@@ -3123,7 +3123,60 @@ docker compose up -d
 
 ##### 5.2.4.6 Software Deployment Evidence for Sprint Review
 
-[Contenido]
+Como parte de las actividades de este sprint, se desplegó la solución FuelTrack en plataformas cloud públicas para permitir el acceso, validación e integración entre frontend, gateway, microservicios y servicios de infraestructura.
+
+El proceso de despliegue incluyó:
+
+-Publicación del código fuente en GitHub.
+-Separación de repositorios para Frontend, Backend monolítico y Microservicios/Gateway.
+-Configuración de Cloudflare Pages para el despliegue del Frontend Web.
+-Configuración de Railway para el despliegue del Gateway y microservicios.
+-Configuración de MySQL en Railway como base de datos.
+-Configuración de RabbitMQ en Railway para mensajería.
+-Configuración de Redis en Railway para caché.
+-Configuración de variables de entorno para producción.
+-Configuración de dominios públicos para servicios desplegados.
+-Validación del funcionamiento mediante /health, Swagger y pruebas desde el frontend.
+
+### Frontend Web
+
+Plataforma: Cloudflare Pages
+URL de despliegue:
+https://front-38m.pages.dev
+
+Gateway API
+Plataforma: Railway
+URL de despliegue:
+https://gateway-production-7b5e.up.railway.app
+
+Endpoint de salud:
+https://gateway-production-7b5e.up.railway.app/health
+
+Microservicios desplegados en Railway:
+Identity Service:
+https://identity-production-3c23.up.railway.app
+
+Orders Service:
+https://orders-production-2342.up.railway.app
+
+Payments Service:
+https://payments-production-e9fa.up.railway.app
+
+Reporting Service:
+URL pública configurada desde Railway para validación mediante /health y Swagger.
+
+### Infraestructura desplegada:
+MySQL en Railway.
+RabbitMQ en Railway.
+Redis en Railway.
+Evidencia de despliegue en Railway y Cloudflare Pages:
+Frontend Web publicado correctamente en Cloudflare Pages.
+Gateway disponible públicamente en Railway.
+Microservicios desplegados como servicios independientes en Railway.
+MySQL, RabbitMQ y Redis configurados como servicios de infraestructura.
+Integración del frontend con el Gateway mediante VITE_API_BASE_URL.
+Validación de disponibilidad mediante endpoint /health.
+Configuración de Swagger/OpenAPI para revisión de endpoints.
 
 ##### 5.2.4.7 Team Collaboration Insights during Sprint
 
