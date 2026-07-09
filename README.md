@@ -2642,7 +2642,23 @@ El objetivo principal del Sprint 4 fue evolucionar el backend de FuelTrack desde
 
 ##### 5.2.4.2 Development Evidence for Sprint Review
 
-[Contenido]
+Durante el Sprint 4 se completó la implementación de la arquitectura basada en microservicios de FuelTrack. Las actividades realizadas estuvieron orientadas a integrar el Frontend con el API Gateway, preparar la solución para su despliegue en la nube, implementar pruebas unitarias para los microservicios y realizar mejoras de estabilidad relacionadas con la inicialización de la base de datos, la reconexión de Redis y la configuración del Gateway para ambientes de producción.
+
+### Frontend Repository
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
+|------------|--------|-----------|----------------|---------------------|--------------|
+| FuelTrack Frontend | `main` | `ebc56e2` | **Point frontend to microservices gateway** | Se actualizó el Frontend para consumir los endpoints del API Gateway como único punto de entrada de la arquitectura de microservicios. | 08/07/2026 |
+| FuelTrack Frontend | `main` | `3dc08dd` | **Require gateway API configuration for deployment** | Configuración del Frontend para utilizar la URL del API Gateway durante el despliegue, permitiendo la comunicación correcta con los microservicios en el entorno de producción. | 09/07/2026 |
+
+### Microservices Repository
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
+|------------|--------|-----------|----------------|---------------------|--------------|
+| FuelMicroservices | `main` | `8e450e4` | **feat: added Unit Tests** | Implementación de pruebas unitarias utilizando xUnit para los microservicios Identity, Orders, Payments y Reporting siguiendo el patrón Arrange–Act–Assert y validando los principales casos de uso del sistema. | 09/07/2026 |
+| FuelMicroservices | `main` | `3f808bd` | **Use Railway container port fallback** | Adaptación de los servicios para utilizar dinámicamente el puerto asignado por Railway durante el despliegue. | 09/07/2026 |
+| FuelMicroservices | `main` | `bb584da` | **Allow reporting to start while Redis reconnects** | Mejora de disponibilidad del microservicio Reporting permitiendo su inicio mientras Redis restablece la conexión automáticamente. | 09/07/2026 |
+| FuelMicroservices | `main` | `9fe9792` | **Retry database initialization on startup** | Implementación de reintentos automáticos durante la inicialización de la base de datos para incrementar la tolerancia a fallos temporales. | 09/07/2026 |
 
 ##### 5.2.4.3 Testing Suite Evidence for Sprint Review
 
