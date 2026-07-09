@@ -3184,7 +3184,10 @@ Configuración de Swagger/OpenAPI para revisión de endpoints.
 
 ##### 5.2.4.8 Kanban Board
 
-[Contenido]
+<img width="1600" height="900" alt="Backend Sprint 3" src="https://imgur.com/vNNNllh.png" />
+
+link: https://trello.com/b/UEvF2fYZ/fuel-track-planning 
+
 
 ### 5.4 Microservices Deployment
 
