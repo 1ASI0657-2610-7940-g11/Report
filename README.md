@@ -3261,7 +3261,9 @@ Payments Service: https://payments-production-e9fa.up.railway.app
 
 ### Video About-The-Team
 
-[Contenido]
+<img width="1600" height="900" alt="Backend Sprint 3" src="https://imgur.com/uZdfRAL.png" />
+link: https://upcedupe-my.sharepoint.com/:v:/g/personal/u202216831_upc_edu_pe/IQDY6bGH_NCtTa4WgyTjKmrdASLy-b50anmfJxFzWKF9MCU?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=lCGaCe
+
 
 ---
 
