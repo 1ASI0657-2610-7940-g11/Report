@@ -2764,7 +2764,40 @@ Estos resultados cumplen con el requisito mínimo establecido para el Sprint, ga
 
 ##### 5.2.4.4 Execution Evidence for Sprint Review
 
-[Contenido]
+Durante el Sprint 4 se verificó la correcta ejecución de la arquitectura basada en microservicios. La validación consistió en iniciar todos los servicios mediante Docker Compose y comprobar que cada microservicio se encontrara operativo, exponiendo sus respectivos endpoints REST y permitiendo la comunicación a través del API Gateway.
+
+Las actividades ejecutadas fueron las siguientes:
+
+- Ejecución de la arquitectura de microservicios mediante Docker Compose.
+- Inicialización del API Gateway.
+- Inicialización del microservicio Identity.
+- Inicialización del microservicio Orders.
+- Inicialización del microservicio Payments.
+- Inicialización del microservicio Reporting.
+- Verificación de los endpoints Swagger de cada microservicio.
+- Validación de la comunicación entre el Frontend y el API Gateway.
+- Ejecución de pruebas funcionales utilizando Postman.
+- Verificación del flujo completo de autenticación, perfil, pedidos, métodos de pago y reportes.
+
+**Execution Evidence – Docker Compose**
+
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/evidence-sprint4-1.png" />
+
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/evidence-sprint4-2.png" />
+
+**Execution Evidence – Running Microservices**
+
+### Identity Service
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/evidence-sprint4-3.png" />
+
+### Orders Service
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/evidence-sprint4-4.png" />
+
+### Payments Service
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/evidence-sprint4-5.png" />
+
+### Reporting Service
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/evidence-sprint4-6.png" />
 
 ##### 5.2.4.5 Microservices Documentation Evidence for Sprint Review
 
