@@ -3257,7 +3257,9 @@ Payments Service: https://payments-production-e9fa.up.railway.app
 
 ### Conclusiones y recomendaciones
 
-[Contenido]
+El desarrollo de FuelTrack permitió aplicar de manera práctica los conceptos estudiados en el curso de Fundamentos de Arquitectura de Software. La migración hacia una arquitectura basada en microservicios demostró las ventajas de desacoplar las funcionalidades del sistema en servicios independientes, mejorando la mantenibilidad, escalabilidad y facilidad de despliegue. Asimismo, la incorporación de un API Gateway, pruebas unitarias, documentación mediante Swagger y contenedores Docker contribuyó a construir una solución más organizada, robusta y preparada para futuros procesos de integración y crecimiento.
+
+Como recomendación, se propone continuar fortaleciendo la automatización del proyecto mediante la implementación de pipelines de Integración Continua y Despliegue Continuo (CI/CD), ampliar la cobertura de pruebas incluyendo pruebas de integración y de rendimiento, e incorporar mecanismos de monitoreo y observabilidad para los microservicios en producción. Estas mejoras permitirán incrementar la confiabilidad del sistema, facilitar su mantenimiento y garantizar una mejor calidad del software a medida que el proyecto evolucione.
 
 ### Video About-The-Team
 
