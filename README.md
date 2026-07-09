@@ -3197,7 +3197,53 @@ link: https://trello.com/b/UEvF2fYZ/fuel-track-planning
 
 #### 5.3.2 Cloud Architecture Deployment
 
-[Contenido] 
+Para el despliegue cloud de FuelTrack se implementó una arquitectura distribuida basada en servicios independientes. La aplicación fue desplegada utilizando Cloudflare Pages para el Frontend Web y Railway para el Gateway, los microservicios y los servicios de infraestructura.
+El Frontend Web es el punto de acceso para los usuarios y consume únicamente una URL pública correspondiente al Gateway API. El Gateway funciona como punto único de entrada hacia el backend y redirige las solicitudes a los microservicios correspondientes. De esta manera, el frontend no se conecta directamente a la base de datos ni a servicios internos como RabbitMQ o Redis.
+
+### Los componentes desplegados fueron:
+
+-Frontend Web en Cloudflare Pages.
+-Gateway API en Railway.
+-Identity Service en Railway.
+-Orders Service en Railway.
+-Payments Service en Railway.
+-Reporting Service en Railway.
+-MySQL en Railway.
+-RabbitMQ en Railway.
+-Redis en Railway.
+
+| Componente | Plataforma | Responsabilidad |
+|---|---|---|
+| Frontend Web | Cloudflare Pages | Interfaz web consumida por el usuario |
+| Gateway API | Railway | Punto único de entrada para el frontend |
+| Identity Service | Railway | Registro, login, autenticación JWT y perfil |
+| Orders Service | Railway | Gestión de pedidos de combustible |
+| Payments Service | Railway | Métodos de pago e historial de pagos |
+| Reporting Service | Railway | Dashboard del cliente, KPIs y reportes |
+| MySQL | Railway | Persistencia de datos |
+| RabbitMQ | Railway | Mensajería entre microservicios |
+| Redis | Railway | Caché para reporting |
+
+### Las rutas principales expuestas por el Gateway fueron:
+
+| Ruta pública | Servicio destino |
+|---|---|
+| `/api/auth/*` | Identity Service |
+| `/api/profile/*` | Identity Service |
+| `/api/orders/*` | Orders Service |
+| `/api/payments/*` | Payments Service |
+| `/api/client/*` | Reporting Service |
+| `/api/company/*` | Reporting Service |
+| `/api/provider/*` | Reporting Service |
+
+URLs principales del despliegue:
+
+Frontend Web: https://front-38m.pages.dev
+Gateway API: https://gateway-production-7b5e.up.railway.app
+Healthcheck Gateway: https://gateway-production-7b5e.up.railway.app/health
+Identity Service: https://identity-production-3c23.up.railway.app
+Orders Service: https://orders-production-2342.up.railway.app
+Payments Service: https://payments-production-e9fa.up.railway.app
 
 ---
 
