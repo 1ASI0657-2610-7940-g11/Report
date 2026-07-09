@@ -3239,11 +3239,17 @@ El Frontend Web es el punto de acceso para los usuarios y consume únicamente un
 URLs principales del despliegue:
 
 Frontend Web: https://front-38m.pages.dev
+
 Gateway API: https://gateway-production-7b5e.up.railway.app
+
 Healthcheck Gateway: https://gateway-production-7b5e.up.railway.app/health
+
 Identity Service: https://identity-production-3c23.up.railway.app
+
 Orders Service: https://orders-production-2342.up.railway.app
+
 Payments Service: https://payments-production-e9fa.up.railway.app
+
 
 ---
 
