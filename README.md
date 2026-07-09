@@ -2,47 +2,31 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/UPC_logo_transparente.png"></img><br>
     <strong>Universidad Peruana de Ciencias Aplicadas</strong><br>
     <br>
-    <strong>Facultad de Ingeniería</strong><br>
-    <strong>Carrera de Ingeniería de Software</strong><br>
-    <strong>Ciclo 2026-10</strong>
+    <strong>Ingeniería de Software</strong><br><br>
+    <strong>1ASI0657  Fundamentos de Arquitectura de Software</strong><br>
+    <strong>202610</strong>
+    <br><br> 
+    <strong>NRC: 7940</strong>
+     <br><br> 
+    <strong>Profesor: Daniel Enrique Mori Yzaguirre</strong>
+    <br>
+    <strong><br> 
+     <strong>TRABAJO FINAL</strong>
+     <br> 
+         <br> 
+     <strong> Nombre del Producto :</strong> Fueltrack Pro 
 </p>
 
-<p align="center">
-  <strong>Código del curso: </strong>1ASI0657<br>
-  <strong>Curso: </strong>Fundamentos de Arquitectura de Software 
-</p>
 
-<p align="center">
-  <strong>NRC: 7940</strong>
-</p>
+<div align="center">
 
-<p align="center">
-    <strong>Profesor: </strong>Daniel Enrique Mori Yzaguirre
-</p>
+| Alumno | Código |
+|:---:|:---:|
+| Allcca Guerrero Irving | U202213241 |
+| Gabriel Omar Lapa de la Cruz | U202216831 |
+| Gianfranco Jared Durand Vega | U202312614 |
 
-<p align="center">
-    <strong>Informe de Trabajo Final</strong>
-</p>
-
-<p align="center">
-    <strong>Nombre del startup: </strong> FuelTrack
-</p>
-
-<p align="center">
-    <strong>Nombre del producto:</strong> FuelTrack Pro
-</p>
-
-<p align="center">
-    <strong>Relación de integrantes:</strong><br>
-    Allcca Guerrero Irving – U202213241<br>
-    Gabriel Omar Lapa de la Cruz - U202216831<br>
-    Gianfranco Jared Durand Vega - U202312614<br>
-
-</p>
-
-<p align="center">
-    <strong>Marzo, 2026</strong>
-</p>
+</div>
 
 ---
 
