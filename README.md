@@ -2752,7 +2752,325 @@ Estos resultados cumplen con el requisito mínimo establecido para el Sprint, ga
 
 ##### 5.2.4.5 Microservices Documentation Evidence for Sprint Review
 
-[Contenido]
+Durante el Sprint 4 se elaboró y actualizó la documentación técnica de referencia para la arquitectura de microservicios de **FuelTrack**. Esta documentación refleja los componentes implementados durante el sprint: API Gateway, microservicios de Identity, Orders, Payments y Reporting, infraestructura local con Docker Compose, persistencia en MySQL, mensajería con RabbitMQ y caché con Redis.
+
+La documentación de cada microservicio mantiene una estructura homogénea para facilitar su lectura, mantenimiento y validación durante el Sprint Review. Cada componente fue documentado considerando su propósito, puerto de ejecución, rutas principales, contratos HTTP, mecanismo de autenticación y dependencias técnicas.
+
+La estructura de documentación seguida para cada microservicio/componente es la siguiente:
+
+- **Overview:** identificación del microservicio, puerto, rol dentro de la arquitectura y tecnología principal.
+- **Reglas generales:** convenciones de autenticación, seguridad, validación, persistencia y manejo de errores.
+- **Índice de endpoints:** tabla resumen con módulo, operación, método HTTP y ruta.
+- **Detalle por endpoint:** contrato general de entrada/salida, respuesta esperada y errores comunes.
+- **Notas finales de implementación:** aclaraciones sobre comportamiento real, ejecución local y dependencias.
+
+---
+
+## Microservices General Architecture Documentation
+
+### Overview
+
+- Arquitectura: Microservices Architecture.
+- Framework principal: ASP.NET Core / .NET 10.
+- Punto de entrada: API Gateway mediante YARP Reverse Proxy.
+- Autenticación: JWT Bearer Token.
+- Persistencia: MySQL.
+- Mensajería: RabbitMQ.
+- Caché: Redis.
+- Documentación: Swagger / OpenAPI.
+- Ejecución local: Docker Compose + terminales independientes por microservicio.
+
+### Microservices Registry
+
+| Nombre lógico | Puerto | Instancias | Descripción |
+|--------------|--------|------------|-------------|
+| Fuel.Gateway | 5000 | 1 | API Gateway y punto único de entrada para enrutar peticiones hacia los microservicios internos. |
+| Fuel.Identity.Service | 5001 | 1 | Microservicio de identidad, autenticación, generación de JWT y gestión de perfil. |
+| Fuel.Orders.Service | 5002 | 1 | Microservicio de gestión de pedidos de combustible, consulta de órdenes, estados y asignación operativa. |
+| Fuel.Payments.Service | 5003 | 1 | Microservicio de métodos de pago, tarjetas enmascaradas e historial de pagos. |
+| Fuel.Reporting.Service | 5004 | 1 | Microservicio de reportes, dashboards, KPIs, datos de empresa y reportes de proveedor. |
+| MySQL | 3307 | 1 | Base de datos relacional utilizada por los microservicios para persistencia. |
+| RabbitMQ | 5672 / 15672 | 1 | Broker de mensajería para comunicación asíncrona y eventos internos. |
+| Redis | 6379 | 1 | Servicio de caché para optimizar consultas de dashboard y reporting. |
+
+### Reglas generales
+
+- Todas las peticiones externas deben ingresar por el API Gateway en `http://localhost:5000`.
+- Los microservicios internos exponen Swagger individualmente para documentación y pruebas.
+- Los endpoints protegidos requieren token JWT en el header `Authorization: Bearer <token>`.
+- La validación de usuario autenticado se realiza mediante claims del JWT.
+- Las bases de datos se inicializan automáticamente en ejecución local mediante `EnsureCreated`.
+- RabbitMQ y Redis se levantan mediante Docker Compose.
+- Los errores de validación retornan respuestas HTTP 400.
+- Los accesos sin token o con token inválido retornan HTTP 401.
+- Los recursos inexistentes retornan HTTP 404.
+- Los errores internos se gestionan como HTTP 500.
+
+---
+
+## API Gateway Documentation
+
+### Overview
+
+- Componente: `Fuel.Gateway`
+- Puerto: `5000`
+- Tecnología: ASP.NET Core + YARP Reverse Proxy.
+- Rol: punto único de entrada hacia los microservicios.
+- Swagger: no expone Swagger propio, ya que solo actúa como capa de enrutamiento.
+
+### Reglas generales
+
+- El Gateway recibe todas las solicitudes HTTP del cliente.
+- Redirige las rutas `/api/auth`, `/api/profile`, `/api/orders`, `/api/payments`, `/api/client`, `/api/company` y `/api/provider`.
+- No contiene lógica de negocio.
+- No persiste información.
+- No requiere pruebas unitarias directas, ya que su comportamiento se valida mediante pruebas funcionales con Postman.
+- Centraliza el consumo desde frontend o cliente externo usando `http://localhost:5000`.
+
+### Índice de rutas del Gateway
+
+| Módulo | Operación | Método | Ruta pública | Microservicio destino |
+|--------|-----------|--------|--------------|------------------------|
+| Auth | Registrar usuario | POST | `/api/auth/register` | Identity Service |
+| Auth | Iniciar sesión | POST | `/api/auth/login` | Identity Service |
+| Profile | Consultar perfil | GET | `/api/profile/me` | Identity Service |
+| Profile | Actualizar perfil | PUT | `/api/profile/me` | Identity Service |
+| Orders | Listar pedidos | GET | `/api/orders` | Orders Service |
+| Orders | Crear pedido | POST | `/api/orders` | Orders Service |
+| Payments | Listar métodos de pago | GET | `/api/payments/methods` | Payments Service |
+| Payments | Agregar método de pago | POST | `/api/payments/methods` | Payments Service |
+| Client | Consultar dashboard | GET | `/api/client/dashboard` | Reporting Service |
+| Client | Consultar KPIs | GET | `/api/client/kpis` | Reporting Service |
+| Company | Consultar empresa | GET | `/api/company/{id}` | Reporting Service |
+| Provider | Reporte de ventas | GET | `/api/provider/sales-report` | Reporting Service |
+| Provider | Gráfico de ventas | GET | `/api/provider/sales-chart` | Reporting Service |
+| Provider | Descargar PDF | GET | `/api/provider/sales-report/pdf` | Reporting Service |
+
+### Notas finales de implementación
+
+- El Gateway fue validado mediante Postman utilizando el flujo completo: registro, login, perfil, pedidos, pagos y reportes.
+- El Gateway se ejecuta después de levantar los microservicios internos.
+- La URL base para pruebas funcionales es `http://localhost:5000`.
+
+---
+
+## Identity Service Documentation
+
+### Overview
+
+- Microservicio: `Fuel.Identity.Service`
+- Puerto: `5001`
+- Swagger: `http://localhost:5001/swagger`
+- Responsabilidad principal: autenticación, registro, generación de JWT y gestión de perfil.
+- Persistencia: MySQL.
+- Seguridad: JWT Bearer Token.
+
+### Reglas generales
+
+- El registro crea un usuario con credenciales válidas.
+- Las contraseñas se almacenan mediante hashing.
+- El login devuelve un token JWT.
+- Los endpoints de perfil requieren autenticación.
+- El perfil se asocia al usuario autenticado mediante el claim del token.
+- Las validaciones incorrectas retornan HTTP 400.
+- Las credenciales inválidas retornan HTTP 401.
+
+### Índice de endpoints
+
+| Módulo | Operación | Método HTTP | Ruta |
+|--------|-----------|-------------|------|
+| Auth | Registrar usuario | POST | `/api/auth/register` |
+| Auth | Iniciar sesión | POST | `/api/auth/login` |
+| Health | Verificar disponibilidad | GET | `/health` |
+| Profile | Consultar perfil | GET | `/api/profile/me` |
+| Profile | Actualizar perfil | PUT | `/api/profile/me` |
+| Profile | Subir avatar | POST | `/api/profile/avatar` |
+| Profile | Obtener avatar | GET | `/api/profile/avatar` |
+
+### Detalle por endpoint
+
+| Endpoint | Request principal | Success response | Error response |
+|----------|------------------|------------------|----------------|
+| `POST /api/auth/register` | `fullName`, `email`, `password` | 200 OK con token JWT | 400 si datos inválidos |
+| `POST /api/auth/login` | `email`, `password` | 200 OK con token JWT | 401 si credenciales inválidas |
+| `GET /api/profile/me` | Token JWT | 200 OK con datos de perfil | 401 si no está autenticado |
+| `PUT /api/profile/me` | `companyName`, `ruc`, `email`, `phone`, `contactName` | 200 OK con perfil actualizado | 400/401 según error |
+| `POST /api/profile/avatar` | Archivo de imagen | 200 OK con avatar actualizado | 400 si archivo inválido |
+| `GET /api/profile/avatar` | Token JWT | 200 OK con imagen | 404 si no existe avatar |
+
+### Notas finales de implementación
+
+- Este microservicio fue probado mediante `Fuel.Identity.Tests`.
+- Las pruebas cubren `AuthControllerTests`, `PasswordHashServiceTests`, `TokenServiceTests` y `ProfileControllerTests`.
+- El endpoint de login fue validado mediante Postman y Swagger.
+- Identity es el servicio base para los demás microservicios porque emite el token JWT compartido.
+
+---
+
+## Orders Service Documentation
+
+### Overview
+
+- Microservicio: `Fuel.Orders.Service`
+- Puerto: `5002`
+- Swagger: `http://localhost:5002/swagger`
+- Responsabilidad principal: gestión de pedidos de combustible.
+- Persistencia: MySQL.
+- Seguridad: JWT Bearer Token.
+
+### Reglas generales
+
+- Los pedidos pertenecen al usuario autenticado.
+- La creación de pedido requiere datos válidos de tipo de combustible, cantidad, dirección y ventana horaria.
+- Los estados de pedido representan el flujo operativo del pedido.
+- Las consultas deben respetar el aislamiento por usuario.
+- Las operaciones protegidas requieren token JWT.
+- Los pedidos inexistentes retornan HTTP 404.
+
+### Índice de endpoints
+
+| Módulo | Operación | Método HTTP | Ruta |
+|--------|-----------|-------------|------|
+| Orders | Listar pedidos | GET | `/api/orders` |
+| Orders | Consultar detalle de pedido | GET | `/api/orders/{id}` |
+| Orders | Crear pedido | POST | `/api/orders` |
+| Orders | Actualizar estado | PATCH | `/api/orders/{id}/status` |
+| Orders | Asignar vehículo | PATCH | `/api/orders/{id}/vehicle` |
+| Health | Verificar disponibilidad | GET | `/health` |
+
+### Detalle por endpoint
+
+| Endpoint | Request principal | Success response | Error response |
+|----------|------------------|------------------|----------------|
+| `GET /api/orders` | Token JWT | 200 OK con lista de pedidos | 401 si no está autenticado |
+| `GET /api/orders/{id}` | ID de pedido | 200 OK con detalle del pedido | 404 si no existe |
+| `POST /api/orders` | `fuelType`, `quantityGallons`, `address`, `timeWindow` | 201 Created con pedido creado | 400 si request inválido |
+| `PATCH /api/orders/{id}/status` | `status`, `comment` | 200 OK con estado actualizado | 400/404 según error |
+| `PATCH /api/orders/{id}/vehicle` | `vehicleId`, `vehiclePlate`, `driverName` | 200 OK con vehículo asignado | 400/404 según error |
+
+### Notas finales de implementación
+
+- Este microservicio fue probado mediante `Fuel.Orders.Tests`.
+- Las pruebas cubren `OrdersControllerTests` y `OrderDomainTests`.
+- Las operaciones fueron validadas localmente desde Swagger y Postman a través del Gateway.
+- Orders representa el núcleo operativo del sistema FuelTrack.
+
+---
+
+## Payments Service Documentation
+
+### Overview
+
+- Microservicio: `Fuel.Payments.Service`
+- Puerto: `5003`
+- Swagger: `http://localhost:5003/swagger`
+- Responsabilidad principal: gestión de métodos de pago.
+- Persistencia: MySQL.
+- Seguridad: JWT Bearer Token.
+
+### Reglas generales
+
+- Los métodos de pago pertenecen al usuario autenticado.
+- El número de tarjeta no se almacena completo.
+- Solo se conserva información enmascarada para visualización.
+- Las operaciones protegidas requieren token JWT.
+- Las validaciones de tarjeta o datos incompletos retornan HTTP 400.
+
+### Índice de endpoints
+
+| Módulo | Operación | Método HTTP | Ruta |
+|--------|-----------|-------------|------|
+| Payments | Listar métodos de pago | GET | `/api/payments/methods` |
+| Payments | Agregar método de pago | POST | `/api/payments/methods` |
+| Payments | Consultar historial de pagos | GET | `/api/payments/history` |
+| Health | Verificar disponibilidad | GET | `/health` |
+
+### Detalle por endpoint
+
+| Endpoint | Request principal | Success response | Error response |
+|----------|------------------|------------------|----------------|
+| `GET /api/payments/methods` | Token JWT | 200 OK con métodos guardados | 401 si no está autenticado |
+| `POST /api/payments/methods` | `brand`, `cardNumber`, `holder`, `expires` | 201 Created con tarjeta enmascarada | 400 si datos inválidos |
+| `GET /api/payments/history` | Token JWT | 200 OK con historial | 401 si no está autenticado |
+
+### Notas finales de implementación
+
+- Este microservicio fue probado mediante `Fuel.Payments.Tests`.
+- Las pruebas cubren `PaymentsControllerTests` y `PaymentMethodTests`.
+- Se validó que los métodos de pago no expongan el número completo de tarjeta.
+- Payments mantiene separación respecto a Orders, reduciendo acoplamiento funcional.
+
+---
+
+## Reporting Service Documentation
+
+### Overview
+
+- Microservicio: `Fuel.Reporting.Service`
+- Puerto: `5004`
+- Swagger: `http://localhost:5004/swagger`
+- Responsabilidad principal: dashboards, KPIs, reportes y consultas empresariales.
+- Persistencia: MySQL.
+- Seguridad: JWT Bearer Token.
+
+### Reglas generales
+
+- Los endpoints de cliente requieren token JWT.
+- Los reportes consolidan información operativa de pedidos, pagos y empresas.
+- El módulo Provider expone reportes de ventas y gráficos.
+- El módulo Company permite consultar información de empresas solicitantes.
+- La generación de PDF retorna un archivo descargable.
+- Los endpoints inexistentes o recursos no encontrados retornan HTTP 404.
+
+### Índice de endpoints
+
+| Módulo | Operación | Método HTTP | Ruta |
+|--------|-----------|-------------|------|
+| Client | Consultar dashboard | GET | `/api/client/dashboard` |
+| Client | Consultar KPIs | GET | `/api/client/kpis` |
+| Company | Consultar detalle de empresa | GET | `/api/company/{id}` |
+| Provider | Consultar reporte de ventas | GET | `/api/provider/sales-report` |
+| Provider | Consultar gráfico de ventas | GET | `/api/provider/sales-chart` |
+| Provider | Descargar reporte PDF | GET | `/api/provider/sales-report/pdf` |
+| Health | Verificar disponibilidad | GET | `/health` |
+
+### Detalle por endpoint
+
+| Endpoint | Request principal | Success response | Error response |
+|----------|------------------|------------------|----------------|
+| `GET /api/client/dashboard` | Token JWT | 200 OK con resumen del dashboard | 401 si no está autenticado |
+| `GET /api/client/kpis` | Token JWT | 200 OK con KPIs del solicitante | 401 si no está autenticado |
+| `GET /api/company/{id}` | ID de empresa | 200 OK con detalle e historial | 404 si no existe |
+| `GET /api/provider/sales-report` | Rango de fechas opcional | 200 OK con reporte de ventas | 400/500 según error |
+| `GET /api/provider/sales-chart` | Rango de fechas opcional | 200 OK con puntos de gráfico | 400/500 según error |
+| `GET /api/provider/sales-report/pdf` | Rango de fechas opcional | 200 OK con archivo PDF | 500 si falla la generación |
+
+### Notas finales de implementación
+
+- Este microservicio fue probado mediante `Fuel.Reporting.Tests`.
+- Las pruebas cubren `ClientControllerTests`, `HomeControllerTests`, `CompanyControllerTests` y `ProviderControllerTests`.
+- Reporting concentra la información analítica del sistema.
+- Los endpoints fueron verificados desde Swagger y Postman mediante el Gateway.
+
+---
+
+## Infrastructure Documentation
+
+### Docker Compose Overview
+
+La infraestructura local fue documentada y preparada mediante `docker-compose.yml`, permitiendo levantar las dependencias necesarias para ejecutar la solución completa.
+
+| Servicio | Puerto | Descripción |
+|----------|--------|-------------|
+| MySQL | 3307:3306 | Motor de base de datos relacional utilizado por los microservicios. |
+| RabbitMQ | 5672 / 15672 | Broker de mensajería y panel administrativo. |
+| Redis | 6379 | Caché distribuido para consultas de lectura y reporting. |
+
+### Ejecución local
+
+```bash
+docker compose up -d
+```
 
 ##### 5.2.4.6 Software Deployment Evidence for Sprint Review
 
