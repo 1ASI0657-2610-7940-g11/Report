@@ -3195,7 +3195,8 @@ link: https://trello.com/b/UEvF2fYZ/fuel-track-planning
 
 #### 5.3.1 Cloud Architecture Diagram
 
-[Contenido]
+<img width="1448" height="470" alt="image" src="https://github.com/user-attachments/assets/45173d4e-5cdb-4388-95b8-430acab118f3" />
+
 
 #### 5.3.2 Cloud Architecture Deployment
 
