@@ -2607,7 +2607,38 @@ Durante este Sprint el tablero Kanban permitió realizar el seguimiento de todas
 
 ##### 5.2.4.1 Sprint Backlog 4
 
-[Contenido]
+El objetivo principal del Sprint 4 fue evolucionar el backend de FuelTrack desde una arquitectura monolítica hacia una arquitectura basada en microservicios. Durante este sprint se separaron los principales bounded contexts del sistema en servicios independientes: Identity, Orders, Payments y Reporting. Además, se implementó un API Gateway como punto único de entrada, se configuró la infraestructura local con Docker, MySQL, RabbitMQ y Redis, y se incorporó una suite de pruebas unitarias con cobertura superior al 60%.
+
+| Sprint # | Sprint 4 | | | | | |
+|----------|----------|----------------------|----------------------|----------------------|----------------------|----------------------|
+| **User Story** | | **Work-Item / Task** | | | | |
+| Id | Title | Id | Title | Description | Estimation (Hours) | Assigned To | Status |
+| US-08 | Iniciar sesión | T-01 | Implementar microservicio Identity | Crear servicio independiente para login, registro, generación de JWT y validación de usuarios | 5 | Backend Dev | Done |
+| US-09 | Registrar cuenta | T-02 | Separar lógica de registro en Identity Service | Implementar endpoints POST /api/auth/register y POST /api/auth/login en microservicio Identity | 4 | Backend Dev | Done |
+| US-27 | Consultar perfil | T-03 | Migrar perfil al microservicio Identity | Implementar GET /api/profile/me para consultar información del usuario autenticado | 3 | Backend Dev | Done |
+| US-28 | Actualizar perfil | T-04 | Implementar actualización de perfil | Crear PUT /api/profile/me para modificar datos empresariales del usuario | 3 | Backend Dev | Done |
+| US-01 | Registrar pedido | T-05 | Implementar microservicio Orders | Crear servicio independiente para registrar pedidos de combustible | 5 | Backend Dev | Done |
+| US-02 | Consultar historial de pedidos | T-06 | Implementar consulta de órdenes | Crear endpoint GET /api/orders para listar pedidos por usuario autenticado | 4 | Backend Dev | Done |
+| US-05 | Actualizar pedido | T-07 | Implementar actualización de estado de pedido | Crear endpoint para actualizar estado operativo de un pedido | 4 | Backend Dev | Done |
+| US-24 | Asignar vehículo a pedido | T-08 | Implementar asignación de vehículo | Crear endpoint para vincular vehículo, placa y conductor a una orden | 4 | Backend Dev | Done |
+| US-07 | Gestionar métodos de pago | T-09 | Implementar microservicio Payments | Crear servicio independiente para listar y registrar métodos de pago | 4 | Backend Dev | Done |
+| US-21 | Generar reporte de ventas | T-10 | Implementar reportes para proveedor | Crear endpoints de reporte de ventas, gráfico de ventas y descarga PDF | 5 | Backend Dev | Done |
+| US-22 | Visualizar KPIs de pedidos | T-11 | Implementar KPIs de cliente | Crear endpoint /api/client/kpis para retornar indicadores del solicitante | 4 | Backend Dev | Done |
+| US-34 | Consultar detalle de empresa | T-12 | Implementar módulo Company en Reporting | Crear endpoint /api/company/{id} para consultar datos e historial de empresa | 4 | Backend Dev | Done |
+| US-36 | Visualizar gráfico de ventas | T-13 | Implementar gráfico de ventas | Crear endpoint /api/provider/sales-chart para exponer datos estadísticos | 3 | Backend Dev | Done |
+| US-37 | Descargar reporte en PDF | T-14 | Implementar exportación de reporte | Crear endpoint /api/provider/sales-report/pdf para descarga de reporte PDF | 4 | Backend Dev | Done |
+| TS-02 | Emitir token de autenticación JWT | T-15 | Configurar JWT compartido entre servicios | Asegurar que todos los microservicios validen el mismo token JWT | 4 | Backend Dev | Done |
+| N/A | API Gateway | T-16 | Implementar Fuel.Gateway con YARP | Configurar Gateway en puerto 5000 como punto único de entrada hacia los microservicios | 5 | Backend Dev | Done |
+| N/A | Comunicación entre servicios | T-17 | Configurar RabbitMQ para eventos internos | Preparar mensajería entre microservicios mediante RabbitMQ | 4 | Backend Dev | Done |
+| N/A | Infraestructura local | T-18 | Configurar Docker Compose | Levantar MySQL, RabbitMQ y Redis para ejecución local del sistema | 4 | DevOps | Done |
+| N/A | Persistencia por microservicio | T-19 | Configurar bases de datos MySQL | Crear configuración de persistencia para Identity, Orders, Payments y Reporting | 5 | Backend Dev | Done |
+| N/A | Documentación Swagger | T-20 | Exponer Swagger por microservicio | Validar documentación OpenAPI en puertos 5001, 5002, 5003 y 5004 | 3 | Backend Dev | Done |
+| N/A | Pruebas funcionales | T-21 | Validar endpoints con Postman | Probar flujo completo desde Gateway: register, login, profile, orders, payments y reporting | 4 | QA / Team | Done |
+| N/A | Pruebas unitarias | T-22 | Crear proyectos xUnit por microservicio | Implementar Fuel.Identity.Tests, Fuel.Orders.Tests, Fuel.Payments.Tests y Fuel.Reporting.Tests | 6 | QA / Backend Dev | Done |
+| N/A | Cobertura de código | T-23 | Configurar coverlet.runsettings | Medir cobertura con XPlat Code Coverage y ReportGenerator | 4 | QA / Backend Dev | Done |
+| N/A | Validación de coverage | T-24 | Alcanzar cobertura mínima requerida | Obtener 88% de line coverage y 60% de branch coverage | 3 | QA / Team | Done |
+| N/A | Versionamiento | T-25 | Subir microservicios y tests a GitHub | Actualizar solución, agregar carpeta tests y configuración de coverage al repositorio | 2 | DevOps | Done |
+
 
 ##### 5.2.4.2 Development Evidence for Sprint Review
 
@@ -2615,7 +2646,105 @@ Durante este Sprint el tablero Kanban permitió realizar el seguimiento de todas
 
 ##### 5.2.4.3 Testing Suite Evidence for Sprint Review
 
-[Contenido]
+Durante el Sprint 4 se implementó una suite de pruebas unitarias para la arquitectura basada en microservicios de FuelTrack utilizando **xUnit**, **Moq** y **Coverlet**. Las pruebas fueron desarrolladas para validar el comportamiento de los principales servicios del sistema: Identity, Orders, Payments y Reporting. Además, se generó un reporte de cobertura de código (Code Coverage) para verificar el cumplimiento del porcentaje mínimo requerido durante el Sprint Review.
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
+|------------|--------|-----------|----------------|---------------------|--------------|
+| Services | main | 8e450e4 | feat: added Unit Tests | Implementación de pruebas unitarias para los microservicios Identity, Orders, Payments y Reporting. Se incorporó Coverlet para generar reportes de cobertura y validar la calidad del código antes del despliegue. | 09/07/2026 |
+
+---
+
+### Identity Service Unit Tests
+
+Se implementaron pruebas unitarias para validar la autenticación, generación de tokens JWT y administración del perfil de usuario.
+
+| # | Test (Clase :: Método) | Justificación |
+|---|-------------------------|---------------|
+| 1 | PasswordHashServiceTests | Verifica el correcto hash y validación segura de contraseñas. |
+| 2 | TokenServiceTests | Comprueba la generación correcta del token JWT y sus claims. |
+| 3 | AuthControllerTests | Valida el registro e inicio de sesión mediante los endpoints de autenticación. |
+| 4 | ProfileControllerTests | Verifica la consulta y actualización del perfil del usuario autenticado. |
+
+#### Evidencia
+
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/test-identity-1.png" />
+
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/test-identity-2.png" />
+
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/test-identity-3.png" />
+
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/test-identity-4.png" />
+
+
+---
+
+### Orders Service Unit Tests
+
+Las pruebas del microservicio Orders validan las operaciones principales relacionadas con la gestión de pedidos.
+
+| # | Test (Clase :: Método) | Justificación |
+|---|-------------------------|---------------|
+| 1 | OrdersControllerTests | Verifica el registro, consulta y actualización de pedidos mediante la API. |
+| 2 | OrderDomainTests | Comprueba las reglas de negocio y validaciones del dominio Orders. |
+
+#### Evidencia
+
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/test-orders-1.png" />
+
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/test-orders-2.png" />
+
+---
+
+### Payments Service Unit Tests
+
+Las pruebas del microservicio Payments validan la administración de métodos de pago.
+
+| # | Test (Clase :: Método) | Justificación |
+|---|-------------------------|---------------|
+| 1 | PaymentsControllerTests | Verifica la creación y consulta de métodos de pago mediante la API. |
+| 2 | PaymentMethodTests | Comprueba las validaciones del dominio relacionadas con los métodos de pago. |
+
+#### Evidencia
+
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/test-payments-1.png" />
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/test-payments-2.png" />
+
+---
+
+### Reporting Service Unit Tests
+
+Las pruebas del microservicio Reporting validan los módulos responsables de consultas y generación de reportes.
+
+| # | Test (Clase :: Método) | Justificación |
+|---|-------------------------|---------------|
+| 1 | ClientControllerTests | Verifica la consulta de indicadores y datos del cliente. |
+| 2 | HomeControllerTests | Comprueba la generación de información para el Dashboard. |
+| 3 | CompanyControllerTests | Valida la consulta de información empresarial. |
+| 4 | ProviderControllerTests | Verifica la generación de reportes e indicadores del proveedor. |
+
+#### Evidencia
+
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/test-reporting-1.png" />
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/test-reporting-2.png" />
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/test-reporting-3.png" />
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/test-reporting-4.png" />
+
+---
+
+## Code Coverage Report
+
+Como parte del proceso de aseguramiento de calidad, se utilizó **Coverlet** junto con **ReportGenerator** para medir la cobertura de código alcanzada por las pruebas unitarias implementadas durante el Sprint.
+
+El reporte obtenido muestra que el proyecto alcanzó:
+
+- **88% Line Coverage**
+- **60% Branch Coverage**
+
+Estos resultados cumplen con el requisito mínimo establecido para el Sprint, garantizando que las funcionalidades críticas de los microservicios fueron correctamente verificadas mediante pruebas automatizadas.
+
+#### Evidencia
+
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/coverage-test.png" />
 
 ##### 5.2.4.4 Execution Evidence for Sprint Review
 
