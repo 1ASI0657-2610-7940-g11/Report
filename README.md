@@ -3180,7 +3180,9 @@ Configuración de Swagger/OpenAPI para revisión de endpoints.
 
 ##### 5.2.4.7 Team Collaboration Insights during Sprint
 
-[Contenido]
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/team-1.png" /> <br>
+
+<img width="1600" height="900" alt="Backend Sprint 3" src="./img/team-2.png" />
 
 ##### 5.2.4.8 Kanban Board
 
